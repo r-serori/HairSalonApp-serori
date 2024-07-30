@@ -34,3 +34,6 @@ hair-salon-frontend-serori/.vercel
 # typescript
 hair-salon-frontend-serori/*.tsbuildinfo
 hair-salon-frontend-serori/next-env.d.ts
+
+
+/db
