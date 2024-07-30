@@ -1,5 +1,5 @@
 # ベースイメージの指定 (フロントエンド用)
-FROM node:21.5.0-alpine AS frontend
+FROM node:22.5.1-alpine AS frontend
 
 # フロントエンドアプリケーション用の作業ディレクトリを作成
 WORKDIR /app/client
@@ -23,12 +23,17 @@ RUN apt-get update && apt-get install -y \
     git \
     zip \
     unzip \
-    && rm -rf /var/lib/apt/lists/*
-
+    && rm -rf /var/lib/apt/lists/* \
+    || true
 
 # Composer のインストール
 RUN curl -sS https://getcomposer.org/installer | php
+
+RUN ls -la /usr/local/bin/
+
 RUN mv composer.phar /usr/local/bin/composer
+
+RUN ls -la /usr/local/bin/
 
 # COMPOSER_ALLOW_SUPERUSER 環境変数を設定
 ENV COMPOSER_ALLOW_SUPERUSER=1
