@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          version: latest
+          version: 20.10.18
       - run:
           name: Build Docker image
           command: docker build -t rserori/hairsalon-app-serori:latest .
@@ -22,7 +22,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          version: latest
+          version: 20.10.18
       - run:
           name: Login to Heroku
           command: echo $HEROKU_API_KEY | docker login --username=_ --password-stdin registry.heroku.com
