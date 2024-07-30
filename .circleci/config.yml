@@ -28,7 +28,7 @@ jobs:
           command: echo $HEROKU_API_KEY | docker login --username=_ --password-stdin registry.heroku.com
       - run:
           name: Tag Docker image
-          command: docker tag rserori/hairsalon-app-serori:latest registry.heroku.com/hairsalon-app-serori/web
+          command: docker tag rserori/hairsalon-app-serori:latest . registry.heroku.com/hairsalon-app-serori/web
       - run:
           name: Push Docker image to Heroku
           command: docker push registry.heroku.com/hairsalon-app-serori/web
