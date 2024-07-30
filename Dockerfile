@@ -22,7 +22,9 @@ WORKDIR /var/www/html/server
 RUN apt-get update && apt-get install -y \
     git \
     zip \
-    unzip
+    unzip \
+    && rm -rf /var/lib/apt/lists/* \
+    || true
 
 # Composer のインストール
 RUN curl -sS https://getcomposer.org/installer | php
