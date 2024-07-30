@@ -1,1 +1,1 @@
-web: docker build -t rserori/hair-salon-app-serori . && docker run -p 80:80 rserori/hair-salon-app-serori
+web: docker build -t rserori/hairsalon-app-serori . && docker run -p 80:80 rserori/hairsalon-app-serori
