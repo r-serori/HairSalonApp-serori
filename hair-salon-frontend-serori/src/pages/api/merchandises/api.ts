@@ -1,5 +1,5 @@
 import { sendRequest } from "../requestApi";
-import { MerchandiseState } from "../../store/merchandises/merchandiseSlice";
+import { MerchandiseState } from "../../../slices/merchandises/merchandiseSlice";
 
 export const merchandiseApi = {
   createMerchandise: async (formData: MerchandiseState) => {

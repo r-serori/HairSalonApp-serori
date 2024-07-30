@@ -11,13 +11,13 @@ import {
   updateCustomerAndScheduleCreate,
   RequestScheduleState,
   createCustomerAndUpdateSchedule,
-} from "../../../../store/schedules/scheduleSlice";
+} from "../../slices/schedules/scheduleSlice";
 import { useSelector, useDispatch } from "react-redux";
 import SingleCheckBox from "../elements/input/checkbox/SingleCheckbox";
 import MultiCheckbox from "../elements/input/checkbox/MultiCheckbox";
 import BasicTextField from "../elements/input/BasicTextField";
 import PrimaryButton from "../elements/button/PrimaryButton";
-import DeleteMan from "../deleteMan/[DeleteMan]/[id]";
+import DeleteMan from "../deleteMan/[id]";
 import BackAgainButton from "../elements/button/RouterButton";
 import ControlledCheckbox from "../elements/input/checkbox/SimpleCheckBox";
 import { SelectChangeEvent } from "@mui/material";
@@ -30,14 +30,14 @@ import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import { v4 as uuidv4 } from "uuid";
 import { permissionStore, user } from "../../hooks/authSelector";
-import { CourseState } from "../../../../store/courses/courseSlice";
-import { OptionState } from "../../../../store/options/optionSlice";
-import { MerchandiseState } from "../../../../store/merchandises/merchandiseSlice";
-import { HairstyleState } from "../../../../store/hairstyles/hairstyleSlice";
+import { CourseState } from "../../slices/courses/courseSlice";
+import { OptionState } from "../../slices/options/optionSlice";
+import { MerchandiseState } from "../../slices/merchandises/merchandiseSlice";
+import { HairstyleState } from "../../slices/hairstyles/hairstyleSlice";
 import BasicNumberField from "../elements/input/BasicNumberField";
-import { UserState } from "../../../../store/auth/userSlice";
+import { UserState } from "../../slices/auth/userSlice";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../../../services/errorHandler";
+import { renderError } from "../../pages/api/errorHandler";
 import { scheduleError, scheduleErrorStatus } from "../../hooks/selector";
 import { ScheduleModalNodes } from "../../types/interface";
 

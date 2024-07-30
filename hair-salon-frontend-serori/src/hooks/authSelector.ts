@@ -1,4 +1,4 @@
-import { RootState } from "../../redux/store";
+import { RootState } from "../redux/store";
 
 // ログイン状態を取得 ログイン中はtrue ログアウト中はfalse
 export const loginNow = (state: RootState) => state.loginNow.loginNow;

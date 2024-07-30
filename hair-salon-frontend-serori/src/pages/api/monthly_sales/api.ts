@@ -1,5 +1,5 @@
 import { sendRequest } from "../requestApi";
-import { Monthly_salesState } from "../../store/monthly_sales/monthly_saleSlice";
+import { Monthly_salesState } from "../../../slices/monthly_sales/monthly_saleSlice";
 
 export const monthlySaleApi = {
   createMonthlySales: async (formData: Monthly_salesState) => {

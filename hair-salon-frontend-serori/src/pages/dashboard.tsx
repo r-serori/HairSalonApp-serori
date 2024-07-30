@@ -1,5 +1,5 @@
 import React from "react";
-import NavLink from "../components/elements/link";
+import NavLink from "../components/elements/link/Link";
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
@@ -17,8 +17,8 @@ import {
   ownerMessage,
   permissionStore,
   userMessage,
-} from "../components/Hooks/authSelector";
-import { PermissionsState } from "../store/auth/permissionSlice";
+} from "../hooks/authSelector";
+import { PermissionsState } from "../slices/auth/permissionSlice";
 
 const Dashboard: React.FC = () => {
   const permission: PermissionsState = useSelector(permissionStore);

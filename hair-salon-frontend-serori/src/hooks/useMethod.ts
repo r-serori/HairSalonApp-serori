@@ -1,9 +1,9 @@
-import { getKey, KeyState } from "../../store/auth/keySlice";
-import { isLogout } from "../../store/auth/isLoginSlice";
-import { logout } from "../../store/auth/userSlice";
-import { AppDispatch } from "../../redux/store";
+import { getKey, KeyState } from "../slices/auth/keySlice";
+import { isLogout } from "../slices/auth/isLoginSlice";
+import { logout } from "../slices/auth/userSlice";
+import { AppDispatch } from "../redux/store";
 import { NextRouter } from "next/router";
-import { PermissionsState } from "../../store/auth/permissionSlice";
+import { PermissionsState } from "../slices/auth/permissionSlice";
 
 export const allLogout = async (
   dispatch: AppDispatch

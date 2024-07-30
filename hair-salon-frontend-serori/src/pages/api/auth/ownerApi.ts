@@ -1,5 +1,5 @@
 import { sendRequest } from "../requestApi";
-import { OwnerState } from "../../store/auth/ownerSlice";
+import { OwnerState } from "../../../slices/auth/ownerSlice";
 export const ownerApi = {
   ownerRegister: async (formData: OwnerState) => {
     try {

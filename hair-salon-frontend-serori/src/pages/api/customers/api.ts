@@ -1,5 +1,5 @@
 import { sendRequest } from "../requestApi";
-import { CustomerState } from "../../store/customers/customerSlice";
+import { CustomerState } from "../../../slices/customers/customerSlice";
 
 export const customerApi = {
   createCustomer: async (formData: CustomerState) => {

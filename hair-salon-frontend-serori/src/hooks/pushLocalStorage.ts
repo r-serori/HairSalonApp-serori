@@ -1,6 +1,6 @@
 import CryptoJS from "crypto-js";
 import _ from "lodash";
-import { KeyState } from "../../store/auth/keySlice";
+import { KeyState } from "../slices/auth/keySlice";
 
 export const pushUserId = (userId: number, key: KeyState): boolean => {
   // データをJSON文字列に変換

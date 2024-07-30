@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import DatePickerValue from "../../input/DatePicker";
+import DatePickerValue from "../../input/DatePickerValue";
 import dayjs, { Dayjs } from "dayjs";
 import "dayjs/locale/ja";
 import utc from "dayjs/plugin/utc";

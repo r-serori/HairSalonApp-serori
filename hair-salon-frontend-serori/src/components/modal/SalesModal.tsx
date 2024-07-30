@@ -3,11 +3,11 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import SaleForm from "../../form/sales/SaleFrom";
+import SaleForm from "../elements/form/sales/SaleFrom";
 import { CalendarEvent } from "../calender/CalendarComponent";
-import { CourseState } from "../../../../store/courses/courseSlice";
-import { OptionState } from "../../../../store/options/optionSlice";
-import { MerchandiseState } from "../../../../store/merchandises/merchandiseSlice";
+import { CourseState } from "../../slices/courses/courseSlice";
+import { OptionState } from "../../slices/options/optionSlice";
+import { MerchandiseState } from "../../slices/merchandises/merchandiseSlice";
 
 const style = {
   position: "absolute" as "absolute",

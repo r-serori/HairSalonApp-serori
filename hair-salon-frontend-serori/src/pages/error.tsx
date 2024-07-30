@@ -9,8 +9,7 @@ import LogoutButton from "../components/elements/button/logoutButton";
 import RouterButton from "../components/elements/button/RouterButton";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
-import { allLogout } from "../components/Hooks/useMethod";
-import { changeMessage } from "../store/auth/userSlice";
+import { allLogout } from "../hooks/useMethod";
 
 // ScrollTriggerの初期化
 gsap.registerPlugin(Draggable);

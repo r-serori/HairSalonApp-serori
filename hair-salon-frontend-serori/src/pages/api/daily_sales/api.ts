@@ -1,5 +1,5 @@
 import { sendRequest } from "../requestApi";
-import { Daily_salesState } from "../../store/daily_sales/daily_saleSlice";
+import { Daily_salesState } from "../../../slices/daily_sales/daily_saleSlice";
 
 export const dailySaleApi = {
   createDailySales: async (formData: Daily_salesState) => {
