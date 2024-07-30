@@ -3,7 +3,7 @@ version: 2.1
 executors:
   docker-executor:
     docker:
-      - image: circleci/node:21.5.0
+      - image: circleci/node:16
     resource_class: small # または medium、プランによって利用可能なクラス
 
 jobs:

@@ -1,5 +1,5 @@
 # ベースイメージの指定 (フロントエンド用)
-FROM node:21.5.0-alpine AS frontend
+FROM node:16-alpine AS frontend
 
 # フロントエンドアプリケーション用の作業ディレクトリを作成
 WORKDIR /app/client
