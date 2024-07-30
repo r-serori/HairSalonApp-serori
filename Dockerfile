@@ -28,6 +28,9 @@ RUN apt-get update && apt-get install -y \
 
 # Composer のインストール
 RUN curl -sS https://getcomposer.org/installer | php
+
+RUN ls -la /usr/local/bin/
+
 RUN mv composer.phar /usr/local/bin/composer
 
 RUN ls -la /usr/local/bin/
