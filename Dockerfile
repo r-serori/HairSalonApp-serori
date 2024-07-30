@@ -22,8 +22,10 @@ WORKDIR /var/www/html/server
 RUN apt-get update && apt-get install -y \
     git \
     zip \
-    unzip \
-    && rm -rf /var/lib/apt/lists/*
+    unzip
+
+# キャッシュディレクトリをクリア
+RUN rm -rf /var/lib/apt/lists/*
 
 
 # Composer のインストール
