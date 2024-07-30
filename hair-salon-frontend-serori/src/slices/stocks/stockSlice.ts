@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { stockApi } from "../../services/stocks/api";
+import { stockApi } from "../../pages/api/stocks/api";
 import RootState from "../../redux/reducers/rootReducer";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../services/errorHandler";
-import { deleteResponse, ErrorType } from "../../components/Hooks/interface";
+} from "../../pages/api/errorHandler";
+import { deleteResponse, ErrorType } from "../../types/interface";
 // APIから在庫情報を取得する非同期アクション//get
 export const getStock = createAsyncThunk<
   GetStockState,

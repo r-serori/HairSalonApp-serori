@@ -15,19 +15,19 @@ import { usePaginationLogic } from "./pagenation/Pagenation";
 import BasicModal from "../modal/BasicModal";
 import { useTheme } from "@table-library/react-table-library/theme";
 import { useRouter } from "next/router";
-import DeleteMan from "../deleteMan/[DeleteMan]/[id]";
+import DeleteMan from "../deleteMan/[id]";
 import dayjs, { Dayjs } from "dayjs";
 import "dayjs/locale/ja";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import StockNotice from "./stockNotice/StockNotice";
 import AttendanceTimeResult from "../elements/alert/AttendanceTimeResult";
-import { PermissionsState } from "../../../store/auth/permissionSlice";
-import { UserState } from "../../../store/auth/userSlice";
-import { CourseState } from "../../../store/courses/courseSlice";
-import { OptionState } from "../../../store/options/optionSlice";
-import { MerchandiseState } from "../../../store/merchandises/merchandiseSlice";
-import { HairstyleState } from "../../../store/hairstyles/hairstyleSlice";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
+import { UserState } from "../../slices/auth/userSlice";
+import { CourseState } from "../../slices/courses/courseSlice";
+import { OptionState } from "../../slices/options/optionSlice";
+import { MerchandiseState } from "../../slices/merchandises/merchandiseSlice";
+import { HairstyleState } from "../../slices/hairstyles/hairstyleSlice";
 import {
   AttendancesNodes,
   AttendanceTimeShotsNodes,
@@ -35,13 +35,14 @@ import {
   NodesProps,
   StockNodes,
 } from "../../types/interface";
-import { Attendance_timeState } from "../../../store/attendance_times/attendance_timesSlice";
-import { StockState } from "../../../store/stocks/stockSlice";
-import { Stock_categoryState } from "../../../store/stocks/stock_categories/stock_categorySlice";
-import { CustomerState } from "../../../store/customers/customerSlice";
-import { Daily_salesState } from "../../../store/daily_sales/daily_saleSlice";
-import { Monthly_salesState } from "../../../store/monthly_sales/monthly_saleSlice";
-import { Yearly_salesState } from "../../../store/yearly_sales/yearly_saleSlice";
+import { Attendance_timeState } from "../../slices/attendance_times/attendance_timesSlice";
+import { StockState } from "../../slices/stocks/stockSlice";
+import { Stock_categoryState } from "../../slices/stocks/stock_categories/stock_categorySlice";
+import { CustomerState } from "../../slices/customers/customerSlice";
+import { Daily_salesState } from "../../slices/daily_sales/daily_saleSlice";
+import { Monthly_salesState } from "../../slices/monthly_sales/monthly_saleSlice";
+import { Yearly_salesState } from "../../slices/yearly_sales/yearly_saleSlice";
+import Image from "next/image";
 
 interface ComponentTableProps {
   nodes:
@@ -380,7 +381,7 @@ const ComponentTable: React.FC<ComponentTableProps> = ({
                           className="items-center bg-gray-100 text-gray-900 text-center pb-1 border-b-2 border-gray-300"
                         >
                           <div className="flex justify-center items-center text-center mx-auto">
-                            <img
+                            <Image
                               key={
                                 propProp === "start_photo_path"
                                   ? `${propValue} + ${propName} + ${node.id}+ ${index} + start`

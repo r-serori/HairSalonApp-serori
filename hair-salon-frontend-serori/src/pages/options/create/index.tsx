@@ -1,19 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createOption, OptionState } from "../../../store/options/optionSlice";
+import { createOption, OptionState } from "../../../slices/options/optionSlice";
 import OptionForm from "../../../components/elements/form/options/OptionForm";
 import { useRouter, NextRouter } from "next/router";
 import {
   optionStatus,
   optionError,
   optionErrorStatus,
-} from "../../../components/Hooks/selector";
+} from "../../../hooks/selector";
 import RouterButton from "../../../components/elements/button/RouterButton";
 import BasicAlerts from "../../../components/elements/alert/BasicAlert";
 import { AppDispatch } from "../../../redux/store";
-import { renderError } from "../../../services/errorHandler";
-import { PermissionsState } from "../../../store/auth/permissionSlice";
-import { permissionStore } from "../../../components/Hooks/authSelector";
+import { renderError } from "../../../pages/api/errorHandler";
+import { PermissionsState } from "../../../slices/auth/permissionSlice";
+import { permissionStore } from "../../../hooks/authSelector";
 
 const OptionCreate: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

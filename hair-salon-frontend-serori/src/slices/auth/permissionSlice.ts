@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { vioRoleApi } from "../../services/auth/vioRole";
+import { vioRoleApi } from "../../pages/api/auth/vioRole";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../services/errorHandler";
-import { ErrorType } from "../../components/Hooks/interface";
+} from "../../pages/api/errorHandler";
+import { ErrorType } from "../../types/interface";
 
 export const getPermission = createAsyncThunk<
   GetPermissionState,

@@ -8,16 +8,20 @@ import {
   ownerStatus,
   ownerStore,
   permissionStore,
-} from "../../components/Hooks/authSelector";
+} from "../../hooks/authSelector";
 import { useEffect } from "react";
-import { ownerPermission } from "../../components/Hooks/useMethod";
-import { PermissionsState } from "../../store/auth/permissionSlice";
+import { ownerPermission } from "../../hooks/useMethod";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
 import RouterButton from "../../components/elements/button/RouterButton";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../services/errorHandler";
-import { getOwner, OwnerState, updateOwner } from "../../store/auth/ownerSlice";
+import { renderError } from "../../pages/api/errorHandler";
+import {
+  getOwner,
+  OwnerState,
+  updateOwner,
+} from "../../slices/auth/ownerSlice";
 import AuthOwnerForm from "../../components/elements/form/auth/AuthOwnerForm";
-import { changeMessage } from "../../store/auth/userSlice";
+import { changeMessage } from "../../slices/auth/userSlice";
 
 const UpdateOwnerInformationPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

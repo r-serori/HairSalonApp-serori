@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import {
   Daily_salesState,
   getDaily_sales,
-} from "../../store/daily_sales/daily_saleSlice";
+} from "../../slices/daily_sales/daily_saleSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import RouterButton from "../../components/elements/button/RouterButton";
 import { useRouter, NextRouter } from "next/router";
@@ -14,15 +14,15 @@ import {
   daily_saleMessage,
   daily_salesStore,
   daily_saleStatus,
-} from "../../components/Hooks/selector";
-import { ownerPermission } from "../../components/Hooks/useMethod";
+} from "../../hooks/selector";
+import { ownerPermission } from "../../hooks/useMethod";
 import _ from "lodash";
-import { permissionStore } from "../../components/Hooks/authSelector";
-import { PermissionsState } from "../../store/auth/permissionSlice";
-import EasyModal from "../../components/modal/easy/EasyModal";
+import { permissionStore } from "../../hooks/authSelector";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
+import EasyModal from "../../components/modal/EasyModal";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../services/errorHandler";
-import { NodesProps, SearchItems } from "../../components/Hooks/interface";
+import { renderError } from "../../pages/api/errorHandler";
+import { NodesProps, SearchItems } from "../../types/interface";
 
 const Daily_sales: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

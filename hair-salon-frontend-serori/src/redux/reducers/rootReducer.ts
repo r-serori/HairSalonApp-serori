@@ -1,28 +1,28 @@
 // reducers/rootReducer.ts
 import { combineReducers } from "@reduxjs/toolkit";
-import attendance_timeReducer from "../../store/attendance_times/attendance_timesSlice";
-import courseReducer from "../../store/courses/courseSlice";
-import optionReducer from "../../store/options/optionSlice";
-import merchandiseReducer from "../../store/merchandises/merchandiseSlice";
-import customerReducer from "../../store/customers/customerSlice";
-import hairstyleReducer from "../../store/hairstyles/hairstyleSlice";
-import course_customersReducer from "../../store/middleTable/customers/course_customersSlice";
-import merchandise_customersReducer from "../../store/middleTable/customers/merchandise_customersSlice";
-import option_customersReducer from "../../store/middleTable/customers/option_customersSlice";
-import hairstyle_customersReducer from "../../store/middleTable/customers/hairstyle_customersSlice";
-import customer_usersReducer from "../../store/middleTable/customers/customer_usersSlice";
-import scheduleReducer from "../../store/schedules/scheduleSlice";
-import stockReducer from "../../store/stocks/stockSlice";
-import stock_categoryReducer from "../../store/stocks/stock_categories/stock_categorySlice";
-import daily_salesReducer from "../../store/daily_sales/daily_saleSlice";
-import monthly_salesReducer from "../../store/monthly_sales/monthly_saleSlice";
-import yearly_salesReducer from "../../store/yearly_sales/yearly_saleSlice";
-import authReducer from "../../store/auth/userSlice";
-import ownerReducer from "../../store/auth/ownerSlice";
-import staffReducer from "../../store/auth/staffSlice";
-import { loginNowReducer } from "../../store/auth/isLoginSlice";
-import keyReducer from "../../store/auth/keySlice";
-import permissionReducer from "../../store/auth/permissionSlice";
+import attendance_timeReducer from "../../slices/attendance_times/attendance_timesSlice";
+import courseReducer from "../../slices/courses/courseSlice";
+import optionReducer from "../../slices/options/optionSlice";
+import merchandiseReducer from "../../slices/merchandises/merchandiseSlice";
+import customerReducer from "../../slices/customers/customerSlice";
+import hairstyleReducer from "../../slices/hairstyles/hairstyleSlice";
+import course_customersReducer from "../../slices/middleTable/customers/course_customersSlice";
+import merchandise_customersReducer from "../../slices/middleTable/customers/merchandise_customersSlice";
+import option_customersReducer from "../../slices/middleTable/customers/option_customersSlice";
+import hairstyle_customersReducer from "../../slices/middleTable/customers/hairstyle_customersSlice";
+import customer_usersReducer from "../../slices/middleTable/customers/customer_usersSlice";
+import scheduleReducer from "../../slices/schedules/scheduleSlice";
+import stockReducer from "../../slices/stocks/stockSlice";
+import stock_categoryReducer from "../../slices/stocks/stock_categories/stock_categorySlice";
+import daily_salesReducer from "../../slices/daily_sales/daily_saleSlice";
+import monthly_salesReducer from "../../slices/monthly_sales/monthly_saleSlice";
+import yearly_salesReducer from "../../slices/yearly_sales/yearly_saleSlice";
+import authReducer from "../../slices/auth/userSlice";
+import ownerReducer from "../../slices/auth/ownerSlice";
+import staffReducer from "../../slices/auth/staffSlice";
+import { loginNowReducer } from "../../slices/auth/isLoginSlice";
+import keyReducer from "../../slices/auth/keySlice";
+import permissionReducer from "../../slices/auth/permissionSlice";
 
 // 他のリデューサーをインポートする
 const rootReducer = combineReducers({

@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import {
   getSchedule,
   ScheduleState,
-} from "../../store/schedules/scheduleSlice";
+} from "../../slices/schedules/scheduleSlice";
 import dayjs from "dayjs";
 import "dayjs/locale/ja";
 import utc from "dayjs/plugin/utc";
@@ -21,24 +21,24 @@ import {
   scheduleMessage,
   scheduleStatus,
   schedulesStore,
-} from "../../components/Hooks/selector";
-import { permissionStore, user } from "../../components/Hooks/authSelector";
-import { allLogout, staffPermission } from "../../components/Hooks/useMethod";
+} from "../../hooks/selector";
+import { permissionStore, user } from "../../hooks/authSelector";
+import { allLogout, staffPermission } from "../../hooks/useMethod";
 import _ from "lodash";
-import { PermissionsState } from "../../store/auth/permissionSlice";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
 import {
   CustomerOnlyState,
   CustomerState,
-} from "../../store/customers/customerSlice";
-import { CourseState } from "../../store/courses/courseSlice";
-import { OptionState } from "../../store/options/optionSlice";
-import { MerchandiseState } from "../../store/merchandises/merchandiseSlice";
-import { HairstyleState } from "../../store/hairstyles/hairstyleSlice";
-import { Course_customersState } from "../../store/middleTable/customers/course_customersSlice";
-import { Option_customersState } from "../../store/middleTable/customers/option_customersSlice";
-import { Merchandise_customersState } from "../../store/middleTable/customers/merchandise_customersSlice";
-import { Hairstyle_customersState } from "../../store/middleTable/customers/hairstyle_customersSlice";
-import { Customer_usersState } from "../../store/middleTable/customers/customer_usersSlice";
+} from "../../slices/customers/customerSlice";
+import { CourseState } from "../../slices/courses/courseSlice";
+import { OptionState } from "../../slices/options/optionSlice";
+import { MerchandiseState } from "../../slices/merchandises/merchandiseSlice";
+import { HairstyleState } from "../../slices/hairstyles/hairstyleSlice";
+import { Course_customersState } from "../../slices/middleTable/customers/course_customersSlice";
+import { Option_customersState } from "../../slices/middleTable/customers/option_customersSlice";
+import { Merchandise_customersState } from "../../slices/middleTable/customers/merchandise_customersSlice";
+import { Hairstyle_customersState } from "../../slices/middleTable/customers/hairstyle_customersSlice";
+import { Customer_usersState } from "../../slices/middleTable/customers/customer_usersSlice";
 import {
   coursesStore,
   option_customersStore,
@@ -49,11 +49,11 @@ import {
   optionsStore,
   merchandiseStore,
   hairstyle_customersStore,
-} from "../../components/Hooks/selector";
-import { UserState } from "../../store/auth/userSlice";
+} from "../../hooks/selector";
+import { UserState } from "../../slices/auth/userSlice";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../services/errorHandler";
-import { ScheduleModalNodes } from "../../components/Hooks/interface";
+import { renderError } from "../../pages/api/errorHandler";
+import { ScheduleModalNodes } from "../../types/interface";
 
 const Schedules: React.FC = () => {
   dayjs.locale("ja");

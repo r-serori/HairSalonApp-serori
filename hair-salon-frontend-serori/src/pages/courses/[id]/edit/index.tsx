@@ -1,21 +1,24 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter, NextRouter } from "next/router";
-import { updateCourse, getCourse } from "../../../../store/courses/courseSlice";
+import {
+  updateCourse,
+  getCourse,
+} from "../../../../slices/courses/courseSlice";
 import CourseForm from "../../../../components/elements/form/courses/CourseForm";
 import {
   courseError,
   courseErrorStatus,
   coursesStore,
   courseStatus,
-} from "../../../../components/Hooks/selector";
-import { CourseState } from "../../../../store/courses/courseSlice";
+} from "../../../../hooks/selector";
+import { CourseState } from "../../../../slices/courses/courseSlice";
 import RouterButton from "../../../../components/elements/button/RouterButton";
 import BasicAlerts from "../../../../components/elements/alert/BasicAlert";
-import { renderError } from "../../../../services/errorHandler";
+import { renderError } from "../../../../pages/api/errorHandler";
 import { AppDispatch } from "../../../../redux/store";
-import { PermissionsState } from "../../../../store/auth/permissionSlice";
-import { permissionStore } from "../../../../components/Hooks/authSelector";
+import { PermissionsState } from "../../../../slices/auth/permissionSlice";
+import { permissionStore } from "../../../../hooks/authSelector";
 
 const CourseEdit: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

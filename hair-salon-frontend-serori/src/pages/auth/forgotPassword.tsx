@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter, NextRouter } from "next/router";
-import { forgotPassword } from "../../store/auth/userSlice";
+import { forgotPassword } from "../../slices/auth/userSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import ForgotPasswordForm from "../../components/elements/form/userProfile/ForgotPasswordForm";
 import {
@@ -8,9 +8,9 @@ import {
   userMessage,
   userStatus,
   userErrorStatus,
-} from "../../components/Hooks/authSelector";
+} from "../../hooks/authSelector";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../services/errorHandler";
+import { renderError } from "../../pages/api/errorHandler";
 import RouterButton from "../../components/elements/button/RouterButton";
 
 const ForgotPasswordPage: React.FC = () => {

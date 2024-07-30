@@ -6,7 +6,7 @@ import {
   updateUserPermission,
   deleteUser,
   showUser,
-} from "../../../../store/auth/userSlice";
+} from "../../../../slices/auth/userSlice";
 import UserUpdateForm from "../../../../components/elements/form/attendances/AttendanceForm";
 import DeleteButton from "../../../../components/elements/button/DeleteButton";
 import {
@@ -15,13 +15,13 @@ import {
   permissionStore,
   userError,
   userErrorStatus,
-} from "../../../../components/Hooks/authSelector";
-import { ownerPermission } from "../../../../components/Hooks/useMethod";
-import { allLogout } from "../../../../components/Hooks/useMethod";
-import { PermissionsState } from "../../../../store/auth/permissionSlice";
+} from "../../../../hooks/authSelector";
+import { ownerPermission } from "../../../../hooks/useMethod";
+import { allLogout } from "../../../../hooks/useMethod";
+import { PermissionsState } from "../../../../slices/auth/permissionSlice";
 import BasicAlerts from "../../../../components/elements/alert/BasicAlert";
-import { UserState } from "../../../../store/auth/userSlice";
-import { renderError } from "../../../../services/errorHandler";
+import { UserState } from "../../../../slices/auth/userSlice";
+import { renderError } from "../../../../pages/api/errorHandler";
 import { AppDispatch } from "../../../../redux/store";
 
 const AttenDanceEdit: React.FC = () => {

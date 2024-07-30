@@ -1,6 +1,6 @@
 import { useRouter, NextRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { ownerRegister, OwnerState } from "../../store/auth/ownerSlice";
+import { ownerRegister, OwnerState } from "../../slices/auth/ownerSlice";
 import OwnerRegisterForm from "../../components/elements/form/auth/AuthOwnerForm";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import {
@@ -9,12 +9,12 @@ import {
   userError,
   ownerErrorStatus,
   userKey,
-} from "../../components/Hooks/authSelector";
-import { changeMessage } from "../../store/auth/userSlice";
-import { renderError } from "../../services/errorHandler";
+} from "../../hooks/authSelector";
+import { changeMessage } from "../../slices/auth/userSlice";
+import { renderError } from "../../pages/api/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import { useEffect } from "react";
-import { isLogin } from "../../store/auth/isLoginSlice";
+import { isLogin } from "../../slices/auth/isLoginSlice";
 
 const OwnerPage = () => {
   const dispatch: AppDispatch = useDispatch();

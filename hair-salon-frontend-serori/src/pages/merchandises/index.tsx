@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import {
   MerchandiseState,
   getMerchandise,
-} from "../../store/merchandises/merchandiseSlice";
+} from "../../slices/merchandises/merchandiseSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import RouterButton from "../../components/elements/button/RouterButton";
 import { useRouter, NextRouter } from "next/router";
@@ -14,18 +14,14 @@ import {
   merchandiseMessage,
   merchandiseError,
   merchandiseErrorStatus,
-} from "../../components/Hooks/selector";
-import { permissionStore } from "../../components/Hooks/authSelector";
-import { staffPermission } from "../../components/Hooks/useMethod";
-import { PermissionsState } from "../../store/auth/permissionSlice";
+} from "../../hooks/selector";
+import { permissionStore } from "../../hooks/authSelector";
+import { staffPermission } from "../../hooks/useMethod";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
 import _ from "lodash";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../services/errorHandler";
-import {
-  NodesProps,
-  SearchItems,
-  THeaderItems,
-} from "../../components/Hooks/interface";
+import { renderError } from "../../pages/api/errorHandler";
+import { NodesProps, SearchItems, THeaderItems } from "../../types/interface";
 
 const Merchandises = () => {
   const dispatch: AppDispatch = useDispatch();

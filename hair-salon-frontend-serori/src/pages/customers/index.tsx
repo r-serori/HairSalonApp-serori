@@ -5,7 +5,7 @@ import {
   CustomerOnlyState,
   CustomerState,
   getCustomer,
-} from "../../store/customers/customerSlice";
+} from "../../slices/customers/customerSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import RouterButton from "../../components/elements/button/RouterButton";
 import { useRouter, NextRouter } from "next/router";
@@ -24,30 +24,30 @@ import {
   hairstyle_customersStore,
   customer_usersStore,
   customerErrorStatus,
-} from "../../components/Hooks/selector";
-import { user, permissionStore } from "../../components/Hooks/authSelector";
-import { staffPermission } from "../../components/Hooks/useMethod";
-import { allLogout } from "../../components/Hooks/useMethod";
+} from "../../hooks/selector";
+import { user, permissionStore } from "../../hooks/authSelector";
+import { staffPermission } from "../../hooks/useMethod";
+import { allLogout } from "../../hooks/useMethod";
 import _ from "lodash";
-import { CourseState } from "../../store/courses/courseSlice";
-import { OptionState } from "../../store/options/optionSlice";
-import { MerchandiseState } from "../../store/merchandises/merchandiseSlice";
-import { HairstyleState } from "../../store/hairstyles/hairstyleSlice";
-import { Course_customersState } from "../../store/middleTable/customers/course_customersSlice";
-import { Option_customersState } from "../../store/middleTable/customers/option_customersSlice";
-import { Merchandise_customersState } from "../../store/middleTable/customers/merchandise_customersSlice";
-import { Hairstyle_customersState } from "../../store/middleTable/customers/hairstyle_customersSlice";
-import { Customer_usersState } from "../../store/middleTable/customers/customer_usersSlice";
-import { PermissionsState } from "../../store/auth/permissionSlice";
-import { UserState } from "../../store/auth/userSlice";
+import { CourseState } from "../../slices/courses/courseSlice";
+import { OptionState } from "../../slices/options/optionSlice";
+import { MerchandiseState } from "../../slices/merchandises/merchandiseSlice";
+import { HairstyleState } from "../../slices/hairstyles/hairstyleSlice";
+import { Course_customersState } from "../../slices/middleTable/customers/course_customersSlice";
+import { Option_customersState } from "../../slices/middleTable/customers/option_customersSlice";
+import { Merchandise_customersState } from "../../slices/middleTable/customers/merchandise_customersSlice";
+import { Hairstyle_customersState } from "../../slices/middleTable/customers/hairstyle_customersSlice";
+import { Customer_usersState } from "../../slices/middleTable/customers/customer_usersSlice";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
+import { UserState } from "../../slices/auth/userSlice";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../services/errorHandler";
+import { renderError } from "../../pages/api/errorHandler";
 import {
   CustomerNodes,
   NodesProps,
   ScheduleModalNodes,
   SearchItems,
-} from "../../components/Hooks/interface";
+} from "../../types/interface";
 
 const Customers: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

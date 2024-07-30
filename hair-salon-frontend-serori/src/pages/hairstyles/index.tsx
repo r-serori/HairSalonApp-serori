@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import {
   HairstyleState,
   getHairstyle,
-} from "../../store/hairstyles/hairstyleSlice";
+} from "../../slices/hairstyles/hairstyleSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import RouterButton from "../../components/elements/button/RouterButton";
 import { useRouter, NextRouter } from "next/router";
@@ -14,14 +14,14 @@ import {
   hairstyleMessage,
   hairstyleError,
   hairstyleErrorStatus,
-} from "../../components/Hooks/selector";
-import { permissionStore } from "../../components/Hooks/authSelector";
-import { allLogout, staffPermission } from "../../components/Hooks/useMethod";
-import { PermissionsState } from "../../store/auth/permissionSlice";
+} from "../../hooks/selector";
+import { permissionStore } from "../../hooks/authSelector";
+import { allLogout, staffPermission } from "../../hooks/useMethod";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
 import _ from "lodash";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../services/errorHandler";
-import { NodesProps, SearchItems } from "../../components/Hooks/interface";
+import { renderError } from "../../pages/api/errorHandler";
+import { NodesProps, SearchItems } from "../../types/interface";
 
 const Hairstyles: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

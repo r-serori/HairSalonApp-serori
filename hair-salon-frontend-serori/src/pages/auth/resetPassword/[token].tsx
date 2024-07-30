@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter, NextRouter } from "next/router";
-import { resetPassword } from "../../../store/auth/userSlice";
+import { resetPassword } from "../../../slices/auth/userSlice";
 import BasicAlerts from "../../../components/elements/alert/BasicAlert";
 import ResetPasswordForm from "../../../components/elements/form/userProfile/ResetPasswordForm";
 import {
@@ -8,8 +8,8 @@ import {
   userMessage,
   userStatus,
   userErrorStatus,
-} from "../../../components/Hooks/authSelector";
-import { renderError } from "../../../services/errorHandler";
+} from "../../../hooks/authSelector";
+import { renderError } from "../../../pages/api/errorHandler";
 import { AppDispatch } from "../../../redux/store";
 
 const ResetPasswordPage: React.FC = () => {

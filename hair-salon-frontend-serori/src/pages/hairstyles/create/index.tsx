@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createHairstyle,
   HairstyleState,
-} from "../../../store/hairstyles/hairstyleSlice";
+} from "../../../slices/hairstyles/hairstyleSlice";
 import HairstyleForm from "../../../components/elements/form/hairstyles/HairstyleForm";
 import { useRouter, NextRouter } from "next/router";
 import RouterButton from "../../../components/elements/button/RouterButton";
@@ -11,12 +11,12 @@ import {
   hairstyleError,
   hairstyleErrorStatus,
   hairstyleStatus,
-} from "../../../components/Hooks/selector";
+} from "../../../hooks/selector";
 import BasicAlerts from "../../../components/elements/alert/BasicAlert";
 import { AppDispatch } from "../../../redux/store";
-import { renderError } from "../../../services/errorHandler";
-import { PermissionsState } from "../../../store/auth/permissionSlice";
-import { permissionStore } from "../../../components/Hooks/authSelector";
+import { renderError } from "../../../pages/api/errorHandler";
+import { PermissionsState } from "../../../slices/auth/permissionSlice";
+import { permissionStore } from "../../../hooks/authSelector";
 
 const HairstyleCreate = () => {
   const dispatch: AppDispatch = useDispatch();

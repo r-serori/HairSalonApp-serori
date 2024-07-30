@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { schedulesApi } from "../../services/schedules/api";
+import { schedulesApi } from "../../pages/api/schedules/api";
 import RootState from "../../redux/reducers/rootReducer";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../services/errorHandler";
+} from "../../pages/api/errorHandler";
 import { CustomerOnlyState, deleteCustomer } from "../customers/customerSlice";
 import { CourseState } from "../courses/courseSlice";
 import { OptionState } from "../options/optionSlice";
@@ -16,7 +16,7 @@ import { Option_customersState } from "../middleTable/customers/option_customers
 import { Merchandise_customersState } from "../middleTable/customers/merchandise_customersSlice";
 import { Hairstyle_customersState } from "../middleTable/customers/hairstyle_customersSlice";
 import { Customer_usersState } from "../middleTable/customers/customer_usersSlice";
-import { deleteResponse, ErrorType } from "../../components/Hooks/interface";
+import { deleteResponse, ErrorType } from "../../types/interface";
 
 export const getSchedule = createAsyncThunk<
   GetScheduleState,

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { stockCategoryApi } from "../../../services/stock_categories/api";
+import { stockCategoryApi } from "../../../pages/api/stock_categories/api";
 import RootState from "../../../redux/reducers/rootReducer";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../../services/errorHandler";
-import { deleteResponse, ErrorType } from "../../../components/Hooks/interface";
+} from "../../../pages/api/errorHandler";
+import { deleteResponse, ErrorType } from "../../../types/interface";
 
 // APIから在庫カテゴリ情報を取得する非同期アクション//get
 export const getStockCategory = createAsyncThunk<

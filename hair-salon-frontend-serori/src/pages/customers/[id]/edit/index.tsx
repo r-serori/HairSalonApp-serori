@@ -5,7 +5,7 @@ import {
   updateCustomer,
   CustomerOnlyState,
   CustomerState,
-} from "../../../../store/customers/customerSlice";
+} from "../../../../slices/customers/customerSlice";
 import CustomerForm from "../../../../components/elements/form/customers/CustomerForm";
 import {
   course_customersStore,
@@ -17,18 +17,18 @@ import {
   hairstyle_customersStore,
   merchandise_customersStore,
   option_customersStore,
-} from "../../../../components/Hooks/selector";
+} from "../../../../hooks/selector";
 import RouterButton from "../../../../components/elements/button/RouterButton";
 import BasicAlerts from "../../../../components/elements/alert/BasicAlert";
 import { AppDispatch } from "../../../../redux/store";
-import { renderError } from "../../../../services/errorHandler";
-import { PermissionsState } from "../../../../store/auth/permissionSlice";
-import { permissionStore } from "../../../../components/Hooks/authSelector";
-import { Course_customersState } from "@/store/middleTable/customers/course_customersSlice";
-import { Option_customersState } from "@/store/middleTable/customers/option_customersSlice";
-import { Merchandise_customersState } from "@/store/middleTable/customers/merchandise_customersSlice";
-import { Hairstyle_customersState } from "@/store/middleTable/customers/hairstyle_customersSlice";
-import { Customer_usersState } from "@/store/middleTable/customers/customer_usersSlice";
+import { renderError } from "../../../../pages/api/errorHandler";
+import { PermissionsState } from "../../../../slices/auth/permissionSlice";
+import { permissionStore } from "../../../../hooks/authSelector";
+import { Course_customersState } from "../../../../slices/middleTable/customers/course_customersSlice";
+import { Option_customersState } from "../../../../slices/middleTable/customers/option_customersSlice";
+import { Merchandise_customersState } from "../../../../slices/middleTable/customers/merchandise_customersSlice";
+import { Hairstyle_customersState } from "../../../../slices/middleTable/customers/hairstyle_customersSlice";
+import { Customer_usersState } from "../../../../slices/middleTable/customers/customer_usersSlice";
 
 const CustomersEdit: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

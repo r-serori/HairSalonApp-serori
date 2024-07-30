@@ -5,15 +5,15 @@ import LogoutButton from "../elements/button/logoutButton";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { checkSessionApi } from "../../../../services/auth/checkSession";
-import { loginNow, userKey } from "../Hooks/authSelector";
-import { getUserKey } from "../Hooks/useMethod";
-import { PermissionsState } from "../../../../store/auth/permissionSlice";
-import { permissionStore } from "../Hooks/authSelector";
-import { getPermission } from "../../../../store/auth/permissionSlice";
-import { isLogin, isLogout } from "../../../../store/auth/isLoginSlice";
+import { checkSessionApi } from "../../pages/api/auth/checkSession";
+import { loginNow, userKey } from "../../hooks/authSelector";
+import { getUserKey } from "../../hooks/useMethod";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
+import { permissionStore } from "../../hooks/authSelector";
+import { getPermission } from "../../slices/auth/permissionSlice";
+import { isLogin, isLogout } from "../../slices/auth/isLoginSlice";
 import Link from "next/link";
-import { KeyState } from "../../../../store/auth/keySlice";
+import { KeyState } from "../../slices/auth/keySlice";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");

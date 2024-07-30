@@ -2,7 +2,7 @@ import ComponentTable from "../../components/table/Table";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
-import { getUsers } from "../../store/auth/userSlice";
+import { getUsers } from "../../slices/auth/userSlice";
 import { useRouter, NextRouter } from "next/router";
 import {
   user,
@@ -10,25 +10,25 @@ import {
   userErrorStatus,
   userMessage,
   userStatus,
-} from "../../components/Hooks/authSelector";
+} from "../../hooks/authSelector";
 import {
   attendance_timeError,
   attendance_timeStatus,
-} from "../../components/Hooks/selector";
-import { permissionStore } from "../../components/Hooks/authSelector";
-import { staffPermission } from "../../components/Hooks/useMethod";
+} from "../../hooks/selector";
+import { permissionStore } from "../../hooks/authSelector";
+import { staffPermission } from "../../hooks/useMethod";
 import _ from "lodash";
-import { allLogout } from "../../components/Hooks/useMethod";
-import { PermissionsState } from "../../store/auth/permissionSlice";
-import { UserState } from "../../store/auth/userSlice";
-import { renderError } from "../../services/errorHandler";
+import { allLogout } from "../../hooks/useMethod";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
+import { UserState } from "../../slices/auth/userSlice";
+import { renderError } from "../../pages/api/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import {
   AttendanceTimeShotsNodes,
   NodesProps,
   SearchItems,
   THeaderItems,
-} from "../../components/Hooks/interface";
+} from "../../types/interface";
 
 const AttendanceTimeShots = () => {
   const dispatch: AppDispatch = useDispatch();

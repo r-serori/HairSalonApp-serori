@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { customerApi } from "../../services/customers/api";
+import { customerApi } from "../../pages/api/customers/api";
 import RootState from "../../redux/reducers/rootReducer";
 import {
   getSchedule,
@@ -7,12 +7,12 @@ import {
   updateCustomerAndSchedule,
   updateCustomerAndScheduleCreate,
   createCustomerAndUpdateSchedule,
-} from "../../store/schedules/scheduleSlice";
+} from "../schedules/scheduleSlice";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../services/errorHandler";
-import { deleteResponse, ErrorType } from "../../components/Hooks/interface";
+} from "../../pages/api/errorHandler";
+import { deleteResponse, ErrorType } from "../../types/interface";
 import { CourseState } from "../courses/courseSlice";
 import { OptionState } from "../options/optionSlice";
 import { MerchandiseState } from "../merchandises/merchandiseSlice";

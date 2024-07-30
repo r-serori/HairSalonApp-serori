@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { userApi } from "../../services/auth/api";
+import { userApi } from "../../pages/api/auth/api";
 import RootState from "../../redux/reducers/rootReducer";
 import { getCustomer } from "../customers/customerSlice";
 import { getSchedule, selectGetSchedules } from "../schedules/scheduleSlice";
@@ -10,15 +10,11 @@ import {
   selectGetAttendanceTimes,
 } from "../attendance_times/attendance_timesSlice";
 import { isLogout } from "./isLoginSlice";
-import {
-  deleteResponse,
-  ErrorType,
-  RoleState,
-} from "../../components/Hooks/interface";
+import { deleteResponse, ErrorType, RoleState } from "../../types/interface";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../services/errorHandler";
+} from "../../pages/api/errorHandler";
 
 export const login = createAsyncThunk<
   ResponseUserState,

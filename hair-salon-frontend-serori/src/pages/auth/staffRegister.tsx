@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter, NextRouter } from "next/router";
 import AuthStaffRegisterForm from "../../components/elements/form/auth/AuthStaffRegisterForm";
-import { staffRegister } from "../../store/auth/userSlice";
+import { staffRegister } from "../../slices/auth/userSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import RouterButton from "../../components/elements/button/RouterButton";
 import {
@@ -9,11 +9,11 @@ import {
   userStatus,
   permissionStore,
   userErrorStatus,
-} from "../../components/Hooks/authSelector";
+} from "../../hooks/authSelector";
 import { useEffect } from "react";
-import { ownerPermission } from "../../components/Hooks/useMethod";
-import { PermissionsState } from "../../store/auth/permissionSlice";
-import { renderError } from "../../services/errorHandler";
+import { ownerPermission } from "../../hooks/useMethod";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
+import { renderError } from "../../pages/api/errorHandler";
 import { AppDispatch } from "../../redux/store";
 
 const StaffRegisterPage: React.FC = () => {

@@ -1,22 +1,21 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import ModalForm from "../elements/form/ModalForm";
 import AttendanceTimesShotForm from "../elements/form/attendances/AttendanceTimesShotForm";
 import RouterButton from "../elements/button/RouterButton";
-import { PermissionsState } from "../../../store/auth/permissionSlice";
-import { UserState } from "../../../store/auth/userSlice";
-import { CourseState } from "../../../store/courses/courseSlice";
-import { OptionState } from "../../../store/options/optionSlice";
-import { MerchandiseState } from "../../../store/merchandises/merchandiseSlice";
-import { HairstyleState } from "../../../store/hairstyles/hairstyleSlice";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
+import { UserState } from "../../slices/auth/userSlice";
+import { CourseState } from "../../slices/courses/courseSlice";
+import { OptionState } from "../../slices/options/optionSlice";
+import { MerchandiseState } from "../../slices/merchandises/merchandiseSlice";
+import { HairstyleState } from "../../slices/hairstyles/hairstyleSlice";
 import { AttendanceTimeShotsNodes } from "../../types/interface";
-import { Attendance_timeState } from "../../../store/attendance_times/attendance_timesSlice";
+import { Attendance_timeState } from "../../slices/attendance_times/attendance_timesSlice";
 import { AttendancesNodes } from "../../types/interface";
 import { StockNodes } from "../../types/interface";
-import { Stock_categoryState } from "../../../store/stocks/stock_categories/stock_categorySlice";
+import { Stock_categoryState } from "../../slices/stocks/stock_categories/stock_categorySlice";
 import { CustomerNodes } from "../../types/interface";
 
 const style = {

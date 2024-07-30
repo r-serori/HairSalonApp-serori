@@ -1,11 +1,11 @@
 import ComponentTable from "../../components/table/Table";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { StockState, getStock } from "../../store/stocks/stockSlice";
+import { StockState, getStock } from "../../slices/stocks/stockSlice";
 import {
   Stock_categoryState,
   getStockCategory,
-} from "../../store/stocks/stock_categories/stock_categorySlice";
+} from "../../slices/stocks/stock_categories/stock_categorySlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import RouterButton from "../../components/elements/button/RouterButton";
 import { useRouter, NextRouter } from "next/router";
@@ -17,19 +17,19 @@ import {
   stock_categoriesStore,
   stock_categoryStatus,
   stocksStore,
-} from "../../components/Hooks/selector";
-import { permissionStore } from "../../components/Hooks/authSelector";
-import { PermissionsState } from "../../store/auth/permissionSlice";
-import { allLogout, staffPermission } from "../../components/Hooks/useMethod";
+} from "../../hooks/selector";
+import { permissionStore } from "../../hooks/authSelector";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
+import { allLogout, staffPermission } from "../../hooks/useMethod";
 import _ from "lodash";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../services/errorHandler";
+import { renderError } from "../../pages/api/errorHandler";
 import {
   NodesProps,
   SearchItems,
   StockNodes,
   THeaderItems,
-} from "../../components/Hooks/interface";
+} from "../../types/interface";
 
 const Stocks: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

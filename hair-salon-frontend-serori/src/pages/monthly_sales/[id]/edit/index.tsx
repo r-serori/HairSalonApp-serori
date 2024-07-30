@@ -6,16 +6,16 @@ import {
   monthly_saleStatus,
   monthly_saleError,
   monthly_saleErrorStatus,
-} from "../../../../components/Hooks/selector";
-import { Monthly_salesState } from "../../../../store/monthly_sales/monthly_saleSlice";
-import { updateMonthly_sales } from "../../../../store/monthly_sales/monthly_saleSlice";
+} from "../../../../hooks/selector";
+import { Monthly_salesState } from "../../../../slices/monthly_sales/monthly_saleSlice";
+import { updateMonthly_sales } from "../../../../slices/monthly_sales/monthly_saleSlice";
 import MonthlySalesForm from "../../../../components/elements/form/sales/monthly_sales/Monthly_salesForm";
 import RouterButton from "../../../../components/elements/button/RouterButton";
 import BasicAlerts from "../../../../components/elements/alert/BasicAlert";
 import { AppDispatch } from "../../../../redux/store";
-import { renderError } from "../../../../services/errorHandler";
-import { PermissionsState } from "../../../../store/auth/permissionSlice";
-import { permissionStore } from "../../../../components/Hooks/authSelector";
+import { renderError } from "../../../../pages/api/errorHandler";
+import { PermissionsState } from "../../../../slices/auth/permissionSlice";
+import { permissionStore } from "../../../../hooks/authSelector";
 
 const MonthlySalesEdit: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

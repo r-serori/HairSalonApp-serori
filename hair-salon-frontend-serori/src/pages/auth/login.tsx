@@ -1,10 +1,10 @@
 import AuthLoginForm from "../../components/elements/form/auth/AuthLoginForm";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter, NextRouter } from "next/router";
-import { login } from "../../store/auth/userSlice";
+import { login } from "../../slices/auth/userSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
-import { isLogin } from "../../store/auth/isLoginSlice";
-import { clearError, changeMessage } from "../../store/auth/userSlice";
+import { isLogin } from "../../slices/auth/isLoginSlice";
+import { clearError, changeMessage } from "../../slices/auth/userSlice";
 import RouterButton from "../../components/elements/button/RouterButton";
 import { useEffect } from "react";
 import {
@@ -12,19 +12,19 @@ import {
   userMessage,
   userError,
   userErrorStatus,
-} from "../../components/Hooks/authSelector";
-import { getUserKey, allLogout } from "../../components/Hooks/useMethod";
-import { pushUserId } from "../../components/Hooks/pushLocalStorage";
+} from "../../hooks/authSelector";
+import { getUserKey, allLogout } from "../../hooks/useMethod";
+import { pushUserId } from "../../hooks/pushLocalStorage";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import {
   getPermission,
   PermissionsState,
-} from "../../store/auth/permissionSlice";
+} from "../../slices/auth/permissionSlice";
 import ForgotPasswordButton from "../../components/elements/button/ForgotPasswordButton";
-import { renderError } from "../../services/errorHandler";
+import { renderError } from "../../pages/api/errorHandler";
 import { AppDispatch } from "../../redux/store";
-import { KeyState } from "../../store/auth/keySlice";
+import { KeyState } from "../../slices/auth/keySlice";
 
 const LoginPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

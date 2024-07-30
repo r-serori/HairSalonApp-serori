@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import RouterButton from "../../components/elements/button/RouterButton";
-import { getUsers } from "../../store/auth/userSlice";
+import { getUsers } from "../../slices/auth/userSlice";
 import { useRouter, NextRouter } from "next/router";
 import {
   user,
@@ -12,19 +12,19 @@ import {
   userStatus,
   permissionStore,
   userErrorStatus,
-} from "../../components/Hooks/authSelector";
-import { ownerPermission, allLogout } from "../../components/Hooks/useMethod";
+} from "../../hooks/authSelector";
+import { ownerPermission, allLogout } from "../../hooks/useMethod";
 import _ from "lodash";
-import { PermissionsState } from "../../store/auth/permissionSlice";
-import { UserState } from "../../store/auth/userSlice";
-import { renderError } from "../../services/errorHandler";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
+import { UserState } from "../../slices/auth/userSlice";
+import { renderError } from "../../pages/api/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import {
   AttendancesNodes,
   NodesProps,
   SearchItems,
   THeaderItems,
-} from "../../components/Hooks/interface";
+} from "../../types/interface";
 
 const Attendances = () => {
   const dispatch: AppDispatch = useDispatch();

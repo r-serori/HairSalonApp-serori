@@ -1,7 +1,7 @@
 import ComponentTable from "../../components/table/Table";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { OptionState, getOption } from "../../store/options/optionSlice";
+import { OptionState, getOption } from "../../slices/options/optionSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import RouterButton from "../../components/elements/button/RouterButton";
 import { useRouter, NextRouter } from "next/router";
@@ -11,18 +11,14 @@ import {
   optionMessage,
   optionStatus,
   optionsStore,
-} from "../../components/Hooks/selector";
-import { permissionStore } from "../../components/Hooks/authSelector";
-import { PermissionsState } from "../../store/auth/permissionSlice";
-import { allLogout, staffPermission } from "../../components/Hooks/useMethod";
+} from "../../hooks/selector";
+import { permissionStore } from "../../hooks/authSelector";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
+import { allLogout, staffPermission } from "../../hooks/useMethod";
 import _ from "lodash";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../services/errorHandler";
-import {
-  NodesProps,
-  SearchItems,
-  THeaderItems,
-} from "../../components/Hooks/interface";
+import { renderError } from "../../pages/api/errorHandler";
+import { NodesProps, SearchItems, THeaderItems } from "../../types/interface";
 
 const Options: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

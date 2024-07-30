@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 hair-salon-frontend-serori/node_modules
 hair-salon-frontend-serori/.pnp
@@ -35,5 +33,31 @@ hair-salon-frontend-serori/.vercel
 hair-salon-frontend-serori/*.tsbuildinfo
 hair-salon-frontend-serori/next-env.d.ts
 
+db
+db/*
+.vscode
+.env
 
-/db
+hair-salon-backend-serori//.phpunit.cache
+hair-salon-backend-serori//node_modules
+hair-salon-backend-serori//public/build
+hair-salon-backend-serori//public/hot
+hair-salon-backend-serori//public/storage
+hair-salon-backend-serori//storage/*.key
+hair-salon-backend-serori//vendor/*
+hair-salon-backend-serori//vendor
+hair-salon-backend-serori/vendor
+hair-salon-backend-serori/vendor/*
+hair-salon-backend-serori/.env
+hair-salon-backend-serori/.env.backup
+hair-salon-backend-serori/.env.production
+hair-salon-backend-serori/.phpactor.json
+hair-salon-backend-serori/.phpunit.result.cache
+hair-salon-backend-serori/Homestead.json
+hair-salon-backend-serori/Homestead.yaml
+hair-salon-backend-serori/auth.json
+hair-salon-backend-serori/npm-debug.log
+hair-salon-backend-serori/yarn-error.log
+hair-salon-backend-serori//.fleet
+hair-salon-backend-serori//.idea
+hair-salon-backend-serori//.vscode

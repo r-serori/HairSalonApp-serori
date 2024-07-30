@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter, NextRouter } from "next/router";
-import { updateUserPassword } from "../../store/auth/userSlice";
+import { updateUserPassword } from "../../slices/auth/userSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import UpdatePasswordForm from "../../components/elements/form/userProfile/UpdatePasswordForm";
 import {
@@ -9,12 +9,12 @@ import {
   userErrorStatus,
   userMessage,
   userStatus,
-} from "../../components/Hooks/authSelector";
-import { isLogout } from "../../store/auth/isLoginSlice";
+} from "../../hooks/authSelector";
+import { isLogout } from "../../slices/auth/isLoginSlice";
 import RouterButton from "../../components/elements/button/RouterButton";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../services/errorHandler";
-import { PermissionsState } from "../../store/auth/permissionSlice";
+import { renderError } from "../../pages/api/errorHandler";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
 
 const UpdatePasswordPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

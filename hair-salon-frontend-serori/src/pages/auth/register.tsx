@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter, NextRouter } from "next/router";
 import AuthRegisterForm from "../../components/elements/form/auth/AuthRegisterForm";
-import { register } from "../../store/auth/userSlice";
+import { register } from "../../slices/auth/userSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import RouterButton from "../../components/elements/button/RouterButton";
 import { useEffect } from "react";
@@ -10,12 +10,12 @@ import {
   userError,
   ownerError,
   userErrorStatus,
-} from "../../components/Hooks/authSelector";
-import { getUserKey, allLogout } from "../../components/Hooks/useMethod";
-import { pushUserId } from "../../components/Hooks/pushLocalStorage";
-import { renderError } from "../../services/errorHandler";
+} from "../../hooks/authSelector";
+import { getUserKey, allLogout } from "../../hooks/useMethod";
+import { pushUserId } from "../../hooks/pushLocalStorage";
+import { renderError } from "../../pages/api/errorHandler";
 import { AppDispatch } from "../../redux/store";
-import { KeyState } from "../../store/auth/keySlice";
+import { KeyState } from "../../slices/auth/keySlice";
 
 const RegisterPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

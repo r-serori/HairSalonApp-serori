@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-// import { merchandiseCustomerApi } from "../../../services/middleTable/customers/merchandise_customersApi";
 import RootState from "../../../redux/reducers/rootReducer";
 import {
   getCustomer,
@@ -14,7 +13,7 @@ import {
   createCustomerAndUpdateSchedule,
 } from "../../schedules/scheduleSlice";
 import { deleteMerchandise } from "../../merchandises/merchandiseSlice";
-import { ErrorType } from "../../../components/Hooks/interface";
+import { ErrorType } from "../../../types/interface";
 
 export interface Merchandise_customersState {
   // ステートの型

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter, NextRouter } from "next/router";
-import { updateUser, UserState } from "../../store/auth/userSlice";
+import { updateUser, UserState } from "../../slices/auth/userSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import UpdateInformationForm from "../../components/elements/form/userProfile/UpdateInformationForm";
 import {
@@ -10,16 +10,16 @@ import {
   userErrorStatus,
   userMessage,
   userStatus,
-} from "../../components/Hooks/authSelector";
+} from "../../hooks/authSelector";
 import { useEffect } from "react";
-import { allLogout, staffPermission } from "../../components/Hooks/useMethod";
-import { PermissionsState } from "../../store/auth/permissionSlice";
-import { showUser } from "../../store/auth/userSlice";
+import { allLogout, staffPermission } from "../../hooks/useMethod";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
+import { showUser } from "../../slices/auth/userSlice";
 import RouterButton from "../../components/elements/button/RouterButton";
 import ForgotPasswordButton from "../../components/elements/button/ForgotPasswordButton";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../services/errorHandler";
-import { isLogout } from "../../store/auth/isLoginSlice";
+import { renderError } from "../../pages/api/errorHandler";
+import { isLogout } from "../../slices/auth/isLoginSlice";
 
 const UpdateUserInformationPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

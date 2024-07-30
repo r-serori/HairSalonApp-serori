@@ -4,19 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createCustomer,
   CustomerState,
-} from "../../../store/customers/customerSlice";
+} from "../../../slices/customers/customerSlice";
 import CustomerForm from "../../../components/elements/form/customers/CustomerForm";
 import {
   customerStatus,
   customerError,
   customerErrorStatus,
-} from "../../../components/Hooks/selector";
+} from "../../../hooks/selector";
 import RouterButton from "../../../components/elements/button/RouterButton";
 import BasicAlerts from "../../../components/elements/alert/BasicAlert";
 import { AppDispatch } from "../../../redux/store";
-import { renderError } from "../../../services/errorHandler";
-import { PermissionsState } from "../../../store/auth/permissionSlice";
-import { permissionStore } from "../../../components/Hooks/authSelector";
+import { renderError } from "../../../pages/api/errorHandler";
+import { PermissionsState } from "../../../slices/auth/permissionSlice";
+import { permissionStore } from "../../../hooks/authSelector";
 
 const CustomersCreate = () => {
   const dispatch: AppDispatch = useDispatch();

@@ -7,7 +7,7 @@ import ContentCutIcon from "@mui/icons-material/ContentCut";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import BasicAlerts from "../components/elements/alert/BasicAlert";
 import { useSelector } from "react-redux";
-import { userError } from "../components/Hooks/authSelector";
+import { userError } from "../hooks/authSelector";
 
 // ScrollTriggerの初期化
 gsap.registerPlugin(Draggable);

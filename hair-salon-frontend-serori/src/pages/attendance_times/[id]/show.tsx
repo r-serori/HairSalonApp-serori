@@ -7,8 +7,8 @@ import {
   Attendance_timeState,
   GetAttendanceTimeState,
   selectGetAttendanceTimes,
-} from "../../../store/attendance_times/attendance_timesSlice";
-import EasyModal from "../../../components/modal/easy/EasyModal";
+} from "../../../slices/attendance_times/attendance_timesSlice";
+import EasyModal from "../../../components/modal/EasyModal";
 import { useState } from "react";
 import BasicAlerts from "../../../components/elements/alert/BasicAlert";
 import RouterButton from "../../../components/elements/button/RouterButton";
@@ -18,24 +18,20 @@ import {
   attendance_timesStore,
   attendance_timeStatus,
   attendance_timeErrorStatus,
-} from "../../../components/Hooks/selector";
-import {
-  permissionStore,
-  user,
-  userStatus,
-} from "../../../components/Hooks/authSelector";
-import { ownerPermission } from "../../../components/Hooks/useMethod";
-import { allLogout } from "../../../components/Hooks/useMethod";
+} from "../../../hooks/selector";
+import { permissionStore, user, userStatus } from "../../../hooks/authSelector";
+import { ownerPermission } from "../../../hooks/useMethod";
+import { allLogout } from "../../../hooks/useMethod";
 import _ from "lodash";
-import { PermissionsState } from "../../../store/auth/permissionSlice";
-import { renderError } from "../../../services/errorHandler";
+import { PermissionsState } from "../../../slices/auth/permissionSlice";
+import { renderError } from "../../../pages/api/errorHandler";
 import { AppDispatch } from "../../../redux/store";
-import { changeMessage, UserState } from "../../../store/auth/userSlice";
+import { changeMessage, UserState } from "../../../slices/auth/userSlice";
 import {
   NodesProps,
   SearchItems,
   THeaderItems,
-} from "../../../components/Hooks/interface";
+} from "../../../types/interface";
 
 const AttendanceTimes: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

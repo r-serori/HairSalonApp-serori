@@ -4,7 +4,7 @@ import { useRouter, NextRouter } from "next/router";
 import {
   updateHairstyle,
   HairstyleState,
-} from "../../../../store/hairstyles/hairstyleSlice";
+} from "../../../../slices/hairstyles/hairstyleSlice";
 import HairstyleForm from "../../../../components/elements/form/hairstyles/HairstyleForm";
 import RouterButton from "../../../../components/elements/button/RouterButton";
 import {
@@ -12,12 +12,12 @@ import {
   hairstylesStore,
   hairstyleError,
   hairstyleErrorStatus,
-} from "../../../../components/Hooks/selector";
+} from "../../../../hooks/selector";
 import BasicAlerts from "../../../../components/elements/alert/BasicAlert";
 import { AppDispatch } from "../../../../redux/store";
-import { renderError } from "../../../../services/errorHandler";
-import { PermissionsState } from "../../../../store/auth/permissionSlice";
-import { permissionStore } from "../../../../components/Hooks/authSelector";
+import { renderError } from "../../../../pages/api/errorHandler";
+import { PermissionsState } from "../../../../slices/auth/permissionSlice";
+import { permissionStore } from "../../../../hooks/authSelector";
 
 const HairstyleEdit: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

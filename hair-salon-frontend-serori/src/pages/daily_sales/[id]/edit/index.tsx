@@ -6,16 +6,16 @@ import {
   daily_saleErrorStatus,
   daily_salesStore,
   daily_saleStatus,
-} from "../../../../components/Hooks/selector";
-import { Daily_salesState } from "../../../../store/daily_sales/daily_saleSlice";
-import { updateDaily_sales } from "../../../../store/daily_sales/daily_saleSlice";
+} from "../../../../hooks/selector";
+import { Daily_salesState } from "../../../../slices/daily_sales/daily_saleSlice";
+import { updateDaily_sales } from "../../../../slices/daily_sales/daily_saleSlice";
 import DailySalesForm from "../../../../components/elements/form/sales/daily_sales/Daily_salesForm";
 import RouterButton from "../../../../components/elements/button/RouterButton";
 import BasicAlerts from "../../../../components/elements/alert/BasicAlert";
 import { AppDispatch } from "../../../../redux/store";
-import { renderError } from "../../../../services/errorHandler";
-import { PermissionsState } from "../../../../store/auth/permissionSlice";
-import { permissionStore } from "../../../../components/Hooks/authSelector";
+import { renderError } from "../../../../pages/api/errorHandler";
+import { PermissionsState } from "../../../../slices/auth/permissionSlice";
+import { permissionStore } from "../../../../hooks/authSelector";
 
 const DailySalesEdit: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

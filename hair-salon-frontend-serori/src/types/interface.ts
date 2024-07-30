@@ -1,6 +1,6 @@
 // localStorage使用時の型定義
 
-import { PermissionsState } from "../../store/auth/permissionSlice";
+import { PermissionsState } from "../slices/auth/permissionSlice";
 
 export interface ApiResponse<T> {
   status?: number;

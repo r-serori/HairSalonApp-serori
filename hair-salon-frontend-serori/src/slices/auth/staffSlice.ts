@@ -4,8 +4,8 @@ import { staffRegister } from "./userSlice";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../services/errorHandler";
-import { ErrorType } from "../../components/Hooks/interface";
+} from "../../pages/api/errorHandler";
+import { ErrorType } from "../../types/interface";
 
 export interface StaffState {
   id: number;

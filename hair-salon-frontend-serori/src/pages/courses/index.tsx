@@ -1,10 +1,10 @@
 import ComponentTable from "../../components/table/Table";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { CourseState, getCourse } from "../../store/courses/courseSlice";
+import { CourseState, getCourse } from "../../slices/courses/courseSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import { useRouter, NextRouter } from "next/router";
-import { permissionStore } from "../../components/Hooks/authSelector";
+import { permissionStore } from "../../hooks/authSelector";
 import RouterButton from "../../components/elements/button/RouterButton";
 import {
   courseError,
@@ -12,17 +12,13 @@ import {
   courseMessage,
   courseStatus,
   coursesStore,
-} from "../../components/Hooks/selector";
-import { allLogout, staffPermission } from "../../components/Hooks/useMethod";
+} from "../../hooks/selector";
+import { allLogout, staffPermission } from "../../hooks/useMethod";
 import _ from "lodash";
-import { PermissionsState } from "../../store/auth/permissionSlice";
-import { renderError } from "../../services/errorHandler";
+import { PermissionsState } from "../../slices/auth/permissionSlice";
+import { renderError } from "../../pages/api/errorHandler";
 import { AppDispatch } from "../../redux/store";
-import {
-  NodesProps,
-  SearchItems,
-  THeaderItems,
-} from "../../components/Hooks/interface";
+import { NodesProps, SearchItems, THeaderItems } from "../../types/interface";
 
 const Courses: React.FC = () => {
   const [tHeaderItems, setTHeaderItems] = useState<THeaderItems>([]);

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createCourse } from "../../../store/courses/courseSlice";
+import { createCourse } from "../../../slices/courses/courseSlice";
 import CourseForm from "../../../components/elements/form/courses/CourseForm";
 import { useRouter, NextRouter } from "next/router";
 import RouterButton from "../../../components/elements/button/RouterButton";
@@ -8,12 +8,12 @@ import {
   courseError,
   courseErrorStatus,
   courseStatus,
-} from "../../../components/Hooks/selector";
+} from "../../../hooks/selector";
 import BasicAlerts from "../../../components/elements/alert/BasicAlert";
-import { renderError } from "../../../services/errorHandler";
+import { renderError } from "../../../pages/api/errorHandler";
 import { AppDispatch } from "../../../redux/store";
-import { PermissionsState } from "../../../store/auth/permissionSlice";
-import { permissionStore } from "../../../components/Hooks/authSelector";
+import { PermissionsState } from "../../../slices/auth/permissionSlice";
+import { permissionStore } from "../../../hooks/authSelector";
 
 const CourseCreate: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

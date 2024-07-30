@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-// import { courseCustomerApi } from "../../../services/middleTable/customers/course_customersApi";
 import RootState from "../../../redux/reducers/rootReducer";
 import {
   getCustomer,
@@ -14,7 +13,7 @@ import {
   createCustomerAndUpdateSchedule,
 } from "../../schedules/scheduleSlice";
 import { deleteCourse } from "../../courses/courseSlice";
-import { ErrorType } from "../../../components/Hooks/interface";
+import { ErrorType } from "../../../types/interface";
 
 export interface Course_customersState {
   // ステートの型

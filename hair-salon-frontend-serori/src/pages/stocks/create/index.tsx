@@ -1,19 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createStock, StockState } from "../../../store/stocks/stockSlice";
+import { createStock, StockState } from "../../../slices/stocks/stockSlice";
 import StockForm from "../../../components/elements/form/stocks/StockForm";
 import { useRouter, NextRouter } from "next/router";
 import {
   stockStatus,
   stockError,
   stockErrorStatus,
-} from "../../../components/Hooks/selector";
+} from "../../../hooks/selector";
 import RouterButton from "../../../components/elements/button/RouterButton";
 import BasicAlerts from "../../../components/elements/alert/BasicAlert";
 import { AppDispatch } from "../../../redux/store";
-import { renderError } from "../../../services/errorHandler";
-import { PermissionsState } from "../../../store/auth/permissionSlice";
-import { permissionStore } from "../../../components/Hooks/authSelector";
+import { renderError } from "../../../pages/api/errorHandler";
+import { PermissionsState } from "../../../slices/auth/permissionSlice";
+import { permissionStore } from "../../../hooks/authSelector";
 
 const StockCreate: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
