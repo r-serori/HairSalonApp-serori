@@ -58,4 +58,4 @@ COPY --from=backend /var/www/html/server /var/www/html/server
 ENV APACHE_DOCUMENT_ROOT /var/www/html/client/public
 
 # Apache を起動するコマンド
-CMD ["apache2-foreground"]
+CMD ["apache2-foreground","npm","run","start"]
