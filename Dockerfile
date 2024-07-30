@@ -24,10 +24,6 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
-# キャッシュディレクトリをクリア
-RUN rm -rf /var/lib/apt/lists/*
-
-
 # Composer のインストール
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
