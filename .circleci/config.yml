@@ -15,7 +15,7 @@ jobs:
           version: 20.10.18
       - run:
           name: Build Docker image
-          command: docker build -t rserori/hairsalon-app-serori .
+          command: docker build -t rserori/hairsalon-app-serori:latest .
 
   deploy:
     executor: docker-executor
