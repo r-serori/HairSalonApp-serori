@@ -61,7 +61,7 @@ jobs:
             # Log in to the Heroku Container Registry
             echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
             # Build and push the Docker images for the frontend and backend
-            docker build -t registry.heroku.com/hairsalon-app-serori/web -f Dockerfile .
+            docker build -t registry.heroku.com/hairsalon-app-serori/web -f ~/HairSalonApp-serori/Dockerfile .
             docker push registry.heroku.com/hairsalon-app-serori/web
             # Release the app
             heroku container:release web --app hairsalon-app-serori
