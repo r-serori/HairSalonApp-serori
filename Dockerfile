@@ -15,6 +15,7 @@ FROM php:8.2-apache AS backend
 WORKDIR /var/www/html/server
 
 RUN apt-get update && apt-get install -y \
+    apt-utils \
     git \
     zip \
     unzip \
@@ -24,7 +25,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-COPY hair-salon-backend-serori/composer.json hair-salon-backend-serori/composer.lock ./
+COPY hair-salon-backend-serori/ /var/www/html/server/
+
+WORKDIR /var/www/html/server
+
 RUN composer install --no-interaction
 
 # 最終ステージ
