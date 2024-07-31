@@ -56,6 +56,10 @@ jobs:
       - attach_workspace:
           at: ~/HairSalonApp-serori
       - run:
+          name: Install Heroku CLI
+          command: |
+            curl https://cli-assets.heroku.com/install.sh | sh
+      - run:
           name: Login to Heroku Container Registry
           command: |
             echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
