@@ -56,10 +56,6 @@ jobs:
       - attach_workspace:
           at: ~/HairSalonApp-serori
       - run:
-          name: Login to Heroku Container Registry
-          command: |
-            heroku container:login
-      - run:
           name: Deploy to Heroku
           command: |
             # Log in to the Heroku Container Registry
