@@ -1,45 +1,126 @@
+# version: 2.1
+
+# executors:
+#   docker-executor:
+#     docker:
+#       - image: circleci/
+
+# jobs:
+#   build:
+#     executor: docker-executor
+#     steps:
+#       - checkout
+#       - setup_remote_docker:
+#           version: 20.10.7
+#       - run:
+#           name: Build Docker image
+#           command: docker build -t rserori/hairsalon-app-serori:latest .
+
+#   deploy:
+#     executor: docker-executor
+#     steps:
+#       - checkout
+#       - setup_remote_docker:
+#           version: 20.10.7
+#       - run:
+#           name: Login to Heroku
+#           command: echo $HEROKU_API_KEY | docker login --username=_ --password-stdin registry.heroku.com
+#       - run:
+#           name: Tag Docker image
+#           command: docker tag rserori/hairsalon-app-serori:latest registry.heroku.com/hairsalon-app-serori/web
+#       - run:
+#           name: Push Docker image to Heroku
+#           command: docker push registry.heroku.com/hairsalon-app-serori/web
+#       - run:
+#           name: Release Docker image on Heroku
+#           command: heroku container:release web --app hairsalon-app-serori
+
+# workflows:
+#   version: 2
+#   build-and-deploy:
+#     jobs:
+#       - build
+#       - deploy:
+#           requires:
+#             - build
+
 version: 2.1
 
 executors:
-  docker-executor:
+  frontend-executor:
     docker:
-      - image: circleci/node:21.5.0
+      - image: cimg/node:21.5.0
+    working_directory: ~/app/client
+
+  backend-executor:
+    docker:
+      - image: cimg/php:8.2
+    working_directory: ~/app/server
 
 jobs:
-  build:
-    executor: docker-executor
+  build-frontend:
+    executor: frontend-executor
     steps:
-      - checkout
-      - setup_remote_docker:
-          version: 20.10.7
+      - checkout:
+          path: ~/app
       - run:
-          name: Build Docker image
-          command: docker build -t rserori/hairsalon-app-serori:latest .
+          name: Install dependencies
+          command: |
+            cd client
+            npm install
+      - run:
+          name: Build frontend
+          command: |
+            cd client
+            npm run build
+      - persist_to_workspace:
+          root: ~/app/client
+          paths:
+            - .next
+            - public
+
+  build-backend:
+    executor: backend-executor
+    steps:
+      - checkout:
+          path: ~/app
+      - run:
+          name: Install dependencies
+          command: |
+            cd server
+            composer install
+      - persist_to_workspace:
+          root: ~/app/server
+          paths:
+            - .
 
   deploy:
-    executor: docker-executor
+    docker:
+      - image: cimg/base:stable
     steps:
       - checkout
       - setup_remote_docker:
           version: 20.10.7
+      - attach_workspace:
+          at: ~/app
       - run:
-          name: Login to Heroku
-          command: echo $HEROKU_API_KEY | docker login --username=_ --password-stdin registry.heroku.com
-      - run:
-          name: Tag Docker image
-          command: docker tag rserori/hairsalon-app-serori:latest registry.heroku.com/hairsalon-app-serori/web
-      - run:
-          name: Push Docker image to Heroku
-          command: docker push registry.heroku.com/hairsalon-app-serori/web
-      - run:
-          name: Release Docker image on Heroku
-          command: heroku container:release web --app hairsalon-app-serori
+          name: Deploy to Heroku
+          command: |
+            # Log in to the Heroku Container Registry
+            echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
+            # Build and push the Docker images for the frontend and backend
+            docker build -t registry.heroku.com/hairsalon-app-serori/web -f Dockerfile .
+            docker push registry.heroku.com/hairsalon-app-serori/web
+            # Release the app
+            heroku container:release web --app hairsalon-app-serori
 
 workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build
+      - build-frontend
+      - build-backend
       - deploy:
           requires:
-            - build
+            - build-frontend
+            - build-backend
