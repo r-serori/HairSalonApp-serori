@@ -60,6 +60,10 @@ jobs:
           command: |
             curl https://cli-assets.heroku.com/install.sh | sh
       - run:
+          name: Set Heroku stack to container
+          command: |
+            heroku stack:set container -a $HEROKU_APP_NAME
+      - run:
           name: Login to Heroku Container Registry
           command: |
             echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
