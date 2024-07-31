@@ -1,6 +1,4 @@
 node_modules
-packege.json
-package-lock.json
 
 storage/*
 !storage/.gitignore
@@ -11,8 +9,6 @@ bootstrap/cache/*
 .env.example
 
 .vscode
-
-composer.lock
 vendor
 
 public/storage
