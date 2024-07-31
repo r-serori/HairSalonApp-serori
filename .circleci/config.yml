@@ -52,7 +52,7 @@ jobs:
       - checkout:
           path: ~/HairSalonApp-serori
       - setup_remote_docker:
-          version: 20.10.7
+          version: 20.10.24
       - attach_workspace:
           at: ~/HairSalonApp-serori
       - run:
