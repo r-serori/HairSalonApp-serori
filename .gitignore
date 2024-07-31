@@ -37,6 +37,7 @@ db
 db/*
 .vscode
 .env
+.env.local
 
 hair-salon-backend-serori//.phpunit.cache
 hair-salon-backend-serori//node_modules
