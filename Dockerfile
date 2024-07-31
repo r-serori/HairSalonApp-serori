@@ -21,7 +21,11 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
+
+RUN php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN rm composer-setup.php
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
