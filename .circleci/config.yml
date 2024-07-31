@@ -1,61 +1,15 @@
-# version: 2.1
-
-# executors:
-#   docker-executor:
-#     docker:
-#       - image: circleci/
-
-# jobs:
-#   build:
-#     executor: docker-executor
-#     steps:
-#       - checkout
-#       - setup_remote_docker:
-#           version: 20.10.7
-#       - run:
-#           name: Build Docker image
-#           command: docker build -t rserori/hairsalon-app-serori:latest .
-
-#   deploy:
-#     executor: docker-executor
-#     steps:
-#       - checkout
-#       - setup_remote_docker:
-#           version: 20.10.7
-#       - run:
-#           name: Login to Heroku
-#           command: echo $HEROKU_API_KEY | docker login --username=_ --password-stdin registry.heroku.com
-#       - run:
-#           name: Tag Docker image
-#           command: docker tag rserori/hairsalon-app-serori:latest registry.heroku.com/hairsalon-app-serori/web
-#       - run:
-#           name: Push Docker image to Heroku
-#           command: docker push registry.heroku.com/hairsalon-app-serori/web
-#       - run:
-#           name: Release Docker image on Heroku
-#           command: heroku container:release web --app hairsalon-app-serori
-
-# workflows:
-#   version: 2
-#   build-and-deploy:
-#     jobs:
-#       - build
-#       - deploy:
-#           requires:
-#             - build
-
 version: 2.1
 
 executors:
   frontend-executor:
     docker:
       - image: cimg/node:21.5.0
-    working_directory: ~/app/client
+    working_directory: ~/app/hair-salon-frontend-serori
 
   backend-executor:
     docker:
       - image: cimg/php:8.2
-    working_directory: ~/app/server
+    working_directory: ~/app/hair-salon-backend-serori
 
 jobs:
   build-frontend:
@@ -65,16 +19,12 @@ jobs:
           path: ~/app
       - run:
           name: Install dependencies
-          command: |
-            cd client
-            npm install
+          command: npm install
       - run:
           name: Build frontend
-          command: |
-            cd client
-            npm run build
+          command: npm run build
       - persist_to_workspace:
-          root: ~/app/client
+          root: ~/app/hair-salon-frontend-serori
           paths:
             - .next
             - public
@@ -86,11 +36,9 @@ jobs:
           path: ~/app
       - run:
           name: Install dependencies
-          command: |
-            cd server
-            composer install
+          command: composer install
       - persist_to_workspace:
-          root: ~/app/server
+          root: ~/app/hair-salon-backend-serori
           paths:
             - .
 
@@ -98,7 +46,8 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      - checkout
+      - checkout:
+          path: ~/app
       - setup_remote_docker:
           version: 20.10.7
       - attach_workspace:
