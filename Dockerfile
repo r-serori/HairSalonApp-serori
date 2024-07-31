@@ -5,11 +5,11 @@ FROM node:22.5.1-alpine AS frontend
 WORKDIR /app/client
 
 # フロントエンドの依存関係をインストール
-COPY hair-salon-frontend-serori/package*.json ./
+COPY ./hair-salon-frontend-serori/package*.json ./
 RUN npm install
 
 # フロントエンドのコードをコピーしてビルド
-COPY hair-salon-frontend-serori/ ./
+COPY ./hair-salon-frontend-serori/ ./
 RUN npm run build
 
 # バックエンド用の設定
@@ -39,10 +39,10 @@ RUN ls -la /usr/local/bin/
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 # バックエンドのコードをコピー
-COPY hair-salon-backend-serori/ ./
+COPY ./hair-salon-backend-serori/ ./
 
 # バックエンドの依存関係をインストール
-COPY hair-salon-backend-serori/composer.json hair-salon-backend-serori/composer.lock ./
+COPY ./hair-salon-backend-serori/composer.json hair-salon-backend-serori/composer.lock ./
 RUN composer install --no-interaction
 
 # 最終ステージで Apache を設定してアプリケーションを起動
