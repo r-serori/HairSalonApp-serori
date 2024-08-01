@@ -1,5 +1,5 @@
 import { sendRequest } from "../requestApi";
-import { Yearly_salesState } from "../../../slices/yearly_sales/yearly_saleSlice";
+import { Yearly_salesState } from "../../slices/yearly_sales/yearly_saleSlice";
 
 export const yearlySaleApi = {
   createYearlySales: async (formData: Yearly_salesState) => {

@@ -1,5 +1,5 @@
 import { sendRequest } from "../requestApi";
-import { OptionState } from "../../../slices/options/optionSlice";
+import { OptionState } from "../../slices/options/optionSlice";
 
 export const optionApi = {
   createOption: async (formData: OptionState) => {

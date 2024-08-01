@@ -1,5 +1,5 @@
 import { sendRequest } from "../requestApi";
-import { StockState } from "../../../slices/stocks/stockSlice";
+import { StockState } from "../../slices/stocks/stockSlice";
 
 export const stockApi = {
   createStock: async (formData: StockState) => {

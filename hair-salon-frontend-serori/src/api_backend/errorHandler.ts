@@ -1,5 +1,5 @@
-import { allLogout } from "../../hooks/useMethod";
-import { changeMessage } from "../../slices/auth/userSlice";
+import { allLogout } from "../hooks/useMethod";
+import { changeMessage } from "../slices/auth/userSlice";
 
 export interface ErrorResponse {
   status: number;

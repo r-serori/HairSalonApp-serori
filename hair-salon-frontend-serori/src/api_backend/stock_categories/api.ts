@@ -1,5 +1,5 @@
 import { sendRequest } from "../requestApi";
-import { Stock_categoryState } from "../../../slices/stocks/stock_categories/stock_categorySlice";
+import { Stock_categoryState } from "../../slices/stocks/stock_categories/stock_categorySlice";
 
 export const stockCategoryApi = {
   createStockCategory: async (formData: Stock_categoryState) => {

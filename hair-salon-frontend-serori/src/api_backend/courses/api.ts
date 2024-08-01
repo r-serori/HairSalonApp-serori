@@ -1,5 +1,5 @@
 import { sendRequest } from "../requestApi";
-import { CourseState } from "../../../slices/courses/courseSlice";
+import { CourseState } from "../../slices/courses/courseSlice";
 
 export const courseApi = {
   createCourse: async (formData: CourseState) => {

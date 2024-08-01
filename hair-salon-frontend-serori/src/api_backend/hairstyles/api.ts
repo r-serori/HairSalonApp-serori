@@ -1,5 +1,5 @@
 import { sendRequest } from "../requestApi";
-import { HairstyleState } from "../../../slices/hairstyles/hairstyleSlice";
+import { HairstyleState } from "../../slices/hairstyles/hairstyleSlice";
 
 export const hairstyleApi = {
   createHairstyle: async (formData: HairstyleState) => {

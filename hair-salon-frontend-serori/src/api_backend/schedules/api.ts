@@ -2,7 +2,7 @@ import { sendRequest } from "../requestApi";
 import {
   ScheduleState,
   RequestScheduleState,
-} from "../../../slices/schedules/scheduleSlice";
+} from "../../slices/schedules/scheduleSlice";
 
 export const schedulesApi = {
   //両方作成します
