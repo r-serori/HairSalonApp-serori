@@ -48,4 +48,4 @@ COPY --from=backend /var/www/html/server /var/www/html/server
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html/client/public
 
-CMD ["apache2-foreground"]
+CMD sed -i "s/80/${PORT}/g" /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf && apache2-foreground
