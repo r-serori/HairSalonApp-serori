@@ -18,7 +18,7 @@ import { showUser } from "../../slices/auth/userSlice";
 import RouterButton from "../../components/elements/button/RouterButton";
 import ForgotPasswordButton from "../../components/elements/button/ForgotPasswordButton";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../pages/api_backend/errorHandler";
+import { renderError } from "../../api_backend/errorHandler";
 import { isLogout } from "../../slices/auth/isLoginSlice";
 
 const UpdateUserInformationPage: React.FC = () => {

@@ -21,7 +21,7 @@ import _ from "lodash";
 import { allLogout } from "../../hooks/useMethod";
 import { PermissionsState } from "../../slices/auth/permissionSlice";
 import { UserState } from "../../slices/auth/userSlice";
-import { renderError } from "../../pages/api_backend/errorHandler";
+import { renderError } from "../../api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import {
   AttendanceTimeShotsNodes,

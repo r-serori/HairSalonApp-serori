@@ -22,7 +22,7 @@ import {
   PermissionsState,
 } from "../../slices/auth/permissionSlice";
 import ForgotPasswordButton from "../../components/elements/button/ForgotPasswordButton";
-import { renderError } from "../../pages/api_backend/errorHandler";
+import { renderError } from "../../api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import { KeyState } from "../../slices/auth/keySlice";
 

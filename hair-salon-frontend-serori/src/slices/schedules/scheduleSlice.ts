@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { schedulesApi } from "../../pages/api_backend/schedules/api";
+import { schedulesApi } from "../../api_backend/schedules/api";
 import RootState from "../../redux/reducers/rootReducer";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../pages/api_backend/errorHandler";
+} from "../../api_backend/errorHandler";
 import { CustomerOnlyState, deleteCustomer } from "../customers/customerSlice";
 import { CourseState } from "../courses/courseSlice";
 import { OptionState } from "../options/optionSlice";

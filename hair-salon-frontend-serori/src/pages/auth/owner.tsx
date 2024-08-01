@@ -11,7 +11,7 @@ import {
   userKey,
 } from "../../hooks/authSelector";
 import { changeMessage } from "../../slices/auth/userSlice";
-import { renderError } from "../../pages/api_backend/errorHandler";
+import { renderError } from "../../api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import { useEffect } from "react";
 import { isLogin } from "../../slices/auth/isLoginSlice";

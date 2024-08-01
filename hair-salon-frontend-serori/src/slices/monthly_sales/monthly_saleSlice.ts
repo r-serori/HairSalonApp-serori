@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { monthlySaleApi } from "../../pages/api_backend/monthly_sales/api";
+import { monthlySaleApi } from "../../api_backend/monthly_sales/api";
 import RootState from "../../redux/reducers/rootReducer";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../pages/api_backend/errorHandler";
+} from "../../api_backend/errorHandler";
 import { ErrorType, deleteResponse } from "../../types/interface";
 
 export const getMonthly_sales = createAsyncThunk<

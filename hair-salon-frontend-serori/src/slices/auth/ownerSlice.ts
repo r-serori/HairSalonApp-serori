@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { ownerApi } from "../../pages/api_backend/auth/ownerApi";
+import { ownerApi } from "../../api_backend/auth/ownerApi";
 import RootState from "../../redux/reducers/rootReducer";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../pages/api_backend/errorHandler";
+} from "../../api_backend/errorHandler";
 import { ErrorType } from "../../types/interface";
 
 export const ownerRegister = createAsyncThunk<

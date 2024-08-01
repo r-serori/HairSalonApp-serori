@@ -16,7 +16,7 @@ import {
 import { allLogout, staffPermission } from "../../hooks/useMethod";
 import _ from "lodash";
 import { PermissionsState } from "../../slices/auth/permissionSlice";
-import { renderError } from "../../pages/api_backend/errorHandler";
+import { renderError } from "../../api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import { NodesProps, SearchItems, THeaderItems } from "../../types/interface";
 

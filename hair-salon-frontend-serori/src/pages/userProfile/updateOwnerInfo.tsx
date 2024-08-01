@@ -14,7 +14,7 @@ import { ownerPermission } from "../../hooks/useMethod";
 import { PermissionsState } from "../../slices/auth/permissionSlice";
 import RouterButton from "../../components/elements/button/RouterButton";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../pages/api_backend/errorHandler";
+import { renderError } from "../../api_backend/errorHandler";
 import {
   getOwner,
   OwnerState,

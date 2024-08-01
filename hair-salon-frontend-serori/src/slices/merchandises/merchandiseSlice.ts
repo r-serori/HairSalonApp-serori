@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { merchandiseApi } from "../../pages/api_backend/merchandises/api";
+import { merchandiseApi } from "../../api_backend/merchandises/api";
 import RootState from "../../redux/reducers/rootReducer";
 import { getCustomer } from "../customers/customerSlice";
 import { getSchedule } from "../schedules/scheduleSlice";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../pages/api_backend/errorHandler";
+} from "../../api_backend/errorHandler";
 import { deleteResponse, ErrorType } from "../../types/interface";
 
 export const getMerchandise = createAsyncThunk<

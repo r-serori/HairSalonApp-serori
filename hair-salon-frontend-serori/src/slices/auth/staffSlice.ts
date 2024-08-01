@@ -4,7 +4,7 @@ import { staffRegister } from "./userSlice";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../pages/api_backend/errorHandler";
+} from "../../api_backend/errorHandler";
 import { ErrorType } from "../../types/interface";
 
 export interface StaffState {

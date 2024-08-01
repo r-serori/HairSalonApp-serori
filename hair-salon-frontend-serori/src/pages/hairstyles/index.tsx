@@ -20,7 +20,7 @@ import { allLogout, staffPermission } from "../../hooks/useMethod";
 import { PermissionsState } from "../../slices/auth/permissionSlice";
 import _ from "lodash";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../pages/api_backend/errorHandler";
+import { renderError } from "../../api_backend/errorHandler";
 import { NodesProps, SearchItems } from "../../types/interface";
 
 const Hairstyles: React.FC = () => {

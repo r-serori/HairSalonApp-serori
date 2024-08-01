@@ -52,7 +52,7 @@ import {
 } from "../../hooks/selector";
 import { UserState } from "../../slices/auth/userSlice";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../pages/api_backend/errorHandler";
+import { renderError } from "../../api_backend/errorHandler";
 import { ScheduleModalNodes } from "../../types/interface";
 
 const Schedules: React.FC = () => {

@@ -5,7 +5,7 @@ import LogoutButton from "../elements/button/logoutButton";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { checkSessionApi } from "../../pages/api_backend/auth/checkSession";
+import { checkSessionApi } from "../../api_backend/auth/checkSession";
 import { loginNow, userKey } from "../../hooks/authSelector";
 import { getUserKey } from "../../hooks/useMethod";
 import { PermissionsState } from "../../slices/auth/permissionSlice";

@@ -18,7 +18,7 @@ import { selectGetAttendanceTimes } from "../../slices/attendance_times/attendan
 import { selectGetDaily_sales } from "../../slices/daily_sales/daily_saleSlice";
 import { selectGetMonthly_sales } from "../../slices/monthly_sales/monthly_saleSlice";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../pages/api_backend/errorHandler";
+import { renderError } from "../../api_backend/errorHandler";
 import { useSelector } from "react-redux";
 import {
   attendance_timeErrorStatus,

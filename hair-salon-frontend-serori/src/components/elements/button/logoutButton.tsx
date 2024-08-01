@@ -6,7 +6,7 @@ import { useRouter, NextRouter } from "next/router";
 import { logout } from "../../../slices/auth/userSlice";
 import { isLogout } from "../../../slices/auth/isLoginSlice";
 import { AppDispatch } from "../../../redux/store";
-import { renderError } from "../../../pages/api_backend/errorHandler";
+import { renderError } from "../../../api_backend/errorHandler";
 import { useSelector } from "react-redux";
 import { userErrorStatus } from "../../../hooks/authSelector";
 

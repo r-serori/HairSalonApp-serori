@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { customerApi } from "../../pages/api_backend/customers/api";
+import { customerApi } from "../../api_backend/customers/api";
 import RootState from "../../redux/reducers/rootReducer";
 import {
   getSchedule,
@@ -11,7 +11,7 @@ import {
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../pages/api_backend/errorHandler";
+} from "../../api_backend/errorHandler";
 import { deleteResponse, ErrorType } from "../../types/interface";
 import { CourseState } from "../courses/courseSlice";
 import { OptionState } from "../options/optionSlice";

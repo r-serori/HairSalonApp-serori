@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { attendance_timeApi } from "../../pages/api_backend/attendances/attendance_times/api";
+import { attendance_timeApi } from "../../api_backend/attendances/attendance_times/api";
 import RootState from "../../redux/reducers/rootReducer";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../pages/api_backend/errorHandler";
+} from "../../api_backend/errorHandler";
 import { ErrorType, deleteResponse } from "../../types/interface";
 import { UserState } from "../auth/userSlice";
 

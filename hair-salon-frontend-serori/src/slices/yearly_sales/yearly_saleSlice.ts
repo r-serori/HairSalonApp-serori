@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { yearlySaleApi } from "../../pages/api_backend/yearly_sales/api";
+import { yearlySaleApi } from "../../api_backend/yearly_sales/api";
 import RootState from "../../redux/reducers/rootReducer";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../pages/api_backend/errorHandler";
+} from "../../api_backend/errorHandler";
 import { deleteResponse, ErrorType } from "../../types/interface";
 
 export const getYearly_sales = createAsyncThunk<

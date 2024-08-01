@@ -9,7 +9,7 @@ import {
   userStatus,
   userErrorStatus,
 } from "../../../hooks/authSelector";
-import { renderError } from "../../../pages/api_backend/errorHandler";
+import { renderError } from "../../../api_backend/errorHandler";
 import { AppDispatch } from "../../../redux/store";
 
 const ResetPasswordPage: React.FC = () => {
