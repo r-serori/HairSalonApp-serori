@@ -36,10 +36,6 @@ RUN composer install --no-interaction
 # 最終ステージ
 FROM php:8.2-apache
 
-RUN a2enmod rewrite
-RUN a2dismod mpm_event
-RUN a2enmod mpm_prefork
-
 WORKDIR /var/www/html
 
 COPY --from=frontend /app/client/.next /var/www/html/client/.next
