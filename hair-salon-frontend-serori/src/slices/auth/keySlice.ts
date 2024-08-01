@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import RootState from "../../redux/reducers/rootReducer";
-import { getKeyApi } from "../../pages/api/auth/key";
+import { getKeyApi } from "../../pages/api_backend/auth/key";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../pages/api/errorHandler";
+} from "../../pages/api_backend/errorHandler";
 import { ErrorType } from "../../types/interface";
 
 export const getKey = createAsyncThunk<

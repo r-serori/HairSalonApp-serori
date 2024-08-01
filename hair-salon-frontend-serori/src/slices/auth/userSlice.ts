@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { userApi } from "../../pages/api/auth/api";
+import { userApi } from "../../pages/api_backend/auth/api";
 import RootState from "../../redux/reducers/rootReducer";
 import { getCustomer } from "../customers/customerSlice";
 import { getSchedule, selectGetSchedules } from "../schedules/scheduleSlice";
@@ -14,7 +14,7 @@ import { deleteResponse, ErrorType, RoleState } from "../../types/interface";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../pages/api/errorHandler";
+} from "../../pages/api_backend/errorHandler";
 
 export const login = createAsyncThunk<
   ResponseUserState,

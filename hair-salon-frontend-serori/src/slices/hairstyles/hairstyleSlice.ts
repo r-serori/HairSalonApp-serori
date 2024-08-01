@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { hairstyleApi } from "../../pages/api/hairstyles/api";
+import { hairstyleApi } from "../../pages/api_backend/hairstyles/api";
 import RootState from "../../redux/reducers/rootReducer";
 import { getCustomer } from "../customers/customerSlice";
 import { getSchedule } from "../schedules/scheduleSlice";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../pages/api/errorHandler";
+} from "../../pages/api_backend/errorHandler";
 import { ErrorType, deleteResponse } from "../../types/interface";
 
 export const getHairstyle = createAsyncThunk<

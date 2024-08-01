@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { dailySaleApi } from "../../pages/api/daily_sales/api";
+import { dailySaleApi } from "../../pages/api_backend/daily_sales/api";
 import RootState from "../../redux/reducers/rootReducer";
 import {
   handleErrorResponse,
   handleCatchError,
-} from "../../pages/api/errorHandler";
+} from "../../pages/api_backend/errorHandler";
 import { deleteResponse, ErrorType } from "../../types/interface";
 
 export const getDaily_sales = createAsyncThunk<
