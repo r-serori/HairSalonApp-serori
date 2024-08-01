@@ -20,7 +20,7 @@ import { PermissionsState } from "../../slices/auth/permissionSlice";
 import { staffPermission } from "../../hooks/useMethod";
 import _ from "lodash";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../pages/api/errorHandler";
+import { renderError } from "../../pages/api_backend/errorHandler";
 import { NodesProps, SearchItems, THeaderItems } from "../../types/interface";
 
 const Stock_categories = () => {

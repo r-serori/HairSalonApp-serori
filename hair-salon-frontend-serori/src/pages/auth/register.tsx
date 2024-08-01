@@ -13,7 +13,7 @@ import {
 } from "../../hooks/authSelector";
 import { getUserKey, allLogout } from "../../hooks/useMethod";
 import { pushUserId } from "../../hooks/pushLocalStorage";
-import { renderError } from "../../pages/api/errorHandler";
+import { renderError } from "../../pages/api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import { KeyState } from "../../slices/auth/keySlice";
 

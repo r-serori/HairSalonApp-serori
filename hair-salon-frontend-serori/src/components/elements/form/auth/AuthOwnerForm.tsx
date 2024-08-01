@@ -6,7 +6,7 @@ import BasicNumberField from "../../input/BasicNumberField";
 import { getUserId } from "../../../../hooks/getLocalStorage";
 import { useSelector } from "react-redux";
 import { userKey } from "../../../../hooks/authSelector";
-import { fetchAddressApi } from "../../../../pages/api/auth/fetchAddressApi";
+import { fetchAddressApi } from "../../../../pages/api_backend/auth/fetchAddressApi";
 import { useDispatch } from "react-redux";
 import { changeMessage } from "../../../../slices/auth/userSlice";
 import { KeyState } from "../../../../slices/auth/keySlice";

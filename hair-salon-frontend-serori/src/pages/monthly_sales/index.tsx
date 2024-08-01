@@ -21,7 +21,7 @@ import { permissionStore } from "../../hooks/authSelector";
 import { PermissionsState } from "../../slices/auth/permissionSlice";
 import EasyModal from "../../components/modal/EasyModal";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../pages/api/errorHandler";
+import { renderError } from "../../pages/api_backend/errorHandler";
 import { NodesProps, SearchItems } from "../../types/interface";
 
 const Monthly_sales: React.FC = () => {

@@ -20,7 +20,7 @@ import { permissionStore } from "../../hooks/authSelector";
 import { ownerPermission } from "../../hooks/useMethod";
 import _ from "lodash";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../pages/api/errorHandler";
+import { renderError } from "../../pages/api_backend/errorHandler";
 import { NodesProps, SearchItems, THeaderItems } from "../../types/interface";
 
 const Yearly_sales: React.FC = () => {

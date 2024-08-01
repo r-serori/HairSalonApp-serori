@@ -37,7 +37,7 @@ import { HairstyleState } from "../../slices/hairstyles/hairstyleSlice";
 import BasicNumberField from "../elements/input/BasicNumberField";
 import { UserState } from "../../slices/auth/userSlice";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../pages/api/errorHandler";
+import { renderError } from "../../pages/api_backend/errorHandler";
 import { scheduleError, scheduleErrorStatus } from "../../hooks/selector";
 import { ScheduleModalNodes } from "../../types/interface";
 

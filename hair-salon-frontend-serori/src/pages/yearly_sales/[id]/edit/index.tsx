@@ -13,7 +13,7 @@ import YearlySalesForm from "../../../../components/elements/form/sales/yearly_s
 import RouterButton from "../../../../components/elements/button/RouterButton";
 import BasicAlerts from "../../../../components/elements/alert/BasicAlert";
 import { AppDispatch } from "../../../../redux/store";
-import { renderError } from "../../../../pages/api/errorHandler";
+import { renderError } from "../../../../pages/api_backend/errorHandler";
 import { PermissionsState } from "../../../../slices/auth/permissionSlice";
 import { permissionStore } from "../../../../hooks/authSelector";
 

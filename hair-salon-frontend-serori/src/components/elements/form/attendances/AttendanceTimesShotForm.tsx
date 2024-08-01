@@ -31,7 +31,7 @@ import {
   UserState,
 } from "../../../../slices/auth/userSlice";
 import { AppDispatch } from "../../../../redux/store";
-import { renderError } from "../../../../pages/api/errorHandler";
+import { renderError } from "../../../../pages/api_backend/errorHandler";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { AttendanceTimeShotsNodes } from "../../../../types/interface";

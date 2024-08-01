@@ -10,7 +10,7 @@ import {
   userErrorStatus,
 } from "../../hooks/authSelector";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../pages/api/errorHandler";
+import { renderError } from "../../pages/api_backend/errorHandler";
 import RouterButton from "../../components/elements/button/RouterButton";
 
 const ForgotPasswordPage: React.FC = () => {

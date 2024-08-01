@@ -13,7 +13,7 @@ import {
 import { useEffect } from "react";
 import { ownerPermission } from "../../hooks/useMethod";
 import { PermissionsState } from "../../slices/auth/permissionSlice";
-import { renderError } from "../../pages/api/errorHandler";
+import { renderError } from "../../pages/api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 
 const StaffRegisterPage: React.FC = () => {

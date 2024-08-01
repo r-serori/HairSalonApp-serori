@@ -13,7 +13,7 @@ import {
 import { isLogout } from "../../slices/auth/isLoginSlice";
 import RouterButton from "../../components/elements/button/RouterButton";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../pages/api/errorHandler";
+import { renderError } from "../../pages/api_backend/errorHandler";
 import { PermissionsState } from "../../slices/auth/permissionSlice";
 
 const UpdatePasswordPage: React.FC = () => {

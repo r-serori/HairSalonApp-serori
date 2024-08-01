@@ -41,7 +41,7 @@ import { Customer_usersState } from "../../slices/middleTable/customers/customer
 import { PermissionsState } from "../../slices/auth/permissionSlice";
 import { UserState } from "../../slices/auth/userSlice";
 import { AppDispatch } from "../../redux/store";
-import { renderError } from "../../pages/api/errorHandler";
+import { renderError } from "../../pages/api_backend/errorHandler";
 import {
   CustomerNodes,
   NodesProps,

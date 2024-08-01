@@ -17,7 +17,7 @@ import { ownerPermission, allLogout } from "../../hooks/useMethod";
 import _ from "lodash";
 import { PermissionsState } from "../../slices/auth/permissionSlice";
 import { UserState } from "../../slices/auth/userSlice";
-import { renderError } from "../../pages/api/errorHandler";
+import { renderError } from "../../pages/api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import {
   AttendancesNodes,
