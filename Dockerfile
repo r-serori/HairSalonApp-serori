@@ -34,21 +34,13 @@ WORKDIR /var/www/html/server
 RUN composer install --no-interaction
 
 # 最終ステージ
-FROM php:8.2-apache
+FROM node:22.5.1-alpine AS final
 
-RUN a2dismod mpm_event && \
-    a2enmod mpm_prefork && \
-    a2enmod rewrite
-
-WORKDIR /var/www/html
-
-COPY --from=frontend /app/client/.next /var/www/html/client/.next
-COPY --from=frontend /app/client/public /var/www/html/client/public
+# フロントエンドとバックエンドのファイルをコピー
+COPY --from=frontend /app/client /app/client
 COPY --from=backend /var/www/html/server /var/www/html/server
 
-# カスタム設定ファイルをコピー
-COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+WORKDIR /app/client
 
-ENV APACHE_DOCUMENT_ROOT /var/www/html/client
-
-CMD sed -i "s/80/${PORT}/g" /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf && apache2-foreground
+# Next.js アプリケーションを起動
+CMD ["npm", "start"]
