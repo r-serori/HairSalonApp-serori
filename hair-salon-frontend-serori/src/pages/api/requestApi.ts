@@ -8,7 +8,7 @@ axios.defaults.withCredentials = true; // Cookieを使用するための設定�
 // // CSRFトークンの取得
 export const getCsrfToken = async () => {
   try {
-    await axios.get("/sanctum/csrf-cookie");
+    await axios.get("/api/sanctum/csrf-cookie");
     // CSRFトークンを取得
     const csrfToken = document.cookie.replace(
       /(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/,
