@@ -4,7 +4,11 @@ import { OptionState } from "../../slices/options/optionSlice";
 export const optionApi = {
   createOption: async (formData: OptionState) => {
     try {
-      const response = await sendRequest("POST", "/options/store", formData);
+      const response = await sendRequest(
+        "POST",
+        "/webReq/options/store",
+        formData
+      );
       return response;
     } catch (error) {
       return { error: error };
@@ -13,7 +17,7 @@ export const optionApi = {
 
   fetchAllOptions: async () => {
     try {
-      const response = await sendRequest("GET", `/options/all`);
+      const response = await sendRequest("GET", `/webReq/options/all`);
       return response;
     } catch (error) {
       return { error: error };
@@ -22,7 +26,11 @@ export const optionApi = {
 
   updateOption: async (formData: OptionState) => {
     try {
-      const response = await sendRequest("POST", `/options/update`, formData);
+      const response = await sendRequest(
+        "POST",
+        `/webReq/options/update`,
+        formData
+      );
       return response;
     } catch (error) {
       return { error: error };
@@ -31,7 +39,7 @@ export const optionApi = {
 
   deleteOption: async (id: number) => {
     try {
-      const response = await sendRequest("POST", `/options/delete`, {
+      const response = await sendRequest("POST", `/webReq/options/delete`, {
         id: id,
       });
       return response;

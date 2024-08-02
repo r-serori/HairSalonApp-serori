@@ -6,7 +6,7 @@ export const merchandiseApi = {
     try {
       const response = await sendRequest(
         "POST",
-        "/merchandises/store",
+        "/webReq/merchandises/store",
         formData
       );
       return response;
@@ -17,7 +17,7 @@ export const merchandiseApi = {
 
   fetchAllMerchandises: async () => {
     try {
-      const response = await sendRequest("GET", `/merchandises/all`);
+      const response = await sendRequest("GET", `/webReq/merchandises/all`);
       return response;
     } catch (error) {
       return { error: error };
@@ -28,7 +28,7 @@ export const merchandiseApi = {
     try {
       const response = await sendRequest(
         "POST",
-        `/merchandises/update`,
+        `/webReq/merchandises/update`,
         formData
       );
       return response;
@@ -39,9 +39,13 @@ export const merchandiseApi = {
 
   deleteMerchandise: async (id: number) => {
     try {
-      const response = await sendRequest("POST", `/merchandises/delete`, {
-        id: id,
-      });
+      const response = await sendRequest(
+        "POST",
+        `/webReq/merchandises/delete`,
+        {
+          id: id,
+        }
+      );
       return response;
     } catch (error) {
       return { error: error };

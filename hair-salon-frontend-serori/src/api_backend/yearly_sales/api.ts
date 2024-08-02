@@ -6,7 +6,7 @@ export const yearlySaleApi = {
     try {
       const response = await sendRequest(
         "POST",
-        "/yearly_sales/store",
+        "/webReq/yearly_sales/store",
         formData
       );
       return response;
@@ -17,7 +17,7 @@ export const yearlySaleApi = {
 
   fetchAllYearlySales: async () => {
     try {
-      const response = await sendRequest("GET", `/yearly_sales/all`);
+      const response = await sendRequest("GET", `/webReq/yearly_sales/all`);
       return response;
     } catch (error) {
       return { error: error };
@@ -28,7 +28,7 @@ export const yearlySaleApi = {
     try {
       const response = await sendRequest(
         "POST",
-        `/yearly_sales/update`,
+        `/webReq/yearly_sales/update`,
         formData
       );
       return response;
@@ -39,9 +39,13 @@ export const yearlySaleApi = {
 
   deleteYearlySales: async (id: number) => {
     try {
-      const response = await sendRequest("POST", `/yearly_sales/delete`, {
-        id: id,
-      });
+      const response = await sendRequest(
+        "POST",
+        `/webReq/yearly_sales/delete`,
+        {
+          id: id,
+        }
+      );
       return response;
     } catch (error) {
       return { error: error };

@@ -4,7 +4,11 @@ import { StockState } from "../../slices/stocks/stockSlice";
 export const stockApi = {
   createStock: async (formData: StockState) => {
     try {
-      const response = await sendRequest("POST", "/stocks/store", formData);
+      const response = await sendRequest(
+        "POST",
+        "/webReq/stocks/store",
+        formData
+      );
       return response;
     } catch (error) {
       return { error: error };
@@ -13,7 +17,7 @@ export const stockApi = {
 
   fetchAllStocks: async () => {
     try {
-      const response = await sendRequest("GET", `/stocks/all`);
+      const response = await sendRequest("GET", `/webReq/stocks/all`);
       return response;
     } catch (error) {
       return { error: error };
@@ -22,7 +26,11 @@ export const stockApi = {
 
   updateStock: async (formData: StockState) => {
     try {
-      const response = await sendRequest("POST", `/stocks/update`, formData);
+      const response = await sendRequest(
+        "POST",
+        `/webReq/stocks/update`,
+        formData
+      );
       return response;
     } catch (error) {
       return { error: error };
@@ -31,7 +39,7 @@ export const stockApi = {
 
   deleteStock: async (id: number) => {
     try {
-      const response = await sendRequest("POST", `/stocks/delete`, {
+      const response = await sendRequest("POST", `/webReq/stocks/delete`, {
         id: id,
       });
       return response;

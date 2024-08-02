@@ -12,7 +12,7 @@ export const attendance_timeApi = {
       const yearMonthEncoded: string = encodeURIComponent(formData.yearMonth);
       const response = await sendRequest(
         "GET",
-        `/attendance_times/selectedAttendanceTimes/${yearMonthEncoded}/${userIdEncoded}`
+        `/webReq/attendance_times/selectedAttendanceTimes/${yearMonthEncoded}/${userIdEncoded}`
       );
       return response;
     } catch (error) {
@@ -24,7 +24,7 @@ export const attendance_timeApi = {
     try {
       const response = await sendRequest(
         "GET",
-        `/firstAttendanceTimes/firstGet/${encodeURIComponent(user_id)}`
+        `/webReq/firstAttendanceTimes/firstGet/${encodeURIComponent(user_id)}`
       );
       return response;
     } catch (error) {
@@ -41,7 +41,7 @@ export const attendance_timeApi = {
     try {
       const response = await sendRequest(
         "POST",
-        `/attendance_times/pleaseEditEndTime`,
+        `/webReq/attendance_times/pleaseEditEndTime`,
         formData
       );
       return response;
@@ -58,7 +58,7 @@ export const attendance_timeApi = {
     try {
       const response = await sendRequest(
         "POST",
-        "/attendance_times/startTimeShot",
+        "/webReq/attendance_times/startTimeShot",
         formData
       );
       return response;
@@ -75,7 +75,7 @@ export const attendance_timeApi = {
     try {
       const response = await sendRequest(
         "POST",
-        "/attendance_times/endTimeShot",
+        "/webReq/attendance_times/endTimeShot",
         formData
       );
       return response;
@@ -93,7 +93,7 @@ export const attendance_timeApi = {
     try {
       const response = await sendRequest(
         "POST",
-        `/attendance_times/updateStartTime`,
+        `/webReq/attendance_times/updateStartTime`,
         formData
       );
       return response;
@@ -111,7 +111,7 @@ export const attendance_timeApi = {
     try {
       const response = await sendRequest(
         "POST",
-        `/attendance_times/updateEndTime`,
+        `/webReq/attendance_times/updateEndTime`,
         formData
       );
       return response;
@@ -122,9 +122,13 @@ export const attendance_timeApi = {
 
   deleteAttendanceTime: async (id: number) => {
     try {
-      const response = await sendRequest("POST", `/attendance_times/delete`, {
-        id: id,
-      });
+      const response = await sendRequest(
+        "POST",
+        `/webReq/attendance_times/delete`,
+        {
+          id: id,
+        }
+      );
       return response;
     } catch (error) {
       return { error: error };

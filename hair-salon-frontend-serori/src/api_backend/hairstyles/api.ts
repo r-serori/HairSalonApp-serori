@@ -4,7 +4,11 @@ import { HairstyleState } from "../../slices/hairstyles/hairstyleSlice";
 export const hairstyleApi = {
   createHairstyle: async (formData: HairstyleState) => {
     try {
-      const response = await sendRequest("POST", "/hairstyles/store", formData);
+      const response = await sendRequest(
+        "POST",
+        "/webReq/hairstyles/store",
+        formData
+      );
       return response;
     } catch (error) {
       return { error: error };
@@ -13,7 +17,7 @@ export const hairstyleApi = {
 
   fetchAllHairstyles: async () => {
     try {
-      const response = await sendRequest("GET", `/hairstyles/all`);
+      const response = await sendRequest("GET", `/webReq/hairstyles/all`);
       return response;
     } catch (error) {
       return { error: error };
@@ -24,7 +28,7 @@ export const hairstyleApi = {
     try {
       const response = await sendRequest(
         "POST",
-        `/hairstyles/update`,
+        `/webReq/hairstyles/update`,
         formData
       );
       return response;
@@ -35,7 +39,7 @@ export const hairstyleApi = {
 
   deleteHairstyle: async (id: number) => {
     try {
-      const response = await sendRequest("POST", `/hairstyles/delete`, {
+      const response = await sendRequest("POST", `/webReq/hairstyles/delete`, {
         id: id,
       });
       return response;

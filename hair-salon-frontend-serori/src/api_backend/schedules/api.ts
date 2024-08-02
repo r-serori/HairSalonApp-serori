@@ -10,7 +10,7 @@ export const schedulesApi = {
     try {
       const response = await sendRequest(
         "POST",
-        "/schedules/customers/double",
+        "/webReq/schedules/customers/double",
         formData
       );
       return response;
@@ -21,7 +21,11 @@ export const schedulesApi = {
 
   createSchedule: async (formData: ScheduleState) => {
     try {
-      const response = await sendRequest("POST", "/schedules/store", formData);
+      const response = await sendRequest(
+        "POST",
+        "/webReq/schedules/store",
+        formData
+      );
       return response;
     } catch (error) {
       return { error: error };
@@ -30,7 +34,7 @@ export const schedulesApi = {
 
   fetchAllSchedules: async () => {
     try {
-      const response = await sendRequest("GET", `/schedules/all`);
+      const response = await sendRequest("GET", `/webReq/schedules/all`);
       return response;
     } catch (error) {
       return { error: error };
@@ -41,7 +45,7 @@ export const schedulesApi = {
     try {
       const response = await sendRequest(
         "GET",
-        `/schedules/customers/selectGetYear/${encodeURIComponent(year)}`
+        `/webReq/schedules/customers/selectGetYear/${encodeURIComponent(year)}`
       );
       return response;
     } catch (error) {
@@ -51,7 +55,11 @@ export const schedulesApi = {
 
   updateSchedule: async (formData: ScheduleState) => {
     try {
-      const response = await sendRequest("POST", `/schedules/update`, formData);
+      const response = await sendRequest(
+        "POST",
+        `/webReq/schedules/update`,
+        formData
+      );
       return response;
     } catch (error) {
       return { error: error };
@@ -63,7 +71,7 @@ export const schedulesApi = {
     try {
       const response = await sendRequest(
         "POST",
-        `/schedules/customers/doubleUpdate`,
+        `/webReq/schedules/customers/doubleUpdate`,
         formData
       );
       return response;
@@ -76,7 +84,7 @@ export const schedulesApi = {
     try {
       const response = await sendRequest(
         "POST",
-        `/schedules/customers/customerCreateScheduleUpdate`,
+        `/webReq/schedules/customers/customerCreateScheduleUpdate`,
         formData
       );
       return response;
@@ -87,7 +95,7 @@ export const schedulesApi = {
 
   deleteSchedule: async (id: number) => {
     try {
-      const response = await sendRequest("POST", `/schedules/delete`, {
+      const response = await sendRequest("POST", `/webReq/schedules/delete`, {
         id: id,
       });
       return response;
@@ -100,7 +108,7 @@ export const schedulesApi = {
     try {
       const response = await sendRequest(
         "POST",
-        `schedules/customers/customerOnlyUpdate`,
+        `/webReq/schedules/customers/customerOnlyUpdate`,
         formData
       );
       return response;

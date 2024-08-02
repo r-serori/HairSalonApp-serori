@@ -6,7 +6,7 @@ export const dailySaleApi = {
     try {
       const response = await sendRequest(
         "POST",
-        "/daily_sales/store",
+        "/webReq/daily_sales/store",
         formData
       );
       return response;
@@ -17,7 +17,7 @@ export const dailySaleApi = {
 
   fetchAllDailySales: async () => {
     try {
-      const response = await sendRequest("GET", `/daily_sales/all`);
+      const response = await sendRequest("GET", `/webReq/daily_sales/all`);
       return response;
     } catch (error) {
       return { error: error };
@@ -28,7 +28,7 @@ export const dailySaleApi = {
     try {
       const response = await sendRequest(
         "GET",
-        `/daily_sales/selected/${encodeURIComponent(year)}`
+        `/webReq/daily_sales/selected/${encodeURIComponent(year)}`
       );
       return response;
     } catch (error) {
@@ -40,7 +40,7 @@ export const dailySaleApi = {
     try {
       const response = await sendRequest(
         "POST",
-        `/daily_sales/update`,
+        `/webReq/daily_sales/update`,
         formData
       );
       return response;
@@ -50,7 +50,7 @@ export const dailySaleApi = {
   },
   deleteDailySales: async (id: number) => {
     try {
-      const response = await sendRequest("POST", `/daily_sales/delete`, {
+      const response = await sendRequest("POST", `/webReq/daily_sales/delete`, {
         id: id,
       });
       return response;

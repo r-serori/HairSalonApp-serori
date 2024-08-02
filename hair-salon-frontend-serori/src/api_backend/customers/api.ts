@@ -4,7 +4,11 @@ import { CustomerState } from "../../slices/customers/customerSlice";
 export const customerApi = {
   createCustomer: async (formData: CustomerState) => {
     try {
-      const response = await sendRequest("POST", "/customers/store", formData);
+      const response = await sendRequest(
+        "POST",
+        "/webReq/customers/store",
+        formData
+      );
       return response;
     } catch (error) {
       return { error: error };
@@ -13,7 +17,7 @@ export const customerApi = {
 
   fetchAllCustomers: async () => {
     try {
-      const response = await sendRequest("GET", `/customers/all`);
+      const response = await sendRequest("GET", `/webReq/customers/all`);
       return response;
     } catch (error) {
       return { error: error };
@@ -22,7 +26,11 @@ export const customerApi = {
 
   updateCustomer: async (formData: CustomerState) => {
     try {
-      const response = await sendRequest("POST", `/customers/update`, formData);
+      const response = await sendRequest(
+        "POST",
+        `/webReq/customers/update`,
+        formData
+      );
       return response;
     } catch (error) {
       return { error: error };
@@ -31,7 +39,7 @@ export const customerApi = {
 
   deleteCustomer: async (id: number) => {
     try {
-      const response = await sendRequest("POST", `/customers/delete`, {
+      const response = await sendRequest("POST", `/webReq/customers/delete`, {
         id: id,
       });
       return response;

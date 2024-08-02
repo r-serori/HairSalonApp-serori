@@ -6,7 +6,7 @@ export const stockCategoryApi = {
     try {
       const response = await sendRequest(
         "POST",
-        "/stock_categories/store",
+        "/webReq/stock_categories/store",
         formData
       );
       return response;
@@ -19,7 +19,7 @@ export const stockCategoryApi = {
 
   fetchAllStockCategories: async () => {
     try {
-      const response = await sendRequest("GET", `/stock_categories/all`);
+      const response = await sendRequest("GET", `/webReq/stock_categories/all`);
       return response;
     } catch (error) {
       return {
@@ -32,7 +32,7 @@ export const stockCategoryApi = {
     try {
       const response = await sendRequest(
         "POST",
-        `/stock_categories/update`,
+        `/webReq/stock_categories/update`,
         formData
       );
       return response;
@@ -45,9 +45,13 @@ export const stockCategoryApi = {
 
   deleteStockCategory: async (id: number) => {
     try {
-      const response = await sendRequest("POST", `/stock_categories/delete`, {
-        id: id,
-      });
+      const response = await sendRequest(
+        "POST",
+        `/webReq/stock_categories/delete`,
+        {
+          id: id,
+        }
+      );
       return response;
     } catch (error) {
       return {

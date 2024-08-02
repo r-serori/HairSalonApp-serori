@@ -3,7 +3,7 @@ import { sendRequest } from "../requestApi";
 export const vioRoleApi = {
   getVioRole: async () => {
     try {
-      const response = await sendRequest("GET", "/vio-role");
+      const response = await sendRequest("GET", "/webReq/vio-role");
       if (response.status === 200) {
         return response;
       } else {

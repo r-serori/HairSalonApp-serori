@@ -5,7 +5,11 @@ export const userApi = {
   login: async (formData: { email: string; password: string }) => {
     try {
       await getCsrfToken();
-      const response = (await sendRequest("POST", "/login", formData)) as any;
+      const response = (await sendRequest(
+        "POST",
+        "/webReq/login",
+        formData
+      )) as any;
       return response;
     } catch (error) {
       return { error: error };
@@ -24,7 +28,7 @@ export const userApi = {
   }) => {
     try {
       await getCsrfToken();
-      const response = await sendRequest("POST", "/register", formData);
+      const response = await sendRequest("POST", "/webReq/register", formData);
       return response;
     } catch (error) {
       return { error: error };
@@ -43,7 +47,7 @@ export const userApi = {
     try {
       const response = (await sendRequest(
         "POST",
-        `/staffRegister`,
+        `/webReq/staffRegister`,
         formData
       )) as any;
       return response;
@@ -55,7 +59,7 @@ export const userApi = {
   //ログアウト処理 Gate,ALL
   logout: async () => {
     try {
-      const response = (await sendRequest("POST", `/logout`)) as any;
+      const response = (await sendRequest("POST", `/webReq/logout`)) as any;
       return response;
     } catch (error) {
       return { error: error };
@@ -65,7 +69,7 @@ export const userApi = {
   //オーナーがスタッフの情報を取得 Gate,OWNER
   getUsers: async () => {
     try {
-      const response = (await sendRequest("GET", `/getUsers`)) as any;
+      const response = (await sendRequest("GET", `/webReq/getUsers`)) as any;
       return response;
     } catch (error) {
       return { error: error };
@@ -74,7 +78,10 @@ export const userApi = {
 
   getAttendanceUsers: async () => {
     try {
-      const response = (await sendRequest("GET", `/getAttendanceUsers`)) as any;
+      const response = (await sendRequest(
+        "GET",
+        `/webReq/getAttendanceUsers`
+      )) as any;
       return response;
     } catch (error) {
       return { error: error };
@@ -84,7 +91,7 @@ export const userApi = {
   //各スタッフが自分の情報を取得 Gate,ALL
   showUser: async () => {
     try {
-      const response = (await sendRequest("GET", `/showUser`)) as any;
+      const response = (await sendRequest("GET", `/webReq/showUser`)) as any;
       return response;
     } catch (error) {
       return { error: error };
@@ -100,7 +107,7 @@ export const userApi = {
     try {
       const response = (await sendRequest(
         "POST",
-        `/updateUser`,
+        `/webReq/updateUser`,
         formData
       )) as any;
       return response;
@@ -118,7 +125,7 @@ export const userApi = {
     try {
       const response = (await sendRequest(
         "POST",
-        `/updateUserPassword`,
+        `/webReq/updateUserPassword`,
         formData
       )) as any;
       return response;
@@ -129,7 +136,7 @@ export const userApi = {
 
   forgotPassword: async (email: string) => {
     try {
-      const response = (await sendRequest("POST", `/forgotPassword`, {
+      const response = (await sendRequest("POST", `/webReq/forgotPassword`, {
         email: email,
       })) as any;
       return response;
@@ -147,7 +154,7 @@ export const userApi = {
     try {
       const response = (await sendRequest(
         "POST",
-        `/resetPassword`,
+        `/webReq/resetPassword`,
         formData
       )) as any;
       return response;
@@ -164,7 +171,7 @@ export const userApi = {
     try {
       const response = (await sendRequest(
         "POST",
-        `/updatePermission`,
+        `/webReq/updatePermission`,
         formData
       )) as any;
       return response;
@@ -176,7 +183,7 @@ export const userApi = {
   //ownerがstaffを削除するときに使用
   deleteUser: async (id: number) => {
     try {
-      const response = (await sendRequest("POST", `/deleteUser`, {
+      const response = (await sendRequest("POST", `/webReq/deleteUser`, {
         id: id,
       })) as any;
       return response;
