@@ -22,13 +22,8 @@ COPY . /var/www/html/
 
 RUN composer install --no-interaction
 
-# Apache 設定ファイルをコピー
+# Apacheの設定ファイルをコピー
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
-# 環境変数 PORT を設定
-ENV PORT ${PORT}
-
-EXPOSE ${PORT}
-
-# Apache サーバーを起動
-CMD ["apache2-foreground"]
+# 環境変数 PORT を使用してApacheのポートを設定
+CMD sed -i -e "s/Listen 80/Listen ${PORT}/g" /etc/apache2/sites-available/000-default.conf && apache2-foreground
