@@ -16,14 +16,14 @@ RUN curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php \
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-COPY hair-salon-backend-serori/ /var/www/html/server/
+COPY . /var/www/html/server/
 
 WORKDIR /var/www/html/server
 
 RUN composer install --no-interaction
 
 # バックエンドの Apache サーバーの設定ファイルをコピー
-COPY hair-salon-backend-serori/apache-config.conf /etc/apache2/sites-available/000-default.conf
+COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
 EXPOSE 80
 
