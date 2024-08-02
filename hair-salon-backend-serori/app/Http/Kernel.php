@@ -22,7 +22,7 @@ class Kernel extends HttpKernel
     // TRUSTED_PROXIES = ~~~.~~~.~~~ 許可するIPアドレスをカンマ区切りで指定
     \App\Http\Middleware\TrustProxies::class,
     //cors.phpを参照して、クロスオリジンリソース共有を設定、セキュリティ強化
-    // \Illuminate\Http\Middleware\HandleCors::class,
+    \Illuminate\Http\Middleware\HandleCors::class,
     //このアプリがメンテナンスモードにある場合、リクエストを拒否
     //1:メンテナンスモードを有効にする:  php artisan down
     // .env ファイルの変更:  APP_ENV=local -> APP_ENV=maintenance
@@ -37,7 +37,6 @@ class Kernel extends HttpKernel
     \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     //フロントエンドとのCORS設定を行うためのミドルウェア
     //FruitCakeライブラリを使用して、CORS設定を行う
-    \Illuminate\Http\Middleware\HandleCors::class,
   ];
 
   protected $middlewareGroups = [
