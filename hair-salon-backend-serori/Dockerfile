@@ -25,9 +25,7 @@ RUN composer install --no-interaction
 # Apache 設定ファイルをコピー
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
-ENV PORT 80
-
-EXPOSE ${PORT}
+EXPOSE 80
 
 # Apache サーバーを起動
 CMD ["apache2-foreground"]
