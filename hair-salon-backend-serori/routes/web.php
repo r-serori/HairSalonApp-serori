@@ -44,12 +44,6 @@ Route::prefix('/webReq')->group(
 
             Route::middleware('guest')->group(function () {
 
-
-                Route::get('/sanctum/csrf-cookie', function () {
-                    return response()->json([
-                        'message' => 'CSRF Cookie Set'
-                    ], 200, [], JSON_UNESCAPED_UNICODE)->header('Content-Type', 'application/json; charset=UTF-8');
-                });
                 Route::post('/register', [RegisteredUserController::class, 'store']);
                 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
                 Route::post('/forgotPassword', [PasswordResetLinkController::class, 'store']);
