@@ -1,0 +1,22 @@
+# フロントエンド用のステージ
+FROM node:22.5.1-alpine AS frontend
+
+WORKDIR /app/client
+
+COPY hair-salon-frontend-serori/package*.json ./
+RUN npm install
+
+COPY hair-salon-frontend-serori/ ./
+RUN npm run build
+
+# フロントエンドのビルド成果物をアーティファクトとして保存
+FROM node:22.5.1-alpine AS final-frontend
+
+WORKDIR /app/client
+
+COPY --from=frontend /app/client /app/client
+
+EXPOSE 3000
+
+# Next.js アプリケーションを起動
+CMD ["npm", "start"]

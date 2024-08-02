@@ -1,4 +1,3 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -6,14 +5,18 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: `http://${process.env.NEXT_PUBLIC_BACKEND_URL}/api/:path*`, // LaravelのAPIエンドポイント
+        destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/:path*`, // バックエンドのAPIエンドポイント
       },
       {
-        source: '/:path*',
-        destination: `http://${process.env.NEXT_PUBLIC_BACKEND_URL}/:path*`, // Laravelのエンドポイント
+        source: '/webReq/:path*',
+        destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/webReq/:path*`, // バックエンドのAPIエンドポイント
+      },
+      {
+        source: '/storage/:path*',
+        destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/:path*`, // バックエンドのAPIエンドポイント
       },
     ];
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

@@ -45,7 +45,7 @@ jobs:
           paths:
             - .
 
-  deploy:
+  deploy-frontend:
     docker:
       - image: cimg/base:stable
     steps:
@@ -60,21 +60,46 @@ jobs:
           command: |
             curl https://cli-assets.heroku.com/install.sh | sh
       - run:
-          name: Set Heroku stack to container
+          name: Login to Heroku Container Registry
           command: |
-            heroku stack:set container -a $HEROKU_APP_NAME
+            echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
+      - run:
+          name: Build and push frontend Docker image
+          command: |
+            docker build -t registry.heroku.com/$HEROKU_FRONTEND_APP_NAME/web -f ~/HairSalonApp-serori/Dockerfile-frontend ~/HairSalonApp-serori/hair-salon-frontend-serori
+            docker push registry.heroku.com/$HEROKU_FRONTEND_APP_NAME/web
+      - run:
+          name: Release frontend app
+          command: |
+            heroku container:release web --app $HEROKU_FRONTEND_APP_NAME
+
+  deploy-backend:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout:
+          path: ~/HairSalonApp-serori
+      - setup_remote_docker:
+          version: 20.10.24
+      - attach_workspace:
+          at: ~/HairSalonApp-serori
+      - run:
+          name: Install Heroku CLI
+          command: |
+            curl https://cli-assets.heroku.com/install.sh | sh
       - run:
           name: Login to Heroku Container Registry
           command: |
             echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
       - run:
-          name: Deploy to Heroku
+          name: Build and push backend Docker image
           command: |
-            # Build and push the Docker images for the frontend and backend
-            docker build -t registry.heroku.com/$HEROKU_APP_NAME/web -f ~/HairSalonApp-serori/Dockerfile ~/HairSalonApp-serori
-            docker push registry.heroku.com/$HEROKU_APP_NAME/web
-            # Release the app
-            heroku container:release web --app $HEROKU_APP_NAME
+            docker build -t registry.heroku.com/$HEROKU_BACKEND_APP_NAME/web -f ~/HairSalonApp-serori/Dockerfile-backend ~/HairSalonApp-serori/hair-salon-backend-serori
+            docker push registry.heroku.com/$HEROKU_BACKEND_APP_NAME/web
+      - run:
+          name: Release backend app
+          command: |
+            heroku container:release web --app $HEROKU_BACKEND_APP_NAME
 
 workflows:
   version: 2
@@ -82,7 +107,9 @@ workflows:
     jobs:
       - build-frontend
       - build-backend
-      - deploy:
+      - deploy-frontend:
           requires:
             - build-frontend
+      - deploy-backend:
+          requires:
             - build-backend
