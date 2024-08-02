@@ -8,11 +8,11 @@ ENV NEXT_PUBLIC_BACKEND_IMG_URL=https://hairsalon-api.seroriman.com/storage
 WORKDIR /app
 
 # client ディレクトリ内の package.json と package-lock.json をコピー
-COPY client/package*.json ./
+COPY package*.json ./
 RUN npm install
 
 # client ディレクトリ内の残りのファイルをコピー
-COPY client/ ./
+COPY . ./
 RUN npm run build
 
 EXPOSE 3000
