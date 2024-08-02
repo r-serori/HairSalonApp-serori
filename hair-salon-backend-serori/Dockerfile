@@ -25,6 +25,7 @@ RUN composer install --no-interaction
 # Apache 設定ファイルをコピー
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
+# 新しいポートを公開
 EXPOSE 80
 
 # Apache サーバーを起動
