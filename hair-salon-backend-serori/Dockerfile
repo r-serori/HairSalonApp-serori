@@ -25,9 +25,6 @@ RUN composer install --no-interaction
 # Apache 設定ファイルをコピー
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
-# Herokuが提供するポートを使用
-ENV PORT 8080
-
 EXPOSE $PORT
 
 # Apache サーバーを起動

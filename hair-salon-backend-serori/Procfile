@@ -1,1 +1,2 @@
-web: vendor/bin/heroku-php-apache2 -C /etc/apache2/sites-available/000-default.conf
+web: vendor/bin/heroku-php-apache2 -C
+/etc/apache2/sites-available/000-default.conf

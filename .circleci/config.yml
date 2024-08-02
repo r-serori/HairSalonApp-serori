@@ -36,8 +36,6 @@ jobs:
 
   build-backend:
     executor: backend-executor
-    environment:
-      PORT: 8080
     steps:
       - checkout:
           path: ~/HairSalonApp-serori
