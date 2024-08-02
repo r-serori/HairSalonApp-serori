@@ -27,6 +27,9 @@ RUN curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php \
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
+# Apache モジュールを有効にする
+RUN a2enmod proxy proxy_http 
+
 COPY hair-salon-backend-serori/ /var/www/html/server/
 
 WORKDIR /var/www/html/server
