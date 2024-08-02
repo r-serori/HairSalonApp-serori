@@ -26,7 +26,7 @@ RUN composer install --no-interaction
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
 # 新しいポートを公開
-EXPOSE 80
+EXPOSE 8080
 
 # Apache サーバーを起動
 CMD ["apache2-foreground"]
