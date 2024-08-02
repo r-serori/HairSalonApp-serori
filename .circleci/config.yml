@@ -69,7 +69,7 @@ jobs:
       - run:
           name: Build and push frontend Docker image
           command: |
-            docker build -t registry.heroku.com/$HEROKU_FRONTEND_APP_NAME/web -f ~/HairSalonApp-serori/Dockerfile-frontend ~/HairSalonApp-serori/hair-salon-frontend-serori
+            docker build -t registry.heroku.com/$HEROKU_FRONTEND_APP_NAME/web -f ~/HairSalonApp-serori/hair-salon-backend-serori/Dockerfile-frontend ~/HairSalonApp-serori/hair-salon-frontend-serori
             docker push registry.heroku.com/$HEROKU_FRONTEND_APP_NAME/web
       - run:
           name: Release frontend app
@@ -97,7 +97,7 @@ jobs:
       - run:
           name: Build and push backend Docker image
           command: |
-            docker build -t registry.heroku.com/$HEROKU_BACKEND_APP_NAME/web -f ~/HairSalonApp-serori/Dockerfile-backend ~/HairSalonApp-serori/hair-salon-backend-serori
+            docker build -t registry.heroku.com/$HEROKU_BACKEND_APP_NAME/web -f ~/HairSalonApp-serori/hair-salon-backend-serori/Dockerfile-backend ~/HairSalonApp-serori/hair-salon-backend-serori
             docker push registry.heroku.com/$HEROKU_BACKEND_APP_NAME/web
       - run:
           name: Release backend app
