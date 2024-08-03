@@ -1,8 +1,6 @@
 node_modules
 
-storage/*
 !storage/.gitignore
-bootstrap/cache/*
 !bootstrap/cache/.gitignore
 
 .env
@@ -10,10 +8,6 @@ bootstrap/cache/*
 
 .vscode
 vendor
-
-public/storage
-public/hot
-public/build
 
 npm-debug.log
 
