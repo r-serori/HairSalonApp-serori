@@ -2,8 +2,8 @@
 FROM node:22.5.1-alpine AS frontend
 
 # 環境変数の設定
-# ENV NEXT_PUBLIC_BACKEND_URL=https://hairsalon-api.seroriman.com
-# ENV NEXT_PUBLIC_BACKEND_IMG_URL=https://hairsalon-api.seroriman.com/storage
+ENV NEXT_PUBLIC_BACKEND_URL=https://hairsalon-api.seroriman.com
+ENV NEXT_PUBLIC_BACKEND_IMG_URL=https://hairsalon-api.seroriman.com/storage
 
 WORKDIR /app
 
