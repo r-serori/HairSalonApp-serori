@@ -4,7 +4,7 @@ node_modules
 .next/*
 out
 public/static
-
+.env
 .env.local
 .env.development.local
 .env.test.local

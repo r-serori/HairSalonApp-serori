@@ -3,7 +3,6 @@ node_modules
 !storage/.gitignore
 !bootstrap/cache/.gitignore
 
-.env
 .env.example
 
 .vscode
@@ -11,6 +10,7 @@ vendor
 
 npm-debug.log
 
+.env
 *.log
 *.tmp
 *.DS_Store

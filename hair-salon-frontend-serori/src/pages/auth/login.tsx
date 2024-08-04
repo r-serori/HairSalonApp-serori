@@ -47,6 +47,7 @@ const LoginPage: React.FC = () => {
     try {
       const response: any = await dispatch(login(formData) as any);
       if (response.meta.requestStatus === "fulfilled") {
+        console.log("ログイン成功");
         dispatch(isLogin());
         const userId: number | undefined = response.payload.responseUser.id;
         if (userId === undefined) {
@@ -77,6 +78,7 @@ const LoginPage: React.FC = () => {
         if (re === null) throw new Error("ログイン処理に失敗しました");
       }
     } catch (error) {
+      console.error("ログイン処理に失敗しました", error);
       localStorage.removeItem("registerNow");
       allLogout(dispatch);
       router.push("/auth/login");

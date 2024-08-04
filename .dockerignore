@@ -5,8 +5,6 @@ hair-salon-frontend-serori/node_modules
 hair-salon-backend-serori/vendor
 
 # Ignore environment files
-hair-salon-backend-serori/.env
-hair-salon-frontend-serori/.env
 
 # Ignore Docker files
 docker-compose.override.yml
