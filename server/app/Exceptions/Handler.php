@@ -58,15 +58,27 @@ class Handler extends ExceptionHandler
                 'line' => $exception->getLine(),
                 'trace' => $exception->getTraceAsString(),
             ]);
-            if (strpos($exception->getMessage(), 'auth') !== false) {
+
+            if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
                 return response()->json([
                     'message' => '認証に失敗しました。メールアドレスまたはパスワードが正しくありません。',
                 ], 400);
-            } else {
-
-
+            } elseif ($exception instanceof \Illuminate\Validation\ValidationException) {
+                return response()->json([
+                    'message' => '入力内容に誤りがあります。',
+                    'errors' => $exception->errors(),
+                ], 400);
+            } elseif ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+                return response()->json([
+                    'message' => 'リソースが見つかりません。',
+                ], 400);
+            } elseif ($exception instanceof \Symfony\Component\HttpKernel\Exception\HttpException) {
                 return response()->json([
                     'message' => $exception->getMessage(),
+                ], $exception->getStatusCode());
+            } else {
+                return response()->json([
+                    'message' => 'サーバーでエラーが起きました。管理者にお問い合わせください。',
                 ], 500);
             }
         }
