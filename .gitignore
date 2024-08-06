@@ -1,6 +1,5 @@
 client/node_modules
 client/.next/
-client/out/
 client//build
 client/.DS_Store
 # debug

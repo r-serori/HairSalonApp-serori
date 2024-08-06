@@ -130,7 +130,7 @@ const SaleForm: React.FC<SaleFormProps> = ({
       }));
 
       // 一つの配列にした配列をmapで回して、courseNameと同じだったら、coursePriceを取得して、reduceで合計する。
-      const sameCoursesPrice = sameCoursesEvents
+      const sameCoursesPrice: number = sameCoursesEvents
         .map((course: any) => {
           if (!courseNameAndPrices || courseNameAndPrices.length === 0) {
             return 0;
@@ -151,7 +151,7 @@ const SaleForm: React.FC<SaleFormProps> = ({
         optionPrice: option.price,
       }));
 
-      const sameOptionsPrice = sameOptionsEvents
+      const sameOptionsPrice: number = sameOptionsEvents
         .map((option: any) => {
           if (!optionNameAndPrices || optionNameAndPrices.length === 0) {
             return 0;
@@ -176,7 +176,7 @@ const SaleForm: React.FC<SaleFormProps> = ({
         })
       );
 
-      const sameMerchandisesPrice = sameMerchandisesEvents
+      const sameMerchandisesPrice: number = sameMerchandisesEvents
         .map((merchandise: any) => {
           if (
             !merchandiseNameAndPrices ||
@@ -192,11 +192,11 @@ const SaleForm: React.FC<SaleFormProps> = ({
         })
         .reduce((acc: number, cur: number) => acc + cur, 0);
 
-      const result =
+      const result: number =
         sameCoursesPrice + sameOptionsPrice + sameMerchandisesPrice;
 
       setMessage("");
-      setSumPrice(Number(result));
+      setSumPrice(result);
     } catch (e) {
       return 0;
     }
