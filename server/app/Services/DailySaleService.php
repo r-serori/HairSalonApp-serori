@@ -67,7 +67,7 @@ class DailySaleService
       $existDailySale = DailySale::where('owner_id', $ownerId)->whereDate('date', $data['date'])->first();
 
       if ($existDailySale) {
-        abort(400, 'その日の日次売上は既に存在しています！日次売上画面から編集をして数値を変更するか、削除してもう一度この画面から更新してください！');
+        throw new HttpException(400, 'その日の日次売上は既に存在しています！日次売上画面から編集をして数値を変更するか、削除してもう一度この画面から更新してください！');
       }
 
       $dailySale = new DailySale();
