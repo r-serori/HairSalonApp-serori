@@ -1,37 +1,16 @@
-# dependencies
-hair-salon-frontend-serori/node_modules
-hair-salon-frontend-serori/.pnp
-hair-salon-frontend-serori/.pnp.js
-hair-salon-frontend-serori/.yarn/install-state.gz
-
-# testing
-hair-salon-frontend-serori/coverage
-
-# next.js
-hair-salon-frontend-serori/.next/
-hair-salon-frontend-serori/out/
-
-# production
-hair-salon-frontend-serori//build
-
-# misc
-hair-salon-frontend-serori/.DS_Store
-hair-salon-frontend-serori/*.pem
-
+client/node_modules
+client/.next/
+client/out/
+client//build
+client/.DS_Store
 # debug
-hair-salon-frontend-serori/npm-debug.log*
-hair-salon-frontend-serori/yarn-debug.log*
-hair-salon-frontend-serori/yarn-error.log*
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
 
-# local env files
-hair-salon-frontend-serori/.env*.local
-
-# vercel
-hair-salon-frontend-serori/.vercel
-
-# typescript
-hair-salon-frontend-serori/*.tsbuildinfo
-hair-salon-frontend-serori/next-env.d.ts
+client/.env
+client/.env.example
+client/next-env.d.ts
 
 db
 db/*
@@ -39,26 +18,12 @@ db/*
 .env
 .env.local
 
-hair-salon-backend-serori//.phpunit.cache
-hair-salon-backend-serori//node_modules
-hair-salon-backend-serori//public/build
-hair-salon-backend-serori//public/hot
-hair-salon-backend-serori//public/storage
-hair-salon-backend-serori//storage/*.key
-hair-salon-backend-serori//vendor/*
-hair-salon-backend-serori//vendor
-hair-salon-backend-serori/vendor
-hair-salon-backend-serori/vendor/*
-hair-salon-backend-serori/.env
-hair-salon-backend-serori/.env.backup
-hair-salon-backend-serori/.env.production
-hair-salon-backend-serori/.phpactor.json
-hair-salon-backend-serori/.phpunit.result.cache
-hair-salon-backend-serori/Homestead.json
-hair-salon-backend-serori/Homestead.yaml
-hair-salon-backend-serori/auth.json
-hair-salon-backend-serori/npm-debug.log
-hair-salon-backend-serori/yarn-error.log
-hair-salon-backend-serori//.fleet
-hair-salon-backend-serori//.idea
-hair-salon-backend-serori//.vscode
+server/.phpunit.cache
+server/node_modules
+server/public/build
+server/public/hot
+server/public/storage
+server/vendor/*
+server/vendor
+server/.env
+server/.env.example

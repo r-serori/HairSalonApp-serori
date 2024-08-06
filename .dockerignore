@@ -1,8 +1,20 @@
 # Ignore node_modules (for the frontend)
-hair-salon-frontend-serori/node_modules
+client/node_modules
+client/node_modules/*
+client/.next
+client/.next/*
+
 
 # Ignore vendor (for the backend)
-hair-salon-backend-serori/vendor
+server/vendor
+server/vendor/*
+server/.env
+server/node_modules 
+server/node_modules/*
+.gitignore
+
+
+
 
 # Ignore environment files
 

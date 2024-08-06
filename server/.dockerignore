@@ -1,0 +1,11 @@
+vendor
+vendor/*
+
+README.md
+
+node_modules
+node_modules/*
+.git
+.env
+.env.local
+.env.*.local
