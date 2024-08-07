@@ -1,7 +1,12 @@
 #!/bin/bash
 
-sed -i -e "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf && \
-sed -i -e "s/<VirtualHost \*:80>/<VirtualHost \*:8000>/g" /etc/apache2/sites-available/000-default.conf 
+# Apacheのポートを環境変数に応じて設定
+sed -i -e "s/Listen 80/Listen ${PORT}/g" /etc/apache2/ports.conf && \
+sed -i -e "s/<VirtualHost \*:80>/<VirtualHost \*:${PORT}>/g" /etc/apache2/sites-available/000-default.conf && \
+
+# localhost:8000 でアクセスできるように設定
+# CMD sed -i -e "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf && \
+#     sed -i -e "s/<VirtualHost \*:80>/<VirtualHost \*:8000>/g" /etc/apache2/sites-available/000-default.conf 
 
 # 権限を設定
 chown -R www-data:www-data /var/www/html/public /var/www/html/public/storage /var/www/html/storage/app/public /var/www/html/storage/app/public/startPhotos /var/www/html/storage/app/public/endPhotos 
