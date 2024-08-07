@@ -24,11 +24,11 @@ RUN curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php \
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 # プロジェクトファイルをコピー
-COPY --chown=www-data:www-data . /var/www/html/
+# COPY --chown=www-data:www-data . /var/www/html/
 
 # ファイル所有者と権限の設定
-RUN chown -R www-data:www-data /var/www/html/public /var/www/html/storage
-RUN chmod -R 755 /var/www/html/public /var/www/html/storage
+# RUN chown -R www-data:www-data /var/www/html/public /var/www/html/storage
+# RUN chmod -R 755 /var/www/html/public /var/www/html/storage
 
 # Composerの依存関係をインストール
 RUN composer install --no-interaction
