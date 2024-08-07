@@ -24,7 +24,7 @@ RUN curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php \
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 # プロジェクトファイルをコピー
-COPY --chown=www-data:www-data . /var/www/html/
+COPY . /var/www/html/
 
 # ファイル所有者と権限の設定
 # RUN chown -R www-data:www-data /var/www/html/public /var/www/html/storage
@@ -44,18 +44,18 @@ RUN a2ensite 000-default.conf && a2enmod rewrite
 EXPOSE 80
 
 # # 環境変数 PORT を使用してApacheのポートを設定
-# CMD sed -i -e "s/Listen 80/Listen ${PORT}/g" /etc/apache2/ports.conf && \
-#     sed -i -e "s/<VirtualHost \*:80>/<VirtualHost \*:${PORT}>/g" /etc/apache2/sites-available/000-default.conf && \
-#     apache2-foreground
+CMD sed -i -e "s/Listen 80/Listen ${PORT}/g" /etc/apache2/ports.conf && \
+    sed -i -e "s/<VirtualHost \*:80>/<VirtualHost \*:${PORT}>/g" /etc/apache2/sites-available/000-default.conf && \
+    apache2-foreground
 
 # entrypoint.sh をコンテナにコピー
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+# COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
-# entrypoint.sh を実行可能にする
-RUN chmod +x /usr/local/bin/entrypoint.sh
+# # entrypoint.sh を実行可能にする
+# RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Entrypoint の設定
-ENTRYPOINT ["entrypoint.sh"]
+# # Entrypoint の設定
+# ENTRYPOINT ["entrypoint.sh"]
 
 
 
