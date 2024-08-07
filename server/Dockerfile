@@ -41,8 +41,6 @@ COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 # Apacheの設定を有効にする
 RUN a2ensite 000-default.conf && a2enmod rewrite
 
-EXPOSE 80
-
 # # 環境変数 PORT を使用してApacheのポートを設定
 CMD sed -i -e "s/Listen 80/Listen ${PORT}/g" /etc/apache2/ports.conf && \
     sed -i -e "s/<VirtualHost \*:80>/<VirtualHost \*:${PORT}>/g" /etc/apache2/sites-available/000-default.conf && \

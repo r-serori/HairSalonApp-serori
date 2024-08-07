@@ -48,7 +48,7 @@ class RegisteredUserController extends BaseController
     DB::beginTransaction();
     try {
 
-      Log::info('store');
+      // Log::info('store');
       if (config('fortify.lowercase_usernames')) {
         $request->merge([
           Fortify::username() => Str::lower($request->{Fortify::username()}),
@@ -81,7 +81,6 @@ class RegisteredUserController extends BaseController
     } catch (\Exception $e) {
       DB::rollBack();
       // Log::error($e->getMessage());
-
       if (strpos($e->getMessage(), 'メールアドレスの値は既に存在') !== false) {
         return $this->responseMan([
           'message' => 'メールアドレスが既に存在しています！他のメールアドレスを入力してください！'
@@ -92,7 +91,7 @@ class RegisteredUserController extends BaseController
         ], 400);
       } else {
         // その他のエラー処理
-        Log::error($e->getMessage());
+        // Log::error($e->getMessage());
         return $this->responseMan([
           'message' => '何らかのエラーが発生しました。もう一度最初からやり直してください！'
         ], 500);
