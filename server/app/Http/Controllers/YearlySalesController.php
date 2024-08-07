@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Services\HasRole;
 use App\Services\GetImportantIdService;
 use App\Services\YearlySaleService;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Http\JsonResponse;
 
 class YearlySalesController extends BaseController
 {
@@ -43,14 +43,10 @@ class YearlySalesController extends BaseController
                     'yearlySales' => $yearly_sale,
                 ]);
             }
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
-            return $this->serverErrorResponseWoman();
+            abort(500, '内部サーバーエラーが発生しました');
         }
     }
 
@@ -64,6 +60,10 @@ class YearlySalesController extends BaseController
 
             $yearly_sale = $this->yearlySaleService->yearlySaleValidateAndCreateOrUpdate($request->all(), $ownerId, true);
 
+            if ($yearly_sale instanceof JsonResponse) {
+                return $yearly_sale;
+            }
+
             $this->yearlySaleService->forgetCache($ownerId);
 
             DB::commit();
@@ -71,14 +71,10 @@ class YearlySalesController extends BaseController
             return $this->responseMan([
                 "yearlySale" => $yearly_sale,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
-            return $this->serverErrorResponseWoman();
+            abort(500, '内部サーバーエラーが発生しました');
         }
     }
 
@@ -100,14 +96,10 @@ class YearlySalesController extends BaseController
             return $this->responseMan([
                 "yearlySale" => $yearly_sale,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
-            return $this->serverErrorResponseWoman();
+            abort(500, '内部サーバーエラーが発生しました');
         }
     }
 
@@ -127,14 +119,10 @@ class YearlySalesController extends BaseController
             return $this->responseMan([
                 "deleteId" => $request->id,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
-            return $this->serverErrorResponseWoman();
+            abort(500, '内部サーバーエラーが発生しました');
         }
     }
 }

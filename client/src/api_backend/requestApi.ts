@@ -20,6 +20,7 @@ export const sendRequest = async (
       "/api/forgotPassword",
       "/api/verify-email",
       "/api/search",
+      "/storage",
     ];
 
     // URLがトークンが不要なエンドポイントに含まれているかどうかを確認

@@ -26,3 +26,5 @@ server/vendor/*
 server/vendor
 server/.env
 server/.env.example
+
+docker-compose.yml

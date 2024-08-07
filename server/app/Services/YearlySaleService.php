@@ -6,7 +6,7 @@ use App\Models\YearlySale;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use \Illuminate\Database\Eloquent\Collection;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Http\JsonResponse;
 
 
 class YearlySaleService
@@ -50,13 +50,15 @@ class YearlySaleService
     }
   }
 
-  private function yearlySaleStore(array $data, int $ownerId): YearlySale
+  private function yearlySaleStore(array $data, int $ownerId): YearlySale | JsonResponse
   {
     try {
       $existYearlySale = YearlySale::where('owner_id', $ownerId)->where('year', $data['year'])->first();
 
       if ($existYearlySale) {
-        abort(400, 'その日の年次売上は既に存在しています！年次売上画面から編集をして数値を変更するか、削除してもう一度この画面から更新してください！');
+        return response()->json([
+          "message" => "その年の年次売上は既に存在しています！年次売上画面から編集をして数値を変更するか、削除してもう一度この画面から更新してください！",
+        ], 400);
       }
 
       $yearlySale = new YearlySale();
@@ -89,7 +91,7 @@ class YearlySaleService
     array $data,
     int $yearlySaleIdOrOwnerId,
     bool $createOrUpdate
-  ): YearlySale {
+  ): YearlySale | JsonResponse {
     try {
       $validator = Validator::make($data, [
         'year' => 'required|string',
@@ -97,7 +99,9 @@ class YearlySaleService
       ]);
 
       if ($validator->fails()) {
-        throw new HttpException(403, '入力内容が正しくありません');
+        return response()->json([
+          "message" => "入力内容が正しくありません",
+        ], 400);
       }
       $validatedDate = $validator->validate();
 

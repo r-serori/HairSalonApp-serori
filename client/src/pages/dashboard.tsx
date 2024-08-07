@@ -17,13 +17,16 @@ import {
   ownerMessage,
   permissionStore,
   userMessage,
+  userStatus,
 } from "../hooks/authSelector";
 import { PermissionsState } from "../slices/auth/permissionSlice";
+import LoadingComponent from "../components/loading/Loading";
 
 const Dashboard: React.FC = () => {
   const permission: PermissionsState = useSelector(permissionStore);
   const uMessage: string | null = useSelector(userMessage);
   const oMessage: string | null = useSelector(ownerMessage);
+  const uStatus: string = useSelector(userStatus);
 
   return (
     <>
@@ -48,94 +51,98 @@ const Dashboard: React.FC = () => {
       <div className="flex justify-end pt-2 mr-4 ">
         <LogoutButton className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800" />
       </div>
-      <div className="h-full flex justify-center items-center">
-        <nav className={`h-full mt-4`}>
-          <ul className="flex flex-wrap justify-center h-full lg:gap-16 md:gap-8 gap-4 ">
-            {permission === "オーナー" ? (
+      {uStatus === "loading" ? (
+        <LoadingComponent />
+      ) : (
+        <div className="h-full flex justify-center items-center">
+          <nav className={`h-full mt-4`}>
+            <ul className="flex flex-wrap justify-center h-full lg:gap-16 md:gap-8 gap-4 ">
+              {permission === "オーナー" ? (
+                <NavLink
+                  IconName={ManageAccountsIcon}
+                  href="/attendances"
+                  iconSrc="#"
+                  label="スタッフ管理"
+                />
+              ) : (
+                ""
+              )}
               <NavLink
-                IconName={ManageAccountsIcon}
-                href="/attendances"
+                IconName={MoreTimeIcon}
+                href="/attendanceTimeShots"
                 iconSrc="#"
-                label="スタッフ管理"
+                label="勤怠管理"
               />
-            ) : (
-              ""
-            )}
-            <NavLink
-              IconName={MoreTimeIcon}
-              href="/attendanceTimeShots"
-              iconSrc="#"
-              label="勤怠管理"
-            />
-            <NavLink
-              IconName={SentimentVerySatisfiedIcon}
-              href="/customers"
-              iconSrc="#"
-              label="顧客管理"
-            />
-            <NavLink
-              IconName={EventAvailableIcon}
-              href="/schedules"
-              iconSrc="#"
-              label="予約表"
-            />
-            <NavLink
-              IconName={InventoryIcon}
-              href="/stocks"
-              iconSrc="#"
-              label="在庫管理"
-            />
-            <NavLink
-              IconName={MenuBookIcon}
-              href="/courses"
-              iconSrc="#"
-              label="コース"
-            />
-            <NavLink
-              IconName={PlaylistAddIcon}
-              href="/options"
-              iconSrc="#"
-              label="オプション"
-            />
-            <NavLink
-              IconName={ShoppingCartIcon}
-              href="/merchandises"
-              iconSrc="#"
-              label="物販"
-            />
-            <NavLink
-              IconName={ContentCutIcon}
-              href="/hairstyles"
-              iconSrc="#"
-              label="髪型"
-            />
-            {permission === "オーナー" && (
               <NavLink
-                IconName={CurrencyYenIcon}
-                href="/daily_sales"
+                IconName={SentimentVerySatisfiedIcon}
+                href="/customers"
                 iconSrc="#"
-                label="日次売上"
+                label="顧客管理"
               />
-            )}
-            {permission === "オーナー" && (
               <NavLink
-                IconName={CurrencyYenIcon}
-                href="/monthly_sales"
+                IconName={EventAvailableIcon}
+                href="/schedules"
                 iconSrc="#"
-                label="月次売上"
+                label="予約表"
               />
-            )}
-            {permission === "オーナー" && (
               <NavLink
-                IconName={CurrencyYenIcon}
-                href="/yearly_sales"
+                IconName={InventoryIcon}
+                href="/stocks"
                 iconSrc="#"
-                label="年次売上"
+                label="在庫管理"
               />
-            )}
-          </ul>
-        </nav>
-      </div>
+              <NavLink
+                IconName={MenuBookIcon}
+                href="/courses"
+                iconSrc="#"
+                label="コース"
+              />
+              <NavLink
+                IconName={PlaylistAddIcon}
+                href="/options"
+                iconSrc="#"
+                label="オプション"
+              />
+              <NavLink
+                IconName={ShoppingCartIcon}
+                href="/merchandises"
+                iconSrc="#"
+                label="物販"
+              />
+              <NavLink
+                IconName={ContentCutIcon}
+                href="/hairstyles"
+                iconSrc="#"
+                label="髪型"
+              />
+              {permission === "オーナー" && (
+                <NavLink
+                  IconName={CurrencyYenIcon}
+                  href="/daily_sales"
+                  iconSrc="#"
+                  label="日次売上"
+                />
+              )}
+              {permission === "オーナー" && (
+                <NavLink
+                  IconName={CurrencyYenIcon}
+                  href="/monthly_sales"
+                  iconSrc="#"
+                  label="月次売上"
+                />
+              )}
+              {permission === "オーナー" && (
+                <NavLink
+                  IconName={CurrencyYenIcon}
+                  href="/yearly_sales"
+                  iconSrc="#"
+                  label="年次売上"
+                />
+              )}
+            </ul>
+          </nav>
+        </div>
+      )}
     </>
   );
 };

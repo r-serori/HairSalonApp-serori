@@ -13,7 +13,6 @@ use App\Services\HasRole;
 use App\Services\GetImportantIdService;
 use App\Services\AttendanceTimeService;
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class AttendanceTimesController extends BaseController
 {
@@ -57,10 +56,6 @@ class AttendanceTimesController extends BaseController
                     'attendanceTimes' => $selectAttendanceTimes,
                 ]);
             }
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -94,10 +89,6 @@ class AttendanceTimesController extends BaseController
                 $this->responseMan([
                     "attendanceTime" => $attendanceTime,
                 ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return response()->json(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -111,7 +102,6 @@ class AttendanceTimesController extends BaseController
         try {
             $this->hasRole->allAllow();
             $attendanceTime =  $this->attendanceTimeService->attendanceTimeValidateAndCreateOrUpdate($request->all(), null, true, false);
-
 
             $ownerId = $this->getImportantIdService->getOwnerId($request->user_id);
 
@@ -133,10 +123,6 @@ class AttendanceTimesController extends BaseController
             } else {
                 return $attendanceTime;
             }
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -162,10 +148,6 @@ class AttendanceTimesController extends BaseController
                 $this->responseMan([
                     "attendanceTime" => $attendanceTime,
                 ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -192,10 +174,6 @@ class AttendanceTimesController extends BaseController
                 $this->responseMan([
                     "attendanceTime" => $attendanceTime,
                 ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -208,23 +186,19 @@ class AttendanceTimesController extends BaseController
     {
         DB::beginTransaction();
         try {
-            $this->hasRole->ownerAllow();
+            $user = $this->hasRole->ownerAllow();
 
             $this->attendanceTimeService->attendanceTimeDelete($request->id);
 
-            $ownerId = $this->getImportantIdService->getOwnerId($request->id);
+            $ownerId = $this->getImportantIdService->getOwnerId($user->id);
 
-            $this->attendanceTimeService->forgetCache($ownerId, $request->id);
+            $this->attendanceTimeService->forgetCache($ownerId, $user->id);
 
             DB::commit();
 
             return $this->responseMan([
                 "deleteId" => $request->id
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();

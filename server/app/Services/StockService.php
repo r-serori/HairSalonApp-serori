@@ -104,7 +104,9 @@ class StockService
       ]);
 
       if ($validator->fails()) {
-        throw new HttpException(403, '入力内容が正しくありません');
+        return response()->json([
+          "message" => "入力内容が正しくありません",
+        ], 400);
       }
       $validatedData = $validator->validate();
 

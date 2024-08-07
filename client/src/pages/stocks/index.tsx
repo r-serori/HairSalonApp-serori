@@ -30,6 +30,7 @@ import {
   StockNodes,
   THeaderItems,
 } from "../../types/interface";
+import LoadingComponent from "../../components/loading/Loading";
 
 const Stocks: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -170,11 +171,9 @@ const Stocks: React.FC = () => {
       {sError && (
         <BasicAlerts type="error" message={sError} space={1} padding={0.6} />
       )}
-      {sStatus === "loading" ||
-      scStatus === "loading" ||
-      !nodes ||
-      permission === null ? (
-        <p>Loading...</p>
+      {(sStatus === "loading" || scStatus === "loading" || !nodes) &&
+      permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

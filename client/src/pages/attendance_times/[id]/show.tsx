@@ -32,6 +32,7 @@ import {
   SearchItems,
   THeaderItems,
 } from "../../../types/interface";
+import LoadingComponent from "../../../components/loading/Loading";
 
 const AttendanceTimes: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -156,8 +157,9 @@ const AttendanceTimes: React.FC = () => {
           <BasicAlerts type="error" message={atError} space={1} padding={0.6} />
         )}
       </div>
-      {atStatus === "loading" || uStatus === "loading" || !nodes ? (
-        <p>loading...</p>
+      {(atStatus === "loading" || uStatus === "loading" || !nodes) &&
+      permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

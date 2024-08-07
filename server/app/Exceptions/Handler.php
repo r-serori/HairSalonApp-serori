@@ -52,37 +52,24 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $exception)
     {
-        if ($request->is('api/*')) {
-            Log::error($exception->getMessage(), [
-                'file' => $exception->getFile(),
-                'line' => $exception->getLine(),
-                'trace' => $exception->getTraceAsString(),
-            ]);
-
-            if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
-                return response()->json([
-                    'message' => '認証に失敗しました。メールアドレスまたはパスワードが正しくありません。',
-                ], 400);
-            } elseif ($exception instanceof \Illuminate\Validation\ValidationException) {
-                return response()->json([
-                    'message' => '入力内容に誤りがあります。',
-                    'errors' => $exception->errors(),
-                ], 400);
-            } elseif ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
-                return response()->json([
-                    'message' => 'リソースが見つかりません。',
-                ], 400);
-            } elseif ($exception instanceof \Symfony\Component\HttpKernel\Exception\HttpException) {
-                return response()->json([
-                    'message' => $exception->getMessage(),
-                ], $exception->getStatusCode());
+        if ($request->wantsJson()) {
+            if ($exception instanceof \Symfony\Component\HttpKernel\Exception\HttpException) {
+                // HttpException の場合は、ステータスコードを取得する
+                $statusCode = $exception->getStatusCode();
             } else {
-                return response()->json([
-                    'message' => 'サーバーでエラーが起きました。管理者にお問い合わせください。',
-                ], 500);
+                // その他の例外の場合はデフォルトで 500 ステータスコードを使用する
+                $statusCode = 500;
             }
+            // JSON リクエストには JSON レスポンスを返す
+            return response()->json([
+                'message' => $exception->getMessage()
+            ], $statusCode, [], JSON_UNESCAPED_UNICODE)->header(
+                'Content-Type',
+                'application/json; charset=UTF-8'
+            );
         }
 
+        // その他のリクエストには、通常のエラーページを返す
         return parent::render($request, $exception);
     }
 }

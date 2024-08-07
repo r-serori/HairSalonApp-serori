@@ -20,6 +20,7 @@ import ForgotPasswordButton from "../../components/elements/button/ForgotPasswor
 import { AppDispatch } from "../../redux/store";
 import { renderError } from "../../api_backend/errorHandler";
 import { isLogout } from "../../slices/auth/isLoginSlice";
+import LoadingComponent from "../../components/loading/Loading";
 
 const UpdateUserInformationPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -94,27 +95,26 @@ const UpdateUserInformationPage: React.FC = () => {
           padding={0.6}
         />
       )}
-      <div className="mx-4">
-        <div className="flex justify-between my-4 ">
-          <RouterButton link={"/dashboard"} value="一覧画面へ戻る" />
-          <RouterButton
-            link={"/userProfile/updatePassword"}
-            value="パスワードを変更する場合はこちら"
-          />
-          <ForgotPasswordButton logout={true} />
-        </div>
-
-        {uStatus === "loading" ? (
-          <p>Loading...</p>
-        ) : permission === null ? (
-          <p>あなたに権限はありません。</p>
-        ) : (
+      {uStatus === "loading" && permission ? (
+        <LoadingComponent />
+      ) : permission === null ? (
+        <p>あなたに権限はありません。</p>
+      ) : (
+        <div className="mx-4">
+          <div className="flex justify-between my-4 ">
+            <RouterButton link={"/dashboard"} value="一覧画面へ戻る" />
+            <RouterButton
+              link={"/userProfile/updatePassword"}
+              value="パスワードを変更する場合はこちら"
+            />
+            <ForgotPasswordButton logout={true} />
+          </div>
           <UpdateInformationForm
             onSubmitUserInformation={handleUpdateUserInformation}
             node={Object(editUser)}
           />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

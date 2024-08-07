@@ -582,12 +582,14 @@ const usersSlice = createSlice({
 
     builder.addCase(createStartTime.fulfilled, (state, action) => {
       state.status = "success";
-      state.message = "出勤しました！今日も一日頑張りましょう！";
+      state.message =
+        action.payload.message || "出勤しました！今日も一日頑張りましょう！";
     });
 
     builder.addCase(createEndTime.fulfilled, (state, action) => {
       state.status = "success";
       state.message =
+        action.payload.message ||
         "退勤しました！今日も1日お疲れ様でした！ゆっくりお休み下さい！";
     });
 

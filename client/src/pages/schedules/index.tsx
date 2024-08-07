@@ -54,6 +54,7 @@ import { UserState } from "../../slices/auth/userSlice";
 import { AppDispatch } from "../../redux/store";
 import { renderError } from "../../api_backend/errorHandler";
 import { ScheduleModalNodes } from "../../types/interface";
+import LoadingComponent from "../../components/loading/Loading";
 
 const Schedules: React.FC = () => {
   dayjs.locale("ja");
@@ -305,8 +306,8 @@ const Schedules: React.FC = () => {
       {sError && (
         <BasicAlerts type="error" message={sError} space={1} padding={0.6} />
       )}
-      {sStatus === "loading" ? (
-        <p>loading...</p>
+      {sStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

@@ -17,6 +17,7 @@ import { AppDispatch } from "../../../redux/store";
 import { renderError } from "../../../api_backend/errorHandler";
 import { PermissionsState } from "../../../slices/auth/permissionSlice";
 import { permissionStore } from "../../../hooks/authSelector";
+import LoadingComponent from "@/components/loading/Loading";
 
 const CustomersCreate = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -45,8 +46,8 @@ const CustomersCreate = () => {
       {cError && (
         <BasicAlerts type="error" message={cError} space={1} padding={1} />
       )}
-      {cusStatus === "loading" ? (
-        <p>Loading...</p>
+      {cusStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

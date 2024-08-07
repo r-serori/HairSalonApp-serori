@@ -31,6 +31,8 @@ const BasicAlerts: React.FC<BasicAlertsProps> = ({
           fontSize: `${size}`,
           "& .MuiAlert-icon": {
             // アイコンのスタイルを設定
+            marginTop: "0.2rem",
+            marginLeft: "0.5rem",
             fontSize: iconSize,
           },
         }}

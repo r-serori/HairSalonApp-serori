@@ -15,6 +15,7 @@ import RouterButton from "../../components/elements/button/RouterButton";
 import { AppDispatch } from "../../redux/store";
 import { renderError } from "../../api_backend/errorHandler";
 import { PermissionsState } from "../../slices/auth/permissionSlice";
+import LoadingComponent from "../../components/loading/Loading";
 
 const UpdatePasswordPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -63,8 +64,8 @@ const UpdatePasswordPage: React.FC = () => {
         />
       )}
 
-      {uStatus === "loading" ? (
-        <p>Loading...</p>
+      {uStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

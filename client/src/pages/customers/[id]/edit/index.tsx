@@ -29,6 +29,7 @@ import { Option_customersState } from "../../../../slices/middleTable/customers/
 import { Merchandise_customersState } from "../../../../slices/middleTable/customers/merchandise_customersSlice";
 import { Hairstyle_customersState } from "../../../../slices/middleTable/customers/hairstyle_customersSlice";
 import { Customer_usersState } from "../../../../slices/middleTable/customers/customer_usersSlice";
+import LoadingComponent from "../../../../components/loading/Loading";
 
 const CustomersEdit: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -127,8 +128,8 @@ const CustomersEdit: React.FC = () => {
       {cError && (
         <BasicAlerts type="error" message={cError} space={1} padding={1} />
       )}
-      {cStatus === "loading" ? (
-        <p>Loading...</p>
+      {cStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

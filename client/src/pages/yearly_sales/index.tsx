@@ -22,6 +22,7 @@ import _ from "lodash";
 import { AppDispatch } from "../../redux/store";
 import { renderError } from "../../api_backend/errorHandler";
 import { NodesProps, SearchItems, THeaderItems } from "../../types/interface";
+import LoadingComponent from "../../components/loading/Loading";
 
 const Yearly_sales: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -90,8 +91,8 @@ const Yearly_sales: React.FC = () => {
         <BasicAlerts type="error" message={ysError} space={1} padding={0.6} />
       )}
 
-      {ysStatus === "loading" || !nodes ? (
-        <p>Loading...</p>
+      {(ysStatus === "loading" || !nodes) && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

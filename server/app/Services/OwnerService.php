@@ -70,7 +70,9 @@ class OwnerService
       ]);
 
       if ($validator->fails()) {
-        throw new HttpException(403, '権限がありません');
+        return response()->json([
+          "message" => "入力内容が正しくありません",
+        ], 400);
       }
 
       $validatedData = $validator->validate();
@@ -91,7 +93,7 @@ class OwnerService
       $owner = Owner::find($ownerId);
 
       if (empty($owner)) {
-        throw new HttpException(404, 'オーナーが見つかりません');
+        abort(404, 'オーナーが見つかりません');
       }
 
       $owner->delete();

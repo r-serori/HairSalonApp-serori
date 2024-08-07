@@ -386,7 +386,9 @@ const ComponentTable: React.FC<ComponentTableProps> = ({
                                   : `${propValue} + ${propName} + ${node.id}+ ${index} + end`
                               }
                               src={
-                                propValue === "111222"
+                                propValue === "111111"
+                                  ? "https://dummyimage.com/320x240/000/fff&text=編集依頼"
+                                  : propValue === "111222"
                                   ? "https://dummyimage.com/320x240/000/fff&text=編集済み"
                                   : propValue &&
                                     propValue !== "111222" &&

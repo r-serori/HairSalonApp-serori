@@ -17,6 +17,7 @@ import { AppDispatch } from "../../../redux/store";
 import { renderError } from "../../../api_backend/errorHandler";
 import { PermissionsState } from "../../../slices/auth/permissionSlice";
 import { permissionStore } from "../../../hooks/authSelector";
+import LoadingComponent from "@/components/loading/Loading";
 
 const HairstyleCreate = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -46,8 +47,8 @@ const HairstyleCreate = () => {
       {hError && (
         <BasicAlerts type="error" message={hError} space={1} padding={1} />
       )}
-      {hStatus === "loading" ? (
-        <p>Loading...</p>
+      {hStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

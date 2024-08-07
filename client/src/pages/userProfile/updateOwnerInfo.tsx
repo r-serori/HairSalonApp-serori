@@ -22,6 +22,7 @@ import {
 } from "../../slices/auth/ownerSlice";
 import AuthOwnerForm from "../../components/elements/form/auth/AuthOwnerForm";
 import { changeMessage } from "../../slices/auth/userSlice";
+import LoadingComponent from "../../components/loading/Loading";
 
 const UpdateOwnerInformationPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -85,19 +86,18 @@ const UpdateOwnerInformationPage: React.FC = () => {
         />
       )}
 
-      <div className="mx-4">
-        <div className="my-4 ">
-          <RouterButton link={"/dashboard"} value="一覧画面へ戻る" />
-        </div>
-
-        {oStatus === "loading" || !owner ? (
-          <p>Loading...</p>
-        ) : permission === null ? (
-          <p>あなたに権限はありません。</p>
-        ) : (
+      {(oStatus === "loading" || !owner) && permission ? (
+        <LoadingComponent />
+      ) : permission === null ? (
+        <p>あなたに権限はありません。</p>
+      ) : (
+        <div className="mx-4">
+          <div className="my-4 ">
+            <RouterButton link={"/dashboard"} value="一覧画面へ戻る" />
+          </div>
           <AuthOwnerForm node={owner} onSubmit={handleUpdateOwnerInformation} />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

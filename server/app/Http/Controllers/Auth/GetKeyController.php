@@ -22,7 +22,7 @@ class GetKeyController extends BaseController
         'roleKey' => env('REACT_APP_ENCRYPTION_KEY'),
       ]);
     } catch (\Exception $e) {
-      Log::error($e->getMessage());
+      // Log::error($e->getMessage());
       return $this->responseMan([
         'message' => 'エラーが発生しました。もう一度やり直してください！',
       ], 500);

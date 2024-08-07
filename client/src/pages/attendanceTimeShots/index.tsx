@@ -29,6 +29,7 @@ import {
   SearchItems,
   THeaderItems,
 } from "../../types/interface";
+import LoadingComponent from "../../components/loading/Loading";
 
 const AttendanceTimeShots = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -119,8 +120,9 @@ const AttendanceTimeShots = () => {
         )}
       </div>
       <div className="my-4 mx-4">
-        {uStatus === "loading" || atStatus === "loading" || !nodes ? (
-          <p>Loading...</p>
+        {(uStatus === "loading" || atStatus === "loading" || !nodes) &&
+        permission ? (
+          <LoadingComponent />
         ) : permission === null ? (
           <p>あなたに権限はありません。</p>
         ) : (

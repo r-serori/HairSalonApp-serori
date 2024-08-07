@@ -71,13 +71,15 @@ Route::get('/search/{zipCode}', function ($code) {
 });
 
 Route::post('/register', [RegisteredUserController::class, 'store']);
-Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-Route::post('/forgotPassword', [PasswordResetLinkController::class, 'store']);
-Route::post('/resetPassword', [ResetUserPassword::class, 'resetPassword']);
-
-
 Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
     ->middleware('signed')->name('verification.verifyEmail');
+
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+
+Route::post('/forgotPassword', [PasswordResetLinkController::class, 'store']);
+Route::post('/resetPassword', [ResetUserPassword::class, 'resetPassword'])->name('password.resetMan');
+
+
 Route::get('/updateInfo/{id}/{hash}', [UpdateUserInfoController::class, 'updateInfoVerifyEmail'])
     ->middleware('signed')->name('verification.updateInfo');
 

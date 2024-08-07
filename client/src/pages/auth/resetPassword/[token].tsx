@@ -11,6 +11,7 @@ import {
 } from "../../../hooks/authSelector";
 import { renderError } from "../../../api_backend/errorHandler";
 import { AppDispatch } from "../../../redux/store";
+import LoadingComponent from "../../../components/loading/Loading";
 
 const ResetPasswordPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -58,7 +59,7 @@ const ResetPasswordPage: React.FC = () => {
       )}
 
       {uStatus === "loading" ? (
-        <p>Loading...</p>
+        <LoadingComponent />
       ) : (
         <ResetPasswordForm onSubmitResetPassword={handleResetPassword} />
       )}

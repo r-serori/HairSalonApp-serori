@@ -16,20 +16,18 @@ interface ButtonModalProps {
 const ButtonModal: React.FC<ButtonModalProps> = ({
   showButtonModal,
   setShowButtonModal,
-  isCustomer,
   setIsCustomer,
   setShowModal,
-  whoIsEvent,
 }) => {
   const style = {
     position: "absolute" as "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50% )",
-    width: "300px", // 幅の固定値を削除
-    maxWidth: "400px", // 最大幅を設定
-    height: "200px", // 高さの固定値を削除し
-    maxHeight: "300px", // 最大高さを設定
+    width: "100%", // 幅の固定値を削除
+    height: "100%", // 高さの固定値を削除し
+    maxWidth: "25vw",
+    maxHeight: "25vh",
     overflowY: "hidden", // 縦方向のスクロールを可能にする
     backgroundColor: "white", // 背景色の指定を修正
     border: "2px solid #000",
@@ -54,10 +52,10 @@ const ButtonModal: React.FC<ButtonModalProps> = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="rounded-xl">
-          <div className="text-blue-600 text-2xl text-center">
+          <div className="text-blue-600 text-2xl text-center mt-4">
             どちらの予約ですか？
           </div>
-          <div className="flex justify-between items-center h-full">
+          <div className="flex justify-between items-center mt-12">
             <PrimaryButton
               value="顧客の予約"
               onChanger={() => {

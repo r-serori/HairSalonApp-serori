@@ -23,6 +23,7 @@ import BasicAlerts from "../../../../components/elements/alert/BasicAlert";
 import { UserState } from "../../../../slices/auth/userSlice";
 import { renderError } from "../../../../api_backend/errorHandler";
 import { AppDispatch } from "../../../../redux/store";
+import LoadingComponent from "../../../../components/loading/Loading";
 
 const AttenDanceEdit: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -106,8 +107,8 @@ const AttenDanceEdit: React.FC = () => {
         <BasicAlerts message={uError} type={"error"} padding={1} space={1} />
       )}
 
-      {uStatus === "loading" ? (
-        <p>loading...</p>
+      {uStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

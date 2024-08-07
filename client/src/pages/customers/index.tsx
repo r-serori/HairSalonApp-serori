@@ -42,12 +42,8 @@ import { PermissionsState } from "../../slices/auth/permissionSlice";
 import { UserState } from "../../slices/auth/userSlice";
 import { AppDispatch } from "../../redux/store";
 import { renderError } from "../../api_backend/errorHandler";
-import {
-  CustomerNodes,
-  NodesProps,
-  ScheduleModalNodes,
-  SearchItems,
-} from "../../types/interface";
+import { CustomerNodes, NodesProps, SearchItems } from "../../types/interface";
+import LoadingComponent from "../../components/loading/Loading";
 
 const Customers: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -312,8 +308,8 @@ const Customers: React.FC = () => {
           <BasicAlerts type="error" message={cError} space={1} padding={0.6} />
         )}
       </div>
-      {cStatus === "loading" || !nodes ? (
-        <p>Loading...</p>
+      {(cStatus === "loading" || !nodes) && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

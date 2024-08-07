@@ -88,7 +88,9 @@ class CourseService
             ]);
 
             if ($validator->fails()) {
-                return response()->json(['message' => '入力内容を確認してください！'], 400);
+                return response()->json([
+                    "message" => "入力内容が正しくありません",
+                ], 400);
             }
 
             $validatedData = $validator->validate();

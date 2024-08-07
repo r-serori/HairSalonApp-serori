@@ -16,7 +16,6 @@ use App\Services\HasRole;
 use App\Services\GetImportantIdService;
 use App\Services\OwnerService;
 use Illuminate\Support\Facades\Log;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class UserPostController extends BaseController
 {
@@ -50,10 +49,6 @@ class UserPostController extends BaseController
                 DB::rollBack();
                 return $this->serverErrorResponseWoman();
             }
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -115,10 +110,6 @@ class UserPostController extends BaseController
                 'message' => 'スタッフ用ユーザー登録に成功しました!',
                 'responseUser' => $responseUser,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -141,10 +132,6 @@ class UserPostController extends BaseController
                     'message' => 'オーナー情報の更新に成功しました!',
                     'owner' => $owner,
                 ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -196,10 +183,6 @@ class UserPostController extends BaseController
                 DB::rollBack();
                 return $this->serverErrorResponseWoman();
             }
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();

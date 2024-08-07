@@ -21,6 +21,11 @@ const AttendanceTimeResult: React.FC<AttendanceTimeResultProps> = ({
       if (node.start_time === null || node.end_time === null) return 0;
       const startTime = dayjs(node.start_time).tz("Asia/Tokyo");
       const endTime = dayjs(node.end_time).tz("Asia/Tokyo");
+      if (
+        startTime.format("YYYY") === "9999" ||
+        endTime.format("YYYY") === "9999"
+      )
+        return 0;
       const attendanceTime = endTime.diff(startTime, "minute");
       return attendanceTime;
     })

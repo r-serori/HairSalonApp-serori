@@ -66,12 +66,9 @@ class AuthenticatedSessionController extends BaseController
 
                     if ($user->email_verified_at === null) {
                         DB::rollBack();
-                        return response()->json([
+                        $this->responseMan([
                             'message' => 'メール認証が完了していません。メール認証を行ってください。',
-                        ], 433, [], JSON_UNESCAPED_UNICODE)->header(
-                            'Content-Type',
-                            'application/json; charset=UTF-8'
-                        );
+                        ], 400);
                     }
 
                     $token = $user->createToken('HairSalonAppSerori')->plainTextToken;
@@ -114,7 +111,7 @@ class AuthenticatedSessionController extends BaseController
                     }
                 } catch (\Exception $e) {
                     DB::rollBack();
-                    Log::error($e->getMessage());
+                    // Log::error($e->getMessage());
                     return response()->json([
                         'message' => 'ログインに失敗しました。もう一度やり直してください。',
                     ], 500);
@@ -124,11 +121,10 @@ class AuthenticatedSessionController extends BaseController
             DB::rollBack();
             return response()->json([
                 'message' => '認証に失敗しました。メールアドレスまたはパスワードが正しくありません。',
-                'errors' => $e->errors(),
-            ], 422);
+            ], 400);
         } catch (\Exception $e) {
             DB::rollBack();
-            Log::error($e->getMessage());
+            // Log::error($e->getMessage());
             return response()->json([
                 'message' => 'ログインに失敗しました。もう一度やり直してください。',
             ], 500);
@@ -188,7 +184,7 @@ class AuthenticatedSessionController extends BaseController
             ]);
         } catch (\Exception $e) {
             DB::rollBack();
-            Log::error($e->getMessage());
+            // Log::error($e->getMessage());
             return $this->responseMan([
                 'message' => 'ログアウトに失敗しました。もう一度やり直してください。',
             ], 500);

@@ -16,6 +16,7 @@ import { AppDispatch } from "../../../../redux/store";
 import { renderError } from "../../../../api_backend/errorHandler";
 import { PermissionsState } from "../../../../slices/auth/permissionSlice";
 import { permissionStore } from "../../../../hooks/authSelector";
+import LoadingComponent from "@/components/loading/Loading";
 
 const DailySalesEdit: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -59,8 +60,8 @@ const DailySalesEdit: React.FC = () => {
       {dsError && (
         <BasicAlerts type="error" message={dsError} space={1} padding={1} />
       )}
-      {dsStatus === "loading" ? (
-        <p>Loading...</p>
+      {dsStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

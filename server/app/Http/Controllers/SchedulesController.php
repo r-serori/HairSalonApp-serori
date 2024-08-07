@@ -18,7 +18,6 @@ use App\Services\MerchandiseService;
 use App\Services\HairstyleService;
 use App\Services\ScheduleService;
 use Illuminate\Support\Facades\Log;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class SchedulesController extends BaseController
 {
@@ -150,10 +149,6 @@ class SchedulesController extends BaseController
                     'customer_users' => $userCustomer,
                 ]);
             }
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -240,10 +235,6 @@ class SchedulesController extends BaseController
                 'hairstyle_customers' => $hairstyleCustomer,
                 'customer_users' => $userCustomer,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -267,10 +258,6 @@ class SchedulesController extends BaseController
             return $this->responseMan([
                 'schedule' => $schedule,
             ], 200);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -295,10 +282,6 @@ class SchedulesController extends BaseController
             return $this->responseMan([
                 'schedule' => $schedule,
             ], 200);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -323,10 +306,6 @@ class SchedulesController extends BaseController
             return $this->responseMan([
                 "deleteId" => $request->id
             ], 200);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -394,10 +373,6 @@ class SchedulesController extends BaseController
                 "hairstyle_customers" => $hairstyleCustomer,
                 "customer_users" => $userCustomer,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -466,10 +441,6 @@ class SchedulesController extends BaseController
                 "hairstyle_customers" => $hairstyleCustomer,
                 "customer_users" => $userCustomer,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -543,10 +514,6 @@ class SchedulesController extends BaseController
                 "hairstyle_customers" => $hairstyleCustomer,
                 "customer_users" => $userCustomer,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -616,10 +583,6 @@ class SchedulesController extends BaseController
                 "hairstyle_customers" => $hairstyleCustomer,
                 "customer_users" => $userCustomer,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();

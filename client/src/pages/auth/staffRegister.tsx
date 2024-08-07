@@ -15,6 +15,7 @@ import { ownerPermission } from "../../hooks/useMethod";
 import { PermissionsState } from "../../slices/auth/permissionSlice";
 import { renderError } from "../../api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
+import LoadingComponent from "../../components/loading/Loading";
 
 const StaffRegisterPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -59,8 +60,8 @@ const StaffRegisterPage: React.FC = () => {
       <div className="mt-4 ml-4">
         <RouterButton link={"/attendances"} value="スタッフ画面に戻る" />
       </div>
-      {uStatus === "loading" ? (
-        <p>Loading...</p>
+      {uStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

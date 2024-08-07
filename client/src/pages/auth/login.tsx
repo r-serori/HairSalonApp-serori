@@ -4,9 +4,9 @@ import { useRouter, NextRouter } from "next/router";
 import { login } from "../../slices/auth/userSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import { isLogin } from "../../slices/auth/isLoginSlice";
-import { clearError, changeMessage } from "../../slices/auth/userSlice";
+import { clearError } from "../../slices/auth/userSlice";
 import RouterButton from "../../components/elements/button/RouterButton";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   userStatus,
   userMessage,
@@ -25,10 +25,13 @@ import ForgotPasswordButton from "../../components/elements/button/ForgotPasswor
 import { renderError } from "../../api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import { KeyState } from "../../slices/auth/keySlice";
+import { set } from "lodash";
+import LoadingComponent from "@/components/loading/Loading";
 
 const LoginPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const router: NextRouter = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
 
   const uStatus: string = useSelector(userStatus);
   const uMessage: string | null = useSelector(userMessage);
@@ -45,6 +48,7 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = async (formData: { email: string; password: string }) => {
     try {
+      setLoading(true);
       const response: any = await dispatch(login(formData) as any);
       if (response.meta.requestStatus === "fulfilled") {
         console.log("ログイン成功");
@@ -106,8 +110,8 @@ const LoginPage: React.FC = () => {
         />
       )}
 
-      {uStatus === "loading" ? (
-        <p>Loading...</p>
+      {uStatus === "loading" || loading ? (
+        <LoadingComponent />
       ) : (
         <div>
           <div className="mt-4 ml-4 flex justify-between">

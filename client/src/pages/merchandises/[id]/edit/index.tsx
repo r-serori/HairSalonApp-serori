@@ -18,6 +18,7 @@ import { AppDispatch } from "../../../../redux/store";
 import { renderError } from "../../../../api_backend/errorHandler";
 import { PermissionsState } from "../../../../slices/auth/permissionSlice";
 import { permissionStore } from "../../../../hooks/authSelector";
+import LoadingComponent from "../../../../components/loading/Loading";
 
 const MerchandiseEdit: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -58,8 +59,8 @@ const MerchandiseEdit: React.FC = () => {
       {mError && (
         <BasicAlerts type="error" message={mError} space={1} padding={1} />
       )}
-      {mStatus === "loading" ? (
-        <p>Loading...</p>
+      {mStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

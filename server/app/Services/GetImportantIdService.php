@@ -29,7 +29,7 @@ class GetImportantIdService
             } else {
                 return $staff->owner_id;
             }
-        } catch (HttpException $e) {
+        } catch (\Exception $e) {
             abort(500, 'エラーが発生しました。');
         }
     }

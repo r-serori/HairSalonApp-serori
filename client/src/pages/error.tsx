@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { Draggable } from "gsap/dist/Draggable";
 import ContentCutIcon from "@mui/icons-material/ContentCut";
 import StorefrontIcon from "@mui/icons-material/Storefront";
-import LogoutButton from "../components/elements/button/logoutButton";
 import RouterButton from "../components/elements/button/RouterButton";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
@@ -62,11 +61,8 @@ const ErrorPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-between container h-full mx-auto overflow-hidden ">
-      <div className="flex justify-end py-4 mr-4 ">
-        <LogoutButton className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800" />
-      </div>
       <div>
-        <h1 className="mt-16 lg:text-4xl text-3xl  text-red-500 ">
+        <h1 className="mt-36 lg:text-4xl text-3xl  text-red-500 ">
           {getMessage()}
         </h1>
       </div>

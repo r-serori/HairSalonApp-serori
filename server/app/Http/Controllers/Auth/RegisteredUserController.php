@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
 use App\Actions\Fortify\Contracts\CreatesNewUsers;
 use Illuminate\Http\JsonResponse;
-use Laravel\Fortify\Contracts\RegisterViewResponse;
 use Laravel\Fortify\Fortify;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -82,7 +80,7 @@ class RegisteredUserController extends BaseController
       ]);
     } catch (\Exception $e) {
       DB::rollBack();
-      Log::error($e->getMessage());
+      // Log::error($e->getMessage());
 
       if (strpos($e->getMessage(), 'メールアドレスの値は既に存在') !== false) {
         return $this->responseMan([

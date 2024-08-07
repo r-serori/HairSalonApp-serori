@@ -14,6 +14,7 @@ import { renderError } from "../../../api_backend/errorHandler";
 import { AppDispatch } from "../../../redux/store";
 import { PermissionsState } from "../../../slices/auth/permissionSlice";
 import { permissionStore } from "../../../hooks/authSelector";
+import LoadingComponent from "@/components/loading/Loading";
 
 const CourseCreate: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -48,8 +49,8 @@ const CourseCreate: React.FC = () => {
       {cError && (
         <BasicAlerts type="error" message={cError} space={1} padding={1} />
       )}
-      {cStatus === "loading" ? (
-        <p>Loading...</p>
+      {cStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

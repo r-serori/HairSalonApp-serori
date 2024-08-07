@@ -4,7 +4,7 @@ import AuthRegisterForm from "../../components/elements/form/auth/AuthRegisterFo
 import { register } from "../../slices/auth/userSlice";
 import BasicAlerts from "../../components/elements/alert/BasicAlert";
 import RouterButton from "../../components/elements/button/RouterButton";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   userStatus,
   userError,
@@ -16,10 +16,13 @@ import { pushUserId } from "../../hooks/pushLocalStorage";
 import { renderError } from "../../api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import { KeyState } from "../../slices/auth/keySlice";
+import LoadingComponent from "../../components/loading/Loading";
+import { set } from "lodash";
 
 const RegisterPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const router: NextRouter = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
 
   const uStatus: string = useSelector(userStatus);
 
@@ -33,7 +36,7 @@ const RegisterPage: React.FC = () => {
     if (isLogin) {
       allLogout(dispatch);
     }
-  }, []); // useEffectの依存配列を空にすることで、初回のみ実行されるようにする
+  }, []);
 
   const handleRegister = async (formData: {
     name: string;
@@ -45,6 +48,7 @@ const RegisterPage: React.FC = () => {
     password_confirmation: string;
   }) => {
     try {
+      setLoading(true);
       const response: any = await dispatch(register(formData) as any);
       if (response.meta.requestStatus === "fulfilled") {
         const token: string | undefined = response.payload.token;
@@ -72,6 +76,8 @@ const RegisterPage: React.FC = () => {
         if (re === null) throw new Error("register処理に失敗しました");
       }
     } catch (error) {
+      setLoading(false);
+      localStorage.removeItem("registerNow");
       return;
     }
   };
@@ -86,8 +92,8 @@ const RegisterPage: React.FC = () => {
         <BasicAlerts type="error" message={uError} space={1} padding={0.6} />
       )}
 
-      {uStatus === "loading" ? (
-        <p>loading...</p>
+      {uStatus === "loading" || loading ? (
+        <LoadingComponent />
       ) : (
         <div>
           <div className="mt-4 ml-4">

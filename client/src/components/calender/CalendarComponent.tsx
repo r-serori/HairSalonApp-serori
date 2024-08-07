@@ -23,6 +23,7 @@ import { HairstyleState } from "../../slices/hairstyles/hairstyleSlice";
 import { UserState } from "../../slices/auth/userSlice";
 import { PermissionsState } from "../../slices/auth/permissionSlice";
 import { ScheduleModalNodes } from "../../types/interface";
+import LoadingComponent from "../loading/Loading";
 
 export interface CalendarEvent {
   id: number;
@@ -144,7 +145,7 @@ const MyCalendar: React.FC<OpenCalendarProps> = ({
   return (
     <>
       {cStatus === "loading" ? (
-        <p>loading...</p>
+        <LoadingComponent />
       ) : (
         // ローディングが終わったらカレンダーを表示する
 

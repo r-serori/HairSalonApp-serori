@@ -122,8 +122,10 @@ class AttendanceTimeService
         }
       } else {
         $yesterday = Carbon::parse($time)->subDay()->format('Y-m-d');
+        //昨日の出勤時間が登録されているかどうか
         $existYesterdayStartTime = AttendanceTime::where('user_id', $user_id)->whereDate('start_time', $yesterday)->latest()->first();
 
+        //昨日の退勤時間が登録されているかどうか
         $existYesterdayEndTime = AttendanceTime::where('user_id', $user_id)->whereDate('end_time', $yesterday)->latest()->first();
         if (empty($existYesterdayEndTime) && !empty($existYesterdayStartTime)) {
           return true;
@@ -156,17 +158,21 @@ class AttendanceTimeService
     }
   }
 
-  private function attendanceTimeStore(array $data, bool $startOrEnd): AttendanceTime
+  private function attendanceTimeStore(array $data, bool $startOrEnd, bool $yesterdayIsNotEnd): AttendanceTime
   {
     try {
       if ($startOrEnd) {
         $attendanceTime = new AttendanceTime();
         return $this->attendanceTimePost($attendanceTime, $data, true);
       } else {
-        $today = Carbon::now()->format('Y-m-d');
+        if ($yesterdayIsNotEnd) {
+          $day = Carbon::now()->subDay()->format('Y-m-d');
+        } else {
+          $day = Carbon::now()->format('Y-m-d');
+        }
 
         $attendanceTime = AttendanceTime::where('user_id', $data['user_id'])
-          ->whereDate('start_time', $today)
+          ->whereDate('start_time', $day)
           ->latest()
           ->first();
 
@@ -186,7 +192,7 @@ class AttendanceTimeService
     try {
       $attendanceTime = AttendanceTime::find($attendanceTimeId);
       if (empty($attendanceTime)) {
-        abort(404, '在庫データが見つかりません');
+        abort(404, '勤怠時間データが見つかりません');
       }
       if ($startOrEnd) {
         Storage::disk('public')->delete($attendanceTime->start_photo_path);
@@ -225,7 +231,9 @@ class AttendanceTimeService
       }
 
       if ($validator->fails()) {
-        return response()->json(['message' => '入力内容を確認してください！'], 400);
+        return response()->json([
+          "message" => "入力内容が正しくありません",
+        ], 400);
       }
 
       $validatedData = $validator->validate();
@@ -236,20 +244,23 @@ class AttendanceTimeService
           if (!$isExist) {
             $fileName =  $this->createBase64Image((object) $validatedData, true);
             $validatedData['start_photo_path'] = $fileName;
-            return $this->attendanceTimeStore($validatedData, true);
+            return $this->attendanceTimeStore($validatedData, true, false);
           } else {
-            return response()->json(['message' => 'すでに出勤時間が登録されています！'], 400);
+            return response()->json([
+              "message" => "今日の出勤時間が既に登録されています！",
+            ], 400);
           }
         } else {
           $isYesterdayEndTimeOnlyEmpty = $this->existAttendanceTime($validatedData['end_time'], false, $validatedData['user_id']);
           if (!$isYesterdayEndTimeOnlyEmpty) {
             $fileName =  $this->createBase64Image((object) $validatedData, false);
             $validatedData['end_photo_path'] = $fileName;
-            return $this->attendanceTimeStore($validatedData, false);
+            return $this->attendanceTimeStore($validatedData, false, false);
           } else {
-            $validatedData['end_time'] = '9999-12-31 23:59:59';
-            $validatedData['end_photo_path'] = '111222';
-            $attendanceTime = $this->attendanceTimeStore($validatedData, false);
+            $yesterday = Carbon::now()->subDay()->format('Y-m-d 23:59:59');
+            $validatedData['end_time'] = $yesterday;
+            $validatedData['end_photo_path'] = '111111';
+            $attendanceTime = $this->attendanceTimeStore($validatedData, false, true);
             return response()->json([
               "message" => "昨日の退勤時間が登録されていませんので、後ほどオーナーまたは、マネージャーに報告してください！、今は出勤ボタンを押して、出勤してください！",
               "attendanceTime" => $attendanceTime,
@@ -265,6 +276,7 @@ class AttendanceTimeService
         }
       }
     } catch (\Exception $e) {
+      // Log::error($e->getMessage());
       abort(500, 'エラーが発生しました');
     }
   }

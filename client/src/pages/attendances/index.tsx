@@ -25,6 +25,7 @@ import {
   SearchItems,
   THeaderItems,
 } from "../../types/interface";
+import LoadingComponent from "../../components/loading/Loading";
 
 const Attendances = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -118,8 +119,8 @@ const Attendances = () => {
       {uError && (
         <BasicAlerts type="error" message={uError} space={1} padding={0.6} />
       )}
-      {uStatus === "loading" || !nodes ? (
-        <p>loading...</p>
+      {(uStatus === "loading" || !nodes) && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

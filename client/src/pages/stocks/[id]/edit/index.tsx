@@ -15,6 +15,7 @@ import { AppDispatch } from "../../../../redux/store";
 import { renderError } from "../../../../api_backend/errorHandler";
 import { PermissionsState } from "../../../../slices/auth/permissionSlice";
 import { permissionStore } from "../../../../hooks/authSelector";
+import LoadingComponent from "@/components/loading/Loading";
 
 const StockEdit: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -60,8 +61,8 @@ const StockEdit: React.FC = () => {
       {sError && (
         <BasicAlerts type="error" message={sError} space={1} padding={1} />
       )}
-      {sStatus === "loading" ? (
-        <p>Loading...</p>
+      {sStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 use App\Services\HasRole;
 use App\Services\GetImportantIdService;
 use App\Services\CourseService;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class CoursesController extends BaseController
 {
@@ -43,10 +42,6 @@ class CoursesController extends BaseController
                     'courses' => $courses
                 ]);
             }
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -70,10 +65,6 @@ class CoursesController extends BaseController
             return $this->responseMan([
                 'course' => $course
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -99,10 +90,6 @@ class CoursesController extends BaseController
             return $this->responseMan([
                 'course' => $course,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -127,10 +114,6 @@ class CoursesController extends BaseController
             return $this->responseMan([
                 'deleteId' => $request->id,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();

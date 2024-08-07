@@ -22,6 +22,7 @@ import _ from "lodash";
 import { AppDispatch } from "../../redux/store";
 import { renderError } from "../../api_backend/errorHandler";
 import { NodesProps, SearchItems, THeaderItems } from "../../types/interface";
+import LoadingComponent from "../../components/loading/Loading";
 
 const Merchandises = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -94,8 +95,8 @@ const Merchandises = () => {
       {mError && (
         <BasicAlerts type="error" message={mError} space={1} padding={0.6} />
       )}
-      {mStatus === "loading" || !nodes ? (
-        <p>Loading...</p>
+      {(mStatus === "loading" || !nodes) && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

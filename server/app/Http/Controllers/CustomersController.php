@@ -15,7 +15,6 @@ use App\Services\MiddleTableService;
 use App\Services\OptionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 
 class CustomersController extends BaseController
@@ -110,10 +109,6 @@ class CustomersController extends BaseController
                     'customer_users' => $userCustomer,
                 ]);
             }
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -155,10 +150,6 @@ class CustomersController extends BaseController
                     "hairstyle_customers" => $hairstyleCustomer,
                     "customer_users" => $userCustomer,
                 ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -201,10 +192,6 @@ class CustomersController extends BaseController
                     "hairstyle_customers" => $hairstyleCustomer,
                     "customer_users" => $userCustomer,
                 ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -234,10 +221,6 @@ class CustomersController extends BaseController
             return $this->responseMan([
                 "deleteId"  => $request->id, "message" => "顧客を削除しました！ "
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();

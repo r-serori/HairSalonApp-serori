@@ -19,6 +19,7 @@ import _ from "lodash";
 import { AppDispatch } from "../../redux/store";
 import { renderError } from "../../api_backend/errorHandler";
 import { NodesProps, SearchItems, THeaderItems } from "../../types/interface";
+import LoadingComponent from "../../components/loading/Loading";
 
 const Options: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -95,8 +96,8 @@ const Options: React.FC = () => {
       {opError && (
         <BasicAlerts type="error" message={opError} space={1} padding={0.6} />
       )}
-      {opStatus === "loading" || !nodes ? (
-        <p>Loading...</p>
+      {(opStatus === "loading" || !nodes) && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

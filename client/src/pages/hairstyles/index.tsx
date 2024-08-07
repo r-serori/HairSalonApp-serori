@@ -22,6 +22,7 @@ import _ from "lodash";
 import { AppDispatch } from "../../redux/store";
 import { renderError } from "../../api_backend/errorHandler";
 import { NodesProps, SearchItems } from "../../types/interface";
+import LoadingComponent from "../../components/loading/Loading";
 
 const Hairstyles: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -88,8 +89,8 @@ const Hairstyles: React.FC = () => {
       {hError && (
         <BasicAlerts type="error" message={hError} space={1} padding={0.6} />
       )}
-      {hStatus === "loading" || !nodes ? (
-        <p>Loading...</p>
+      {(hStatus === "loading" || !nodes) && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

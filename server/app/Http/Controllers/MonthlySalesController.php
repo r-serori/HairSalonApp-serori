@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use App\Services\HasRole;
 use App\Services\GetImportantIdService;
 use App\Services\MonthlySaleService;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Http\JsonResponse;
 
 
 class MonthlySalesController extends BaseController
@@ -47,10 +47,6 @@ class MonthlySalesController extends BaseController
                     'message' => $currentYear . '年の月次売上データです！'
                 ]);
             }
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -79,10 +75,6 @@ class MonthlySalesController extends BaseController
                     'message' => $decodedYear . '年の月次売上データです！'
                 ]);
             }
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -101,16 +93,16 @@ class MonthlySalesController extends BaseController
 
             $monthly_sale = $this->monthlySaleService->monthlySaleValidateAndCreateOrUpdate($request->all(), $ownerId, true);
 
+            if ($monthly_sale instanceof JsonResponse) {
+                return $monthly_sale;
+            }
+
             $this->monthlySaleService->forgetCache($ownerId);
 
             DB::commit();
             return $this->responseMan([
                 "monthlySale" => $monthly_sale,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -136,10 +128,6 @@ class MonthlySalesController extends BaseController
             return $this->responseMan([
                 "monthlySale" => $monthly_sale,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -164,10 +152,6 @@ class MonthlySalesController extends BaseController
             return $this->responseMan([
                 "deleteId" => $request->id,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();

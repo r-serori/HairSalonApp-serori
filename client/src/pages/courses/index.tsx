@@ -19,6 +19,7 @@ import { PermissionsState } from "../../slices/auth/permissionSlice";
 import { renderError } from "../../api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import { NodesProps, SearchItems, THeaderItems } from "../../types/interface";
+import LoadingComponent from "../../components/loading/Loading";
 
 const Courses: React.FC = () => {
   const [tHeaderItems, setTHeaderItems] = useState<THeaderItems>([]);
@@ -109,8 +110,8 @@ const Courses: React.FC = () => {
       {cError && (
         <BasicAlerts type="error" message={cError} space={1} padding={0.6} />
       )}
-      {cStatus === "loading" || !nodes ? (
-        <p>Loading...</p>
+      {(cStatus === "loading" || !nodes) && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

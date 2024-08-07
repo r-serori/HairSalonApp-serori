@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use \Illuminate\Database\Eloquent\Collection;
 use Carbon\Carbon;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Http\JsonResponse;
 
 class DailySaleService
 {
@@ -61,13 +62,15 @@ class DailySaleService
     }
   }
 
-  private function dailySaleStore(array $data, int $ownerId): DailySale
+  private function dailySaleStore(array $data, int $ownerId): DailySale|JsonResponse
   {
     try {
       $existDailySale = DailySale::where('owner_id', $ownerId)->whereDate('date', $data['date'])->first();
 
       if ($existDailySale) {
-        throw new HttpException(400, 'その日の日次売上は既に存在しています！日次売上画面から編集をして数値を変更するか、削除してもう一度この画面から更新してください！');
+        return response()->json([
+          "message" => "その日の日次売上は既に存在しています！日次売上画面から編集をして数値を変更するか、削除してもう一度この画面から更新してください！",
+        ], 400);
       }
 
       $dailySale = new DailySale();
@@ -100,7 +103,7 @@ class DailySaleService
     array $data,
     int $dailySaleIdOrOwnerId,
     bool $createOrUpdate
-  ): DailySale {
+  ): DailySale | JsonResponse {
     try {
       $validator = Validator::make($data, [
         'date' => 'required|date_format:Y-m-d',
@@ -108,7 +111,9 @@ class DailySaleService
       ]);
 
       if ($validator->fails()) {
-        throw new HttpException(403, '入力内容が正しくありません');
+        return response()->json([
+          "message" => "入力内容が正しくありません",
+        ], 400);
       }
       $validatedDate = $validator->validate();
 

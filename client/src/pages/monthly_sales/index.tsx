@@ -23,6 +23,7 @@ import EasyModal from "../../components/modal/EasyModal";
 import { AppDispatch } from "../../redux/store";
 import { renderError } from "../../api_backend/errorHandler";
 import { NodesProps, SearchItems } from "../../types/interface";
+import LoadingComponent from "@/components/loading/Loading";
 
 const Monthly_sales: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -104,8 +105,8 @@ const Monthly_sales: React.FC = () => {
       {msError && (
         <BasicAlerts type="error" message={msError} space={1} padding={0.6} />
       )}
-      {msStatus === "loading" || !nodes ? (
-        <p>Loading...</p>
+      {(msStatus === "loading" || !nodes) && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

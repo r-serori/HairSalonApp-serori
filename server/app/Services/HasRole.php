@@ -19,7 +19,7 @@ class HasRole
         if ($user && $user->hasRole(Roles::$OWNER) || $user->hasRole(Roles::$MANAGER) || $user->hasRole(Roles::$STAFF)) {
             return $user;
         } else {
-            throw new HttpException(403, '権限がありません');
+            return response()->json(['message' => '権限がありません'], 403);
         }
     }
 
@@ -29,7 +29,7 @@ class HasRole
         if ($user && $user->hasRole(Roles::$OWNER) || $user->hasRole(Roles::$MANAGER)) {
             return $user;
         } else {
-            throw new HttpException(403, '権限がありません');
+            return response()->json(['message' => '権限がありません'], 403);
         }
     }
 
@@ -39,7 +39,7 @@ class HasRole
         if ($user && $user->hasRole(Roles::$OWNER)) {
             return $user;
         } else {
-            throw new HttpException(403, '権限がありません');
+            return response()->json(['message' => '権限がありません'], 403);
         }
     }
 }

@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Services\HasRole;
 use App\Services\GetImportantIdService;
+use Illuminate\Http\JsonResponse;
 use App\Services\DailySaleService;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class DailySalesController extends BaseController
 {
@@ -47,10 +47,6 @@ class DailySalesController extends BaseController
                     'message' => $currentYear . '年の日次売上データです！'
                 ]);
             }
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -80,10 +76,6 @@ class DailySalesController extends BaseController
                     'message' => $decodedYear . '年の日次売上データです！'
                 ]);
             }
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -106,16 +98,16 @@ class DailySalesController extends BaseController
                 true
             );
 
+            if ($daily_sale instanceof JsonResponse) {
+                return $daily_sale;
+            }
+
             $this->dailySaleService->forgetCache($ownerId);
 
             DB::commit();
             return $this->responseMan([
                 "dailySale" => $daily_sale,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -145,10 +137,6 @@ class DailySalesController extends BaseController
                 $this->responseMan([
                     "dailySale" => $daily_sale
                 ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();
@@ -173,10 +161,6 @@ class DailySalesController extends BaseController
             return $this->responseMan([
                 "deleteId" => $request->id,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            DB::rollBack();
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             DB::rollBack();

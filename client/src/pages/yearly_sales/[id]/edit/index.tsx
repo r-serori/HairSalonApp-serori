@@ -16,6 +16,7 @@ import { AppDispatch } from "../../../../redux/store";
 import { renderError } from "../../../../api_backend/errorHandler";
 import { PermissionsState } from "../../../../slices/auth/permissionSlice";
 import { permissionStore } from "../../../../hooks/authSelector";
+import LoadingComponent from "../../../../components/loading/Loading";
 
 const YearlySalesEdit: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -55,8 +56,8 @@ const YearlySalesEdit: React.FC = () => {
       {ysError && (
         <BasicAlerts type="error" message={ysError} space={1} padding={1} />
       )}
-      {ysStatus === "loading" ? (
-        <p>Loading...</p>
+      {ysStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

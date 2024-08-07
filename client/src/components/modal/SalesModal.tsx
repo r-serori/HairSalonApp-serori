@@ -14,10 +14,10 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  maxWidth: "80%",
-  maxHeight: "80%", // ブラウザの高さの80%に設定
-  width: "600px",
-  height: "600px", // ブラウザの高さの80%に設定
+  maxWidth: "50vh",
+  maxHeight: "50vh", // ブラウザの高さの80%に設定
+  width: "100%",
+  height: "100%", // ブラウザの高さの80%に設定
   overflowY: "auto", // 縦方向のスクロールを可能にする
   bgcolor: "background.paper",
   border: "2px solid #000",

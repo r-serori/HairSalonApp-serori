@@ -22,6 +22,7 @@ import _ from "lodash";
 import { AppDispatch } from "../../redux/store";
 import { renderError } from "../../api_backend/errorHandler";
 import { NodesProps, SearchItems, THeaderItems } from "../../types/interface";
+import LoadingComponent from "../../components/loading/Loading";
 
 const Stock_categories = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -92,8 +93,8 @@ const Stock_categories = () => {
       {scError && (
         <BasicAlerts type="error" message={scError} space={1} padding={0.6} />
       )}
-      {scStatus === "loading" ? (
-        <p>Loading...</p>
+      {scStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (

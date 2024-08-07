@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use \Illuminate\Database\Eloquent\Collection;
 use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class MonthlySaleService
@@ -62,13 +63,15 @@ class MonthlySaleService
     }
   }
 
-  private function monthlySaleStore(array $data, int $ownerId): MonthlySale
+  private function monthlySaleStore(array $data, int $ownerId): MonthlySale|JsonResponse
   {
     try {
       $existMonthlySale = MonthlySale::where('owner_id', $ownerId)->where('year_month', $data['year_month'])->first();
 
       if ($existMonthlySale) {
-        abort(400, 'その日の月次売上は既に存在しています！月次売上画面から編集をして数値を変更するか、削除してもう一度この画面から更新してください！');
+        return response()->json([
+          "message" => "その月の月次売上は既に存在しています！月次売上画面から編集をして数値を変更するか、削除してもう一度この画面から更新してください！",
+        ], 400);
       }
 
       $monthlySale = new MonthlySale();
@@ -101,7 +104,7 @@ class MonthlySaleService
     array $data,
     int $monthlySaleIdOrOwnerId,
     bool $createOrUpdate
-  ): MonthlySale {
+  ): MonthlySale | JsonResponse {
     try {
       $validator = Validator::make($data, [
         'year_month' => 'required|date_format:Y-m',
@@ -109,7 +112,9 @@ class MonthlySaleService
       ]);
 
       if ($validator->fails()) {
-        throw new HttpException(403, '入力内容が正しくありません');
+        return response()->json([
+          "message" => "入力内容が正しくありません",
+        ], 400);
       }
       $validatedDate = $validator->validate();
 

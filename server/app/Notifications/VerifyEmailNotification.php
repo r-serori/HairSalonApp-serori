@@ -52,7 +52,6 @@ class VerifyEmailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-
             ->subject('メールアドレスの確認')
             ->greeting('こんにちは！ ' . $this->user->name . 'さん!')
             ->line('ご登録ありがとうございます！Serori.Rです！')

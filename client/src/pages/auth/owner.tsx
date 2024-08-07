@@ -8,13 +8,13 @@ import {
   userMessage,
   userError,
   ownerErrorStatus,
-  userKey,
 } from "../../hooks/authSelector";
 import { changeMessage } from "../../slices/auth/userSlice";
 import { renderError } from "../../api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import { useEffect } from "react";
 import { isLogin } from "../../slices/auth/isLoginSlice";
+import LoadingComponent from "../../components/loading/Loading";
 
 const OwnerPage = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -74,7 +74,7 @@ const OwnerPage = () => {
       )}
 
       {uStatus == "loading" ? (
-        <p>Loading...</p>
+        <LoadingComponent />
       ) : (
         <OwnerRegisterForm onSubmit={ownerSubmit} />
       )}

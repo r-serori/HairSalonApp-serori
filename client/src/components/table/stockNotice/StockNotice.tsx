@@ -25,6 +25,7 @@ const StockNotice: React.FC<StockNoticeProps> = ({ nodes, setSearch }) => {
           message="在庫は問題ありません！"
           space={1}
           padding={1}
+          size="1.2rem"
         />
       ) : (
         <div>
@@ -34,8 +35,8 @@ const StockNotice: React.FC<StockNoticeProps> = ({ nodes, setSearch }) => {
             space={1}
             padding={0.2}
           />
-          <TableContainer component={Paper} sx={{ width: 250 }}>
-            <Table sx={{ width: 250 }} aria-label="simple table">
+          <TableContainer component={Paper} sx={{ width: 300 }}>
+            <Table sx={{ width: 300 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
                   <TableCell sx={{ padding: 0.6 }}>在庫名</TableCell>

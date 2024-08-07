@@ -12,6 +12,7 @@ import {
 import { AppDispatch } from "../../redux/store";
 import { renderError } from "../../api_backend/errorHandler";
 import RouterButton from "../../components/elements/button/RouterButton";
+import LoadingComponent from "@/components/loading/Loading";
 
 const ForgotPasswordPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -53,7 +54,7 @@ const ForgotPasswordPage: React.FC = () => {
       )}
 
       {uStatus === "loading" ? (
-        <p>Loading...</p>
+        <LoadingComponent />
       ) : (
         <div className="mx-4">
           <div className="my-4">

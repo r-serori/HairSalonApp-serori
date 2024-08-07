@@ -7,7 +7,6 @@ use App\Http\Controllers\BaseController;
 use App\Models\Owner;
 use App\Services\GetImportantIdService;
 use App\Services\HasRole;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class UserGetController extends BaseController
 {
@@ -30,9 +29,6 @@ class UserGetController extends BaseController
             return $this->responseMan(
                 $response
             );
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             return $this->serverErrorResponseWoman();
@@ -61,9 +57,6 @@ class UserGetController extends BaseController
                     'message' => 'ユーザー情報がありません！',
                 ], 404);
             }
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             return $this->serverErrorResponseWoman();
@@ -81,9 +74,6 @@ class UserGetController extends BaseController
                 'message' => 'オーナー情報を取得しました!',
                 'owner' => $owner,
             ]);
-        } catch (HttpException $e) {
-            // Log::error($e->getMessage());
-            return $this->responseMan(['message' => $e->getMessage()], $e->getStatusCode());
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             return $this->serverErrorResponseWoman();

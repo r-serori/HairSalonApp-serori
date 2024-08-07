@@ -18,6 +18,7 @@ import { AppDispatch } from "../../../../redux/store";
 import { renderError } from "../../../../api_backend/errorHandler";
 import { PermissionsState } from "../../../../slices/auth/permissionSlice";
 import { permissionStore } from "../../../../hooks/authSelector";
+import LoadingComponent from "@/components/loading/Loading";
 
 const OptionEdit: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -57,8 +58,8 @@ const OptionEdit: React.FC = () => {
       {oError && (
         <BasicAlerts type="error" message={oError} space={1} padding={1} />
       )}
-      {oStatus === "loading" ? (
-        <p>Loading...</p>
+      {oStatus === "loading" && permission ? (
+        <LoadingComponent />
       ) : permission === null ? (
         <p>あなたに権限はありません。</p>
       ) : (
