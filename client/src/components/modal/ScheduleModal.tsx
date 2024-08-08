@@ -266,7 +266,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
     allDay && whoIsEvent === "クリック"
       ? dayjs(selectedEvent.dateStr).utc().tz("Asia/Tokyo")
       : !allDay && whoIsEvent === "クリック"
-      ? dayjs(selectedEvent.start).utc().tz("Asia/Tokyo")
+      ? dayjs(selectedEvent.date).utc().tz("Asia/Tokyo")
       : dayjs(selectedEvent.startStr).utc().tz("Asia/Tokyo")
   );
   //終了時間を設定
@@ -274,7 +274,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
     allDay && whoIsEvent === "クリック"
       ? dayjs(selectedEvent.dateStr).add(1, "day").utc().tz("Asia/Tokyo")
       : !allDay && whoIsEvent === "クリック"
-      ? dayjs(selectedEvent.end).add(15, "minute").utc().tz("Asia/Tokyo")
+      ? dayjs(selectedEvent.date).add(15, "minute").utc().tz("Asia/Tokyo")
       : dayjs(selectedEvent.endStr).utc().tz("Asia/Tokyo")
   );
 
