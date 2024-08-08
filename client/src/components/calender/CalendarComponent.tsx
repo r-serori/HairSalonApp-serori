@@ -267,6 +267,12 @@ const MyCalendar: React.FC<OpenCalendarProps> = ({
               }
             },
             eventClick: function (info) {
+              let popovers =
+                document.querySelectorAll<HTMLElement>(".fc-more-popover");
+              popovers.forEach(function (popover) {
+                popover.style.display = "none"; // ポップオーバーを非表示にする
+              });
+
               setWhoIsEvent("編集");
               setSelectedEvent(info.event);
               setShowModal(true);
@@ -285,7 +291,7 @@ const MyCalendar: React.FC<OpenCalendarProps> = ({
         businessHours={{
           daysOfWeek: [0, 1, 2, 3, 4, 5, 6], //カレンダーの営業日を設定している
           startTime: "7:00", //カレンダーの営業開始時間を設定している
-          endTime: "22:00", //カレンダーの営業終了時間を設定している
+          endTime: "24:00", //カレンダーの営業終了時間を設定している
         }}
         weekNumbers={true} //カレンダーの週番号を表示するかどうかを設定している
         weekText="週" //カレンダーの週番号の表示形式を設定している
