@@ -16,7 +16,7 @@ class HasRole
     public function allAllow(): User //　権限は３種類あり、全ての役割を許可
     {
         $user = User::find(Auth::id());
-        if ($user && $user->hasRole(Roles::$OWNER) || $user->hasRole(Roles::$MANAGER) || $user->hasRole(Roles::$STAFF)) {
+        if ($user && ($user->hasRole(Roles::$OWNER) || $user->hasRole(Roles::$MANAGER) || $user->hasRole(Roles::$STAFF))) {
             return $user;
         } else {
             return response()->json(['message' => '権限がありません'], 403);
@@ -26,7 +26,7 @@ class HasRole
     public function managerAllow(): User
     {
         $user = User::find(Auth::id());
-        if ($user && $user->hasRole(Roles::$OWNER) || $user->hasRole(Roles::$MANAGER)) {
+        if ($user && ($user->hasRole(Roles::$OWNER) || $user->hasRole(Roles::$MANAGER))) {
             return $user;
         } else {
             return response()->json(['message' => '権限がありません'], 403);

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Services\HasRole;
 use App\Services\GetImportantIdService;
 use App\Services\StockService;
+use Illuminate\Support\Facades\Log;
 
 class StocksController extends BaseController
 {
@@ -68,7 +69,7 @@ class StocksController extends BaseController
                 "stock" => $stock,
             ]);
         } catch (\Exception $e) {
-            // Log::error($e->getMessage());
+            Log::error($e->getMessage());
             DB::rollBack();
             return $this->serverErrorResponseWoman();
         }

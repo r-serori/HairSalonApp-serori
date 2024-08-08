@@ -25,7 +25,7 @@ class GetImportantIdService
             $staff = Staff::where('user_id', $user_id)->first();
 
             if (empty($staff)) {
-                return  Owner::where('user_id', $user_id)->value('id');
+                return Owner::where('user_id', $user_id)->value('id');
             } else {
                 return $staff->owner_id;
             }

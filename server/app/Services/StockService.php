@@ -6,6 +6,7 @@ use App\Models\Stock;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use \Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class StockService
@@ -64,6 +65,7 @@ class StockService
 
       return $stock;
     } catch (\Exception $e) {
+      Log::error($e->getMessage());
       abort(500, 'エラーが発生しました');
     }
   }
@@ -111,13 +113,14 @@ class StockService
       $validatedData = $validator->validate();
 
       if ($createOrUpdate) {
-        $$ownerId = $stockIdOrOwnerId;
+        $ownerId = $stockIdOrOwnerId;
         return $this->stockStore($validatedData, $ownerId);
       } else {
         $stockId = $stockIdOrOwnerId;
         return $this->stockUpdate($validatedData, $stockId);
       }
     } catch (\Exception $e) {
+      Log::error($e->getMessage());
       abort(500, 'エラーが発生しました');
     }
   }
