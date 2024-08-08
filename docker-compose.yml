@@ -1,93 +1,90 @@
-# services:
-#   frontend:
-#     image: node:20.16.0
-#     build:
-#       context: ./client
-#       dockerfile: Dockerfile
-#     container_name: hair-salon-frontend
-#     working_dir: /app
-#     volumes:
-#       - ./client/public:/app/public
-#       - ./client/src:/app/src
-#     ports:
-#       - "3000:3000"
-#     environment:
-#       - NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
-#       - NEXT_PUBLIC_BACKEND_IMG_URL=http://localhost:8000/storage
-#     command: npm run dev
+services:
+  frontend:
+    image: node:20.16.0
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: hair-salon-frontend
+    working_dir: /app
+    volumes:
+      - ./client/public:/app/public
+      - ./client/src:/app/src
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
+      - NEXT_PUBLIC_BACKEND_IMG_URL=http://localhost:8000/storage
+    command: npm run dev
 
-#   backend:
-#     image: php:8.2-apache
-#     build:
-#       context: ./server
-#       dockerfile: Dockerfile
-#     container_name: hair-salon-backend
-#     working_dir: /var/www/html
-#     volumes:
-#       - ./server/public:/var/www/html/public
-#       - ./server/app:/var/www/html/app
-#       - ./server/resources:/var/www/html/resources
-#       - ./server/routes:/var/www/html/routes
-#       - ./server/database:/var/www/html/database
-#       - ./server/config:/var/www/html/config
-#       - ./server/storage:/var/www/html/storage
-#     ports:
-#       - "8000:8000"
-#     environment:
-#       - APP_ENV=local
-#       - APP_NAME=HairSalonApp
-#       - APP_KEY=base64:4mOZyqvol9/9o87SCaUVjt8SSzmR1sfEYYuUay+Ze+s=
-#       - APP_DEBUG=true
-#       - APP_URL=http://localhost:8000
-#       - FRONTEND_URL=http://localhost:3000
-#       - LOG_CHANNEL=stack
-#       - FILESYSTEM_DISK=public
-#       - SESSION_DRIVER=database
-#       - CACHE_DRIVER=database
-#       - SESSION_STORE=database
-#       - SESSION_DOMAIN=localhost
-#       - SESSION_SECURE_COOKIE=true
-#       - SESSION_LIFETIME=120
-#       - MAIL_MAILER=smtp
-#       - MAIL_HOST=smtp.gmail.com
-#       - MAIL_PORT=587
-#       - MAIL_USERNAME=hairsalon.app.serori@gmail.com
-#       - MAIL_PASSWORD=cvxlhazwyafcqrio
-#       - MAIL_ENCRYPTION=tls
-#       - MAIL_FROM_ADDRESS=hairsalon.app.serori@gmail.com
-#       - MAIL_FROM_NAME=HairSalonApp
-#       - SANCTUM_STATEFUL_DOMAINS=localhost:3000,localhost
-#       - REACT_APP_ENCRYPTION_KEY=_serori@fire_hairsalon+app_
-#       - REACT_APP_OWNER_ROLE=o_w@_seR_ori_N_N_EbR
-#       - REACT_APP_MANAGER_ROLE=M_an@aSe_ro_ri_a_@gEr
-#       - REACT_APP_STAFF_ROLE=S_taf@F@_seR_@_Ri@
-#       - OWNER_ROLE=o_w@_seR_ori_N_N_EbR
-#       - MANAGER_ROLE=M_an@aSe_ro_ri_a_@gEr
-#       - STAFF_ROLE=S_taf@F@_seR_@_Ri@
-#       - DB_CONNECTION=mysql
-#       - DB_HOST=db
-#       - DB_PORT=3306
-#       - DB_DATABASE=homestead
-#       - DB_USERNAME=root
-#       - DB_PASSWORD=root
-#       - APACHE_RUN_USER=www-data
-#       - APACHE_RUN_GROUP=www-data
-#     entrypoint: ["/usr/local/bin/entrypoint.sh"]
-#     depends_on:
-#       - db
+  backend:
+    image: php:8.2-apache
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: hair-salon-backend
+    working_dir: /var/www/html
+    volumes:
+      - ./server/public:/var/www/html/public
+      - ./server/app:/var/www/html/app
+      - ./server/resources:/var/www/html/resources
+      - ./server/routes:/var/www/html/routes
+      - ./server/database:/var/www/html/database
+      - ./server/config:/var/www/html/config
+      - ./server/storage:/var/www/html/storage
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=local
+      - APP_NAME=HairSalonApp
+      - APP_KEY=base64:4mOZyqvol9/9o87SCaUVjt8SSzmR1sfEYYuUay+Ze+s=
+      - APP_DEBUG=true
+      - APP_URL=http://localhost:8000
+      - FRONTEND_URL=http://localhost:3000
+      - LOG_CHANNEL=stack
+      - FILESYSTEM_DISK=public
+      - SESSION_DRIVER=database
+      - CACHE_DRIVER=database
+      - SESSION_STORE=database
+      - SESSION_DOMAIN=localhost
+      - SESSION_SECURE_COOKIE=true
+      - SESSION_LIFETIME=120
+      - MAIL_MAILER=smtp
+      - MAIL_HOST=smtp.gmail.com
+      - MAIL_PORT=587
+      - MAIL_USERNAME=hairsalon.app.serori@gmail.com
+      - MAIL_PASSWORD=cvxlhazwyafcqrio
+      - MAIL_ENCRYPTION=tls
+      - MAIL_FROM_ADDRESS=hairsalon.app.serori@gmail.com
+      - MAIL_FROM_NAME=HairSalonApp
+      - SANCTUM_STATEFUL_DOMAINS=localhost:3000,localhost
+      - REACT_APP_ENCRYPTION_KEY=_serori@fire_hairsalon+app_
+      - REACT_APP_OWNER_ROLE=o_w@_seR_ori_N_N_EbR
+      - REACT_APP_MANAGER_ROLE=M_an@aSe_ro_ri_a_@gEr
+      - REACT_APP_STAFF_ROLE=S_taf@F@_seR_@_Ri@
+      - OWNER_ROLE=o_w@_seR_ori_N_N_EbR
+      - MANAGER_ROLE=M_an@aSe_ro_ri_a_@gEr
+      - STAFF_ROLE=S_taf@F@_seR_@_Ri@
+      - DB_CONNECTION=mysql
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=homestead
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+    depends_on:
+      - db
 
-#   db:
-#     image: mysql:8.0
-#     container_name: db
-#     environment:
-#       MYSQL_ROOT_PASSWORD: root
-#       MYSQL_DATABASE: homestead
-#       MYSQL_USER: root
-#       MYSQL_PASSWORD: root
-#     ports:
-#       - "3306:3306"
-#     volumes:
-#       - mysql_data:/var/lib/mysql
+  db:
+    image: mysql:8.0
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
 
-# volumes:
-#   mysql_data:
+volumes:
+  mysql_data:

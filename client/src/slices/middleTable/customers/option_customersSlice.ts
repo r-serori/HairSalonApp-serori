@@ -51,78 +51,32 @@ const option_customersSlice = createSlice({
     });
 
     builder.addCase(createCustomer.fulfilled, (state, action) => {
-      state.option_customers = [
-        ...state.option_customers.filter(
-          (stateOptionCustomer) =>
-            !action.payload.option_customers.some(
-              (payloadOptionCustomer) =>
-                stateOptionCustomer.customer_id ===
-                payloadOptionCustomer.customer_id
-            )
-        ),
-        ...action.payload.option_customers,
-      ];
+      state.option_customers = action.payload.option_customers;
     });
 
     builder.addCase(updateCustomer.fulfilled, (state, action) => {
-      state.option_customers = [
-        ...state.option_customers.filter(
-          (stateOptionCustomers) =>
-            !action.payload.option_customers.some(
-              (payloadOptionCustomers) =>
-                stateOptionCustomers.customer_id ===
-                payloadOptionCustomers.customer_id
-            )
-        ),
-        ...action.payload.option_customers,
-      ];
+      state.option_customers = action.payload.option_customers;
     });
 
     builder.addCase(createCustomerAndSchedule.fulfilled, (state, action) => {
-      state.option_customers = [
-        ...state.option_customers,
-        ...action.payload.option_customers,
-      ];
+      state.option_customers = action.payload.option_customers;
     });
 
     builder.addCase(
       updateCustomerAndScheduleCreate.fulfilled,
       (state, action) => {
-        state.option_customers = [
-          ...state.option_customers.filter(
-            (stateOptionCustomers) =>
-              !action.payload.option_customers.some(
-                (payloadOptionCustomers) =>
-                  stateOptionCustomers.customer_id ===
-                  payloadOptionCustomers.customer_id
-              )
-          ),
-          ...action.payload.option_customers,
-        ];
+        state.option_customers = action.payload.option_customers;
       }
     );
 
     builder.addCase(updateCustomerAndSchedule.fulfilled, (state, action) => {
-      state.option_customers = [
-        ...state.option_customers.filter(
-          (stateOptionCustomers) =>
-            !action.payload.option_customers.some(
-              (payloadOptionCustomers) =>
-                stateOptionCustomers.customer_id ===
-                payloadOptionCustomers.customer_id
-            )
-        ),
-        ...action.payload.option_customers,
-      ];
+      state.option_customers = action.payload.option_customers;
     });
 
     builder.addCase(
       createCustomerAndUpdateSchedule.fulfilled,
       (state, action) => {
-        state.option_customers = [
-          ...state.option_customers,
-          ...action.payload.option_customers,
-        ];
+        state.option_customers = action.payload.option_customers;
       }
     );
 

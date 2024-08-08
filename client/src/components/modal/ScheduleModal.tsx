@@ -786,7 +786,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                 {!newCustomer && isCustomer && (
                   <div className="pt-4">
                     <div className="pt-4 flex justify-center items-center ml-4 mr-4">
-                      <div className="w-32 mr-2 text-right mb-6 ">顧客名:</div>
+                      <div className="w-32 mr-2 text-right mt-1 ">顧客名:</div>
                       <SingleCheckBox
                         onChange={(newValue) => {
                           changeCustomerState(newValue);
@@ -830,9 +830,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                       />
                     </div>
                     <div className="pt-6 flex justify-center items-center ml-4 mr-4">
-                      <div className="w-32 mr-2 text-right mb-6 ">
-                        コース名:
-                      </div>
+                      <div className="w-32 mr-2 text-right mb-6 ">コース:</div>
                       <MultiCheckbox
                         nodesProp="course"
                         optionName={courseNames}
@@ -844,7 +842,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                     </div>
                     <div className="pt-6 flex justify-center items-center ml-4 mr-4">
                       <div className="w-32 mr-2 text-right mb-6 ">
-                        オプション名:
+                        オプション:
                       </div>
                       <MultiCheckbox
                         nodesProp="option"
@@ -856,7 +854,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                       />
                     </div>
                     <div className="pt-6 flex justify-center items-center ml-4 mr-4">
-                      <div className="w-32 mr-2 text-right mb-6 ">商品名:</div>
+                      <div className="w-32 mr-2 text-right mb-6 ">商品:</div>
                       <MultiCheckbox
                         nodesProp="merchandise"
                         optionName={merchandiseNames}
@@ -867,7 +865,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                       />
                     </div>
                     <div className="pt-6 flex justify-center items-center ml-4 mr-4">
-                      <div className="w-32 mr-2 text-right mb-6 ">髪型名:</div>
+                      <div className="w-32 mr-2 text-right mb-6 ">髪型:</div>
                       <MultiCheckbox
                         nodesProp="hairstyle"
                         optionName={hairstyleNames}
@@ -878,9 +876,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                       />
                     </div>
                     <div className="pt-6 flex justify-center items-center ml-4 mr-4">
-                      <div className="w-32 mr-2 text-right mb-6 ">
-                        担当者名:
-                      </div>
+                      <div className="w-32 mr-2 text-right mb-6 ">担当者:</div>
                       <MultiCheckbox
                         nodesProp="names"
                         optionName={userNames}

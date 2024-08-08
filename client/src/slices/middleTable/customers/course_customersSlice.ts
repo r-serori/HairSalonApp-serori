@@ -51,79 +51,33 @@ const course_customersSlice = createSlice({
     });
 
     builder.addCase(createCustomer.fulfilled, (state, action) => {
-      state.course_customers = [
-        ...state.course_customers.filter(
-          (stateCourse_customer) =>
-            !action.payload.course_customers.some(
-              (payloadCourse_customer) =>
-                stateCourse_customer.customer_id ===
-                payloadCourse_customer.customer_id
-            )
-        ),
-        ...action.payload.course_customers,
-      ];
+      state.course_customers = action.payload.course_customers;
     });
 
     builder.addCase(updateCustomer.fulfilled, (state, action) => {
-      state.course_customers = [
-        ...state.course_customers.filter(
-          (stateCourse_customer) =>
-            !action.payload.course_customers.some(
-              (payloadCourse_customer) =>
-                stateCourse_customer.customer_id ===
-                payloadCourse_customer.customer_id
-            )
-        ),
-        ...action.payload.course_customers,
-      ];
+      state.course_customers = action.payload.course_customers;
     });
 
     builder.addCase(createCustomerAndSchedule.fulfilled, (state, action) => {
-      state.course_customers = [
-        ...state.course_customers,
-        ...action.payload.course_customers,
-      ];
+      state.course_customers = action.payload.course_customers;
     });
 
     builder.addCase(
       updateCustomerAndScheduleCreate.fulfilled,
       (state, action) => {
-        state.course_customers = [
-          ...state.course_customers.filter(
-            (stateCourse_customer) =>
-              !action.payload.course_customers.some(
-                (payloadCourse_customer) =>
-                  stateCourse_customer.customer_id ===
-                  payloadCourse_customer.customer_id
-              )
-          ),
-          ...action.payload.course_customers,
-        ];
+        state.course_customers = action.payload.course_customers;
       }
     );
 
     builder.addCase(
       createCustomerAndUpdateSchedule.fulfilled,
       (state, action) => {
-        state.course_customers = [
-          ...state.course_customers,
-          ...action.payload.course_customers,
-        ];
+        state.course_customers = action.payload.course_customers;
       }
     );
 
     builder.addCase(updateCustomerAndSchedule.fulfilled, (state, action) => {
-      state.course_customers = [
-        ...state.course_customers.filter(
-          (stateCourse_customer) =>
-            !action.payload.course_customers.some(
-              (payloadCourse_customer) =>
-                stateCourse_customer.customer_id ===
-                payloadCourse_customer.customer_id
-            )
-        ),
-        ...action.payload.course_customers,
-      ];
+      state.course_customers = action.payload.course_customers;
     });
 
     builder.addCase(deleteCourse.fulfilled, (state, action) => {

@@ -51,79 +51,33 @@ const hairstyle_customersSlice = createSlice({
     });
 
     builder.addCase(createCustomer.fulfilled, (state, action) => {
-      state.hairstyle_customers = [
-        ...state.hairstyle_customers.filter(
-          (stateHairstyleCustomer) =>
-            !action.payload.hairstyle_customers.some(
-              (payloadHairstyleCustomer) =>
-                stateHairstyleCustomer.customer_id ===
-                payloadHairstyleCustomer.customer_id
-            )
-        ),
-        ...action.payload.hairstyle_customers,
-      ];
+      state.hairstyle_customers = action.payload.hairstyle_customers;
     });
 
     builder.addCase(updateCustomer.fulfilled, (state, action) => {
-      state.hairstyle_customers = [
-        ...state.hairstyle_customers.filter(
-          (stateHairstyleCustomer) =>
-            !action.payload.hairstyle_customers.some(
-              (payloadHairstyleCustomer) =>
-                stateHairstyleCustomer.customer_id ===
-                payloadHairstyleCustomer.customer_id
-            )
-        ),
-        ...action.payload.hairstyle_customers,
-      ];
+      state.hairstyle_customers = action.payload.hairstyle_customers;
     });
 
     builder.addCase(createCustomerAndSchedule.fulfilled, (state, action) => {
-      state.hairstyle_customers = [
-        ...state.hairstyle_customers,
-        ...action.payload.hairstyle_customers,
-      ];
+      state.hairstyle_customers = action.payload.hairstyle_customers;
     });
 
     builder.addCase(
       createCustomerAndUpdateSchedule.fulfilled,
       (state, action) => {
-        state.hairstyle_customers = [
-          ...state.hairstyle_customers,
-          ...action.payload.hairstyle_customers,
-        ];
+        state.hairstyle_customers = action.payload.hairstyle_customers;
       }
     );
 
     builder.addCase(
       updateCustomerAndScheduleCreate.fulfilled,
       (state, action) => {
-        state.hairstyle_customers = [
-          ...state.hairstyle_customers.filter(
-            (stateHairstyleCustomer) =>
-              !action.payload.hairstyle_customers.some(
-                (payloadHairstyleCustomer) =>
-                  stateHairstyleCustomer.customer_id ===
-                  payloadHairstyleCustomer.customer_id
-              )
-          ),
-          ...action.payload.hairstyle_customers,
-        ];
+        state.hairstyle_customers = action.payload.hairstyle_customers;
       }
     );
 
     builder.addCase(updateCustomerAndSchedule.fulfilled, (state, action) => {
-      state.hairstyle_customers = [
-        ...state.hairstyle_customers.filter(
-          (stateHairstyleCustomer) =>
-            !action.payload.hairstyle_customers.some(
-              (payloadHairstyleCustomer) =>
-                stateHairstyleCustomer.customer_id ===
-                payloadHairstyleCustomer.customer_id
-            )
-        ),
-        ...action.payload.hairstyle_customers,
-      ];
+      state.hairstyle_customers = action.payload.hairstyle_customers;
     });
 
     builder.addCase(deleteHairstyle.fulfilled, (state, action) => {

@@ -51,78 +51,32 @@ const merchandise_customersSlice = createSlice({
     });
 
     builder.addCase(createCustomer.fulfilled, (state, action) => {
-      state.merchandise_customers = [
-        ...state.merchandise_customers.filter(
-          (stateMerchandise_customer) =>
-            !action.payload.merchandise_customers.some(
-              (payloadMerchandise_customer) =>
-                stateMerchandise_customer.customer_id ===
-                payloadMerchandise_customer.customer_id
-            )
-        ),
-        ...action.payload.merchandise_customers,
-      ];
+      state.merchandise_customers = action.payload.merchandise_customers;
     });
 
     builder.addCase(updateCustomer.fulfilled, (state, action) => {
-      state.merchandise_customers = [
-        ...state.merchandise_customers.filter(
-          (stateMerchandise_customer) =>
-            !action.payload.merchandise_customers.some(
-              (payloadMerchandise_customer) =>
-                stateMerchandise_customer.customer_id ===
-                payloadMerchandise_customer.customer_id
-            )
-        ),
-        ...action.payload.merchandise_customers,
-      ];
+      state.merchandise_customers = action.payload.merchandise_customers;
     });
 
     builder.addCase(createCustomerAndSchedule.fulfilled, (state, action) => {
-      state.merchandise_customers = [
-        ...state.merchandise_customers,
-        ...action.payload.merchandise_customers,
-      ];
+      state.merchandise_customers = action.payload.merchandise_customers;
     });
 
     builder.addCase(
       updateCustomerAndScheduleCreate.fulfilled,
       (state, action) => {
-        state.merchandise_customers = [
-          ...state.merchandise_customers.filter(
-            (stateMerchandise_customer) =>
-              !action.payload.merchandise_customers.some(
-                (payloadMerchandise_customer) =>
-                  stateMerchandise_customer.customer_id ===
-                  payloadMerchandise_customer.customer_id
-              )
-          ),
-          ...action.payload.merchandise_customers,
-        ];
+        state.merchandise_customers = action.payload.merchandise_customers;
       }
     );
 
     builder.addCase(updateCustomerAndSchedule.fulfilled, (state, action) => {
-      state.merchandise_customers = [
-        ...state.merchandise_customers.filter(
-          (stateMerchandise_customer) =>
-            !action.payload.merchandise_customers.some(
-              (payloadMerchandise_customer) =>
-                stateMerchandise_customer.customer_id ===
-                payloadMerchandise_customer.customer_id
-            )
-        ),
-        ...action.payload.merchandise_customers,
-      ];
+      state.merchandise_customers = action.payload.merchandise_customers;
     });
 
     builder.addCase(
       createCustomerAndUpdateSchedule.fulfilled,
       (state, action) => {
-        state.merchandise_customers = [
-          ...state.merchandise_customers,
-          ...action.payload.merchandise_customers,
-        ];
+        state.merchandise_customers = action.payload.merchandise_customers;
       }
     );
 
