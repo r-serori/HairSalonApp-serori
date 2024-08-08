@@ -1,118 +1,118 @@
-# version: 2.1
+version: 2.1
 
-# executors:
-#   frontend-executor:
-#     docker:
-#       - image: cimg/node:20.16.0
-#     working_directory: ~/HairSalonApp-serori/client
+executors:
+  frontend-executor:
+    docker:
+      - image: cimg/node:20.16.0
+    working_directory: ~/HairSalonApp-serori/client
 
-#   backend-executor:
-#     docker:
-#       - image: cimg/php:8.2
-#     working_directory: ~/HairSalonApp-serori/server
+  backend-executor:
+    docker:
+      - image: cimg/php:8.2
+    working_directory: ~/HairSalonApp-serori/server
 
-# jobs:
-#   build-frontend:
-#     executor: frontend-executor
-#     environment:
-#       NEXT_PUBLIC_BACKEND_URL: https://hairsalon-api.seroriman.com
-#       NEXT_PUBLIC_BACKEND_IMG_URL: https://hairsalon-api.seroriman.com/storage
-#     steps:
-#       - checkout:
-#           path: ~/HairSalonApp-serori
-#       - run:
-#           name: Install dependencies
-#           command: |
-#             npm install
-#       - run:
-#           name: Build frontend
-#           command: |
-#             npm run build
-#       - persist_to_workspace:
-#           root: ~/HairSalonApp-serori/client
-#           paths:
-#             - .next
-#             - public
+jobs:
+  build-frontend:
+    executor: frontend-executor
+    environment:
+      NEXT_PUBLIC_BACKEND_URL: https://hairsalon-api.seroriman.com
+      NEXT_PUBLIC_BACKEND_IMG_URL: https://hairsalon-api.seroriman.com/storage
+    steps:
+      - checkout:
+          path: ~/HairSalonApp-serori
+      - run:
+          name: Install dependencies
+          command: |
+            npm install
+      - run:
+          name: Build frontend
+          command: |
+            npm run build
+      - persist_to_workspace:
+          root: ~/HairSalonApp-serori/client
+          paths:
+            - .next
+            - public
 
-#   build-backend:
-#     executor: backend-executor
-#     steps:
-#       - checkout:
-#           path: ~/HairSalonApp-serori
-#       - run:
-#           name: Install dependencies
-#           command: |
-#             composer install
-#       - persist_to_workspace:
-#           root: ~/HairSalonApp-serori/server
-#           paths:
-#             - .
+  build-backend:
+    executor: backend-executor
+    steps:
+      - checkout:
+          path: ~/HairSalonApp-serori
+      - run:
+          name: Install dependencies
+          command: |
+            composer install
+      - persist_to_workspace:
+          root: ~/HairSalonApp-serori/server
+          paths:
+            - .
 
-#   deploy-frontend:
-#     docker:
-#       - image: cimg/base:stable
-#     steps:
-#       - checkout:
-#           path: ~/HairSalonApp-serori
-#       - setup_remote_docker:
-#           version: 20.10.24
-#       - attach_workspace:
-#           at: ~/HairSalonApp-serori
-#       - run:
-#           name: Install Heroku CLI
-#           command: |
-#             curl https://cli-assets.heroku.com/install.sh | sh
-#       - run:
-#           name: Login to Heroku Container Registry
-#           command: |
-#             echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
-#       - run:
-#           name: Build and push frontend Docker image
-#           command: |
-#             docker build -t registry.heroku.com/$HEROKU_FRONTEND_APP_NAME/web -f ~/HairSalonApp-serori/client/Dockerfile ~/HairSalonApp-serori/client
-#             docker push registry.heroku.com/$HEROKU_FRONTEND_APP_NAME/web
-#       - run:
-#           name: Release frontend app
-#           command: |
-#             heroku container:release web --app $HEROKU_FRONTEND_APP_NAME
+  deploy-frontend:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout:
+          path: ~/HairSalonApp-serori
+      - setup_remote_docker:
+          version: 20.10.24
+      - attach_workspace:
+          at: ~/HairSalonApp-serori
+      - run:
+          name: Install Heroku CLI
+          command: |
+            curl https://cli-assets.heroku.com/install.sh | sh
+      - run:
+          name: Login to Heroku Container Registry
+          command: |
+            echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
+      - run:
+          name: Build and push frontend Docker image
+          command: |
+            docker build -t registry.heroku.com/$HEROKU_FRONTEND_APP_NAME/web -f ~/HairSalonApp-serori/client/Dockerfile ~/HairSalonApp-serori/client
+            docker push registry.heroku.com/$HEROKU_FRONTEND_APP_NAME/web
+      - run:
+          name: Release frontend app
+          command: |
+            heroku container:release web --app $HEROKU_FRONTEND_APP_NAME
 
-#   deploy-backend:
-#     docker:
-#       - image: cimg/base:stable
-#     steps:
-#       - checkout:
-#           path: ~/HairSalonApp-serori
-#       - setup_remote_docker:
-#           version: 20.10.24
-#       - attach_workspace:
-#           at: ~/HairSalonApp-serori
-#       - run:
-#           name: Install Heroku CLI
-#           command: |
-#             curl https://cli-assets.heroku.com/install.sh | sh
-#       - run:
-#           name: Login to Heroku Container Registry
-#           command: |
-#             echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
-#       - run:
-#           name: Build and push backend Docker image
-#           command: |
-#             docker build -t registry.heroku.com/$HEROKU_BACKEND_APP_NAME/web -f ~/HairSalonApp-serori/server/Dockerfile ~/HairSalonApp-serori/server
-#             docker push registry.heroku.com/$HEROKU_BACKEND_APP_NAME/web
-#       - run:
-#           name: Release backend app
-#           command: |
-#             heroku container:release web --app $HEROKU_BACKEND_APP_NAME
+  deploy-backend:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout:
+          path: ~/HairSalonApp-serori
+      - setup_remote_docker:
+          version: 20.10.24
+      - attach_workspace:
+          at: ~/HairSalonApp-serori
+      - run:
+          name: Install Heroku CLI
+          command: |
+            curl https://cli-assets.heroku.com/install.sh | sh
+      - run:
+          name: Login to Heroku Container Registry
+          command: |
+            echo "$HEROKU_API_KEY" | docker login --username=_ --password-stdin registry.heroku.com
+      - run:
+          name: Build and push backend Docker image
+          command: |
+            docker build -t registry.heroku.com/$HEROKU_BACKEND_APP_NAME/web -f ~/HairSalonApp-serori/server/Dockerfile ~/HairSalonApp-serori/server
+            docker push registry.heroku.com/$HEROKU_BACKEND_APP_NAME/web
+      - run:
+          name: Release backend app
+          command: |
+            heroku container:release web --app $HEROKU_BACKEND_APP_NAME
 
-# workflows:
-#   version: 2
-#   build-and-deploy:
-#     jobs:
-#       - build-frontend
-#       - build-backend
-#       - deploy-frontend:
-#           requires:
-#             - build-frontend
-#       - deploy-backend:
-#           requires:
-#             - build-backend
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build-frontend
+      - build-backend
+      - deploy-frontend:
+          requires:
+            - build-frontend
+      - deploy-backend:
+          requires:
+            - build-backend
