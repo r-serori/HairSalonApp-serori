@@ -97,7 +97,7 @@ const DeleteMan: React.FC<DeleteManProps> = ({ id, link }) => {
     <div>
       <Button
         onClick={() => setOpen(true)}
-        className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2 text-center"
+        className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-bold rounded-lg text-md  px-4 py-2 text-center"
       >
         削除
       </Button>
@@ -110,7 +110,7 @@ const DeleteMan: React.FC<DeleteManProps> = ({ id, link }) => {
         <Box sx={style} className="rounded-xl">
           <div>
             <div
-              className="flex justify-center items-center p-4 mb-4   text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="flex justify-center items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
               style={{ flexDirection: "column" }}
             >

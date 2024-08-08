@@ -327,7 +327,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
     setOptionNames([]);
     setMerchandiseNames([]);
     setHairstyleNames([]);
-    setUserNames([]);
+    setUserNames(userNames || []);
   };
 
   //MultiCheckboxを使用する際の配列の値を変更していってくれる関数。
@@ -576,7 +576,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
               )}
               <button
                 onClick={BackAgain}
-                className="md:w-auto text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-4 py-2 text-center cursor-pointer mr-2"
+                className="md:w-auto text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 rounded-lg text-md px-4 py-2 text-center cursor-pointer mr-2 font-bold"
               >
                 戻る
               </button>
@@ -601,7 +601,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
 
                 <div className="flex justify-center items-center  gap-4">
                   <div className="flex justify-center items-center pt-6">
-                    <span className="mr-2 text-right mb-6 ">開始時間:</span>
+                    <span className="mr-2 text-right">開始時間:</span>
                     <DateTimeRangePicker
                       value={startTime}
                       changer={startTimeChange}
@@ -613,7 +613,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                     />
                   </div>
                   <div className="flex justify-center items-center pt-6 ">
-                    <span className=" text-right mb-6  mr-2">終了時間:</span>
+                    <span className=" text-right mr-2">終了時間:</span>
                     <DateTimeRangePicker
                       value={endTime}
                       changer={endTimeChange}
