@@ -101,8 +101,6 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
   const uniqueId = uuidv4();
   const permission = useSelector(permissionStore);
 
-  const [firstRender, setFirstRender] = useState<boolean>(true);
-
   const [isCustomer, setIsCustomer] = useState<boolean>(
     whoIsEvent === "編集"
       ? selectedEvent.extendedProps.isCustomer
@@ -267,12 +265,16 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
   const [startTime, setStartTime] = useState<Dayjs | null>(
     allDay && whoIsEvent === "クリック"
       ? dayjs(selectedEvent.dateStr).utc().tz("Asia/Tokyo")
+      : !allDay && whoIsEvent === "クリック"
+      ? dayjs(selectedEvent.startStr).utc().tz("Asia/Tokyo")
       : dayjs(selectedEvent.startStr).utc().tz("Asia/Tokyo")
   );
   //終了時間を設定
   const [endTime, setEndTime] = useState<Dayjs | null>(
     allDay && whoIsEvent === "クリック"
       ? dayjs(selectedEvent.dateStr).add(1, "day").utc().tz("Asia/Tokyo")
+      : !allDay && whoIsEvent === "クリック"
+      ? dayjs(selectedEvent.endStr).add(15, "minute").utc().tz("Asia/Tokyo")
       : dayjs(selectedEvent.endStr).utc().tz("Asia/Tokyo")
   );
 
