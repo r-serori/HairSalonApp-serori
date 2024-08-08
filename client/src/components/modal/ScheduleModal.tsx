@@ -641,7 +641,6 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                             setNewReservation(newValue ? false : true);
                             if (newValue === false) {
                               clearStates();
-                              setUsernameValidate(false);
                             } else {
                               if (!newCustomer) {
                                 setCustomerName(
@@ -675,7 +674,6 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                             setNewReservation(newValue ? true : false);
                             if (newValue === true) {
                               clearStates();
-                              setUsernameValidate(false);
                             } else {
                               if (!newCustomer) {
                                 setCustomerName(
@@ -712,7 +710,6 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                             setNewCustomer(newValue ? true : false);
                             if (newValue === true) {
                               clearStates();
-                              setUsernameValidate(false);
                             } else {
                               setCustomerName(
                                 whoIsEvent === "編集"
@@ -755,7 +752,6 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                               );
                             } else {
                               clearStates();
-                              setUsernameValidate(false);
                             }
                           }}
                           role={permission}
@@ -883,9 +879,6 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                         onChanger={handleUserChange}
                         getOptions={users}
                         role={permission}
-                        onValidationChange={(newValue) =>
-                          setUsernameValidate(newValue)
-                        }
                         required={true}
                         error={true}
                       />
@@ -996,9 +989,6 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
                         onChanger={handleUserChange}
                         getOptions={users}
                         role={permission}
-                        onValidationChange={(newValue) =>
-                          setUsernameValidate(newValue)
-                        }
                         required={true}
                         error={true}
                       />
