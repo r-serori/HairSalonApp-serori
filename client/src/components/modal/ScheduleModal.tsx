@@ -38,7 +38,11 @@ import BasicNumberField from "../elements/input/BasicNumberField";
 import { UserState } from "../../slices/auth/userSlice";
 import { AppDispatch } from "../../redux/store";
 import { renderError } from "../../api_backend/errorHandler";
-import { scheduleError, scheduleErrorStatus } from "../../hooks/selector";
+import {
+  scheduleError,
+  scheduleErrorStatus,
+  scheduleStatus,
+} from "../../hooks/selector";
 import { ScheduleModalNodes } from "../../types/interface";
 
 const style = {
@@ -97,6 +101,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
 
   const cError: string = useSelector(scheduleError);
   const sErrorStatus: number = useSelector(scheduleErrorStatus);
+  const sStatus: string = useSelector(scheduleStatus);
 
   const uniqueId = uuidv4();
   const permission = useSelector(permissionStore);
