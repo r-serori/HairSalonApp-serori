@@ -41,7 +41,7 @@
 #       - APP_URL=http://localhost:8000
 #       - FRONTEND_URL=http://localhost:3000
 #       - LOG_CHANNEL=stack
-#       - FILESYSTEM_DISK=public
+#       - FILESYSTEM_DISK=local
 #       - SESSION_DRIVER=database
 #       - CACHE_DRIVER=database
 #       - SESSION_STORE=database
