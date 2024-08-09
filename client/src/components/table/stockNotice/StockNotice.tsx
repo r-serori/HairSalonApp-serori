@@ -26,6 +26,7 @@ const StockNotice: React.FC<StockNoticeProps> = ({ nodes, setSearch }) => {
           space={1}
           padding={1}
           size="1.2rem"
+          iconSize="1.5rem"
         />
       ) : (
         <div>

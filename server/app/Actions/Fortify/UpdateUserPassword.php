@@ -13,6 +13,7 @@ use App\Enums\Roles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class UpdateUserPassword implements UpdatesUserPasswords
 {
@@ -57,12 +58,21 @@ class UpdateUserPassword implements UpdatesUserPasswords
                     'password' => Hash::make($request->input('password')),
                 ])->save();
 
+                $token = $request->bearerToken();
+                Log::info('token: ' . $token);
+
+                // Revoke the token
+                if ($token) {
+                    $personalAccessToken = PersonalAccessToken::findToken($token);
+                    Log::info('personalAccessToken: ' . $personalAccessToken);
+                    if ($personalAccessToken) {
+                        $personalAccessToken->delete();
+                    }
+                }
+
                 // ユーザーをログアウトさせる
                 Auth::guard('web')->logout();
-                if ($request->hasSession()) {
-                    $request->session()->invalidate();
-                    $request->session()->regenerateToken();
-                };
+
 
                 DB::commit();
 

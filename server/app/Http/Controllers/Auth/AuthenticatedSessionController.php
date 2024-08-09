@@ -164,7 +164,7 @@ class AuthenticatedSessionController extends BaseController
         DB::beginTransaction();
         try {
             $token = $request->bearerToken();
-            Log::info('token: ' . $token);
+            // Log::info('token: ' . $token);
 
             // Revoke the token
             if ($token) {

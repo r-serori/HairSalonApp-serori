@@ -437,7 +437,7 @@ const ComponentTable: React.FC<ComponentTableProps> = ({
                       }
                     >
                       {node.attendanceNow === "勤務中" ? (
-                        <div className="w-full y-full p-4 ">
+                        <div className="w-full y-full p-4 text-center ">
                           今日も１日頑張りましょう！！
                         </div>
                       ) : (
@@ -479,7 +479,7 @@ const ComponentTable: React.FC<ComponentTableProps> = ({
                       }
                     >
                       {node.attendanceNow === "退勤中" ? (
-                        <div className="w-full y-full p-4  text-center ">
+                        <div className="w-full y-full p-4 text-center ">
                           今日も１日お疲れ様でした！！
                         </div>
                       ) : (
