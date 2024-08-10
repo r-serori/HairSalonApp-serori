@@ -136,10 +136,11 @@ const HomePage: React.FC = () => {
 
         <div className="flex justify-center mt-12">
           <a
-            className="text-bold text-lg"
+            className="text-bold text-xl　text-blue-500"
             href="https://docs.google.com/document/d/e/2PACX-1vS-7DE8rijusBuosCWCt4qUwF550YSY253p5BT1KFdnbgd88ZrbAjdCtLxRW2mBlY7FwyyFweRKHFot/pub"
+            target="_blank"
           >
-            アプリの説明書を見る
+            初めての場合はアプリの説明書を見てください。クリックすると開きます。
           </a>
         </div>
       </div>
