@@ -174,11 +174,11 @@ class AuthenticatedSessionController extends BaseController
                     $personalAccessToken->delete();
                 }
             }
-            // Optionally, log the user out of the session
+
             Auth::guard('web')->logout();
             DB::commit();
 
-            Log::info('logout');
+            // Log::info('logout');
             return $this->responseMan([
                 'message' => 'ログアウトしました!'
             ]);

@@ -168,6 +168,7 @@ const courseSlice = createSlice({
         status: 0,
       };
     });
+
     builder.addCase(updateCourse.fulfilled, (state, action) => {
       state.status = "success";
       state.courses = state.courses.map((course) =>

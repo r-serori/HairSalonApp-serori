@@ -31,7 +31,6 @@ import LoadingComponent from "@/components/loading/Loading";
 const LoginPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const router: NextRouter = useRouter();
-  const [loading, setLoading] = useState<boolean>(false);
 
   const uStatus: string = useSelector(userStatus);
   const uMessage: string | null = useSelector(userMessage);
@@ -48,7 +47,6 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = async (formData: { email: string; password: string }) => {
     try {
-      setLoading(true);
       const response: any = await dispatch(login(formData) as any);
       if (response.meta.requestStatus === "fulfilled") {
         console.log("ログイン成功");
@@ -110,7 +108,7 @@ const LoginPage: React.FC = () => {
         />
       )}
 
-      {uStatus === "loading" || loading ? (
+      {uStatus === "loading" ? (
         <LoadingComponent />
       ) : (
         <div>

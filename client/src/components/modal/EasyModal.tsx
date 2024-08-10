@@ -165,7 +165,7 @@ const EasyModal: React.FC<EasyModalProps> = ({
           }}
           className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 rounded-lg text-md font-bold px-4 py-2 text-center"
         >
-          去年以前か来年以降の勤怠時間を確認,編集
+          先月以前か来月以降の勤怠時間を確認,編集
         </Button>
       ) : whoAreYou === "schedules" ? (
         <Button

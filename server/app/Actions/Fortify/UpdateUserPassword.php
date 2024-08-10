@@ -72,6 +72,8 @@ class UpdateUserPassword implements UpdatesUserPasswords
 
                 // ユーザーをログアウトさせる
                 Auth::guard('web')->logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
 
 
                 DB::commit();

@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { NextRouter, useRouter } from "next/router";
 import {
   Attendance_timeState,
-  GetAttendanceTimeState,
   selectGetAttendanceTimes,
 } from "../../../slices/attendance_times/attendance_timesSlice";
 import EasyModal from "../../../components/modal/EasyModal";

@@ -17,7 +17,6 @@ import { renderError } from "../../api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import { KeyState } from "../../slices/auth/keySlice";
 import LoadingComponent from "../../components/loading/Loading";
-import { set } from "lodash";
 
 const RegisterPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

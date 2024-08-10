@@ -127,7 +127,9 @@ const UserTimesShotForm: React.FC<UserTimesShotFormProps> = ({
 
   //出勤時間、退勤時間の編集モードの時、編集済みの写真を表示
   const [photo, setPhoto] = useState<string | null | undefined>(
-    node?.start_photo_path === "111222" || node?.end_photo_path === "111222"
+    link === "/attendanceTimeStart" && node?.start_photo_path === "111222"
+      ? null
+      : link === "/attendanceTimeEnd" && node?.end_photo_path === "111222"
       ? null
       : link === "/attendanceTimeStart" &&
         edit &&
@@ -178,7 +180,8 @@ const UserTimesShotForm: React.FC<UserTimesShotFormProps> = ({
 
   // 出勤時間、退勤時間の編集モードの時、写真を撮るボタンを押した時、編集済みの写真を表示
   const [editEnd, setEditEnd] = useState<boolean>(
-    node.start_photo_path === "111222" || node.end_photo_path === "111222"
+    (node.start_photo_path === "111222" && link === "/attendanceTimeStart") ||
+      (node.end_photo_path === "111222" && link === "/attendanceTimeEnd")
       ? true
       : false
   );
@@ -472,14 +475,14 @@ const UserTimesShotForm: React.FC<UserTimesShotFormProps> = ({
           edit &&
           editEnd &&
           !notEdit &&
-          !lateTime) ||
+          !lateTime &&
+          node.start_photo_path === "111222") ||
         (link === "/attendanceTimeEnd" &&
           edit &&
           editEnd &&
           !notEdit &&
-          !lateTime) ||
-        node.start_photo_path === "111222" ||
-        node.end_photo_path === "111222" ? (
+          !lateTime &&
+          node.end_photo_path === "111222") ? (
         <form
           onSubmit={
             link === "/attendanceTimeStart" && edit && editEnd
