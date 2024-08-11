@@ -144,7 +144,7 @@ const HomePage: React.FC = () => {
               textDecoration: "underline",
             }}
           >
-            初めての場合はアプリの説明書を見てください。クリックすると開きます。
+            初めての場合はアプリの説明書をご参照ください。クリックすると開きます。
           </a>
         </div>
       </div>
