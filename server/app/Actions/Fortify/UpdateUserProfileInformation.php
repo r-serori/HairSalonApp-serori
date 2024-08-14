@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\DB;
 
 class UpdateUserProfileInformation
 {
-    public function update($user, array $input): void
-    {
-    }
+    public function update($user, array $input): void {}
 
 
 
@@ -34,7 +32,6 @@ class UpdateUserProfileInformation
                 Validator::make($request->all(), [
                     'name' => 'required | string | max:50',
                     'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-                    'phone_number' => 'required | string | max:20',
                 ])->validateWithBag('updateProfileInformation');
 
                 if (
@@ -68,7 +65,6 @@ class UpdateUserProfileInformation
                     $user->forceFill([
                         'name' => $request['name'],
                         'email' => $request['email'],
-                        'phone_number' => $request['phone_number'],
                     ])->save();
 
 
@@ -118,9 +114,7 @@ class UpdateUserProfileInformation
     }
 
 
-    protected function updateVerifiedUser($user, Request $request)
-    {
-    }
+    protected function updateVerifiedUser($user, Request $request) {}
 
     protected function updateVerifiedUserInfo($user, Request $request)
     {
@@ -129,7 +123,6 @@ class UpdateUserProfileInformation
             $user->forceFill([
                 'name' => $request['name'],
                 'email' => $request['email'],
-                'phone_number' => $request['phone_number'],
                 'email_verified_at' => null, // 確認メールがクリックされるまでは null をセット
             ])->save();
 
