@@ -73,12 +73,12 @@ class User extends Authenticatable implements MustVerifyEmailContract
 
     public function getKey()
     {
-        return $this->id; // 例えば、プライマリーキーが 'id' の場合
+        return $this->id;
     }
 
     public function getEmailForVerification()
     {
-        return $this->email; // ユーザーのメールアドレスを返す例
+        return $this->email;
     }
 
     /**

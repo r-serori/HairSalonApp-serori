@@ -25,7 +25,6 @@ import ForgotPasswordButton from "../../components/elements/button/ForgotPasswor
 import { renderError } from "../../api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import { KeyState } from "../../slices/auth/keySlice";
-import { set } from "lodash";
 import LoadingComponent from "@/components/loading/Loading";
 
 const LoginPage: React.FC = () => {

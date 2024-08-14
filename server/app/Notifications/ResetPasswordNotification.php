@@ -32,6 +32,8 @@ class ResetPasswordNotification extends Notification
             ->line('パスワードリセットのリクエストを受け付けました。')
             ->line('以下のボタンをクリックしてパスワードをリセットしてください。')
             ->action('パスワードをリセットする', $resetUrl)
-            ->line('もし心当たりがない場合は、このメールを無視してください。');
+            ->line('もし心当たりがない場合は、このメールを無視してください。')->line('もしボタンがうまく動作しない場合は、以下のリンクをコピーしてブラウザに貼り付けてください。')
+            ->line($resetUrl)
+            ->salutation('Serori.R運営チームより');
     }
 }

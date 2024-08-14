@@ -31,19 +31,8 @@ use Illuminate\Support\Facades\Log;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Enums\Roles;
-
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
-
+use App\Http\Controllers\Auth\CheckSessionController;
+use App\Http\Controllers\Auth\VioRoleController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -112,65 +101,11 @@ Route::middleware('auth:sanctum')->group(function () {
     //オーナーがスタッフの情報を削除 Gate,OWNER
     Route::post('/deleteUser', [DeleteUserMain::class, 'deleteUser']);
 
-
     Route::get('/getKey', [GetKeyController::class, 'getKey']);
 
-    Route::get('/vio-role', function () {
-        try {
-            $user = User::find(Auth::id());
-            Log::info($user);
-            if ($user && $user->hasRole(Roles::$OWNER)) {
+    Route::get('/vio-role', [VioRoleController::class, 'vioRole']);
 
-                return response()->json([
-                    'myRole' => 'オーナー'
-                ], 200, [], JSON_UNESCAPED_UNICODE)->header('Content-Type', 'application/json; charset=UTF-8');
-            } else if ($user && $user->hasRole(Roles::$MANAGER)) {
-
-                return response()->json([
-                    'myRole' => 'マネージャー'
-                ], 200, [], JSON_UNESCAPED_UNICODE)->header('Content-Type', 'application/json; charset=UTF-8');
-            } else if ($user && $user->hasRole(Roles::$STAFF)) {
-
-                return response()->json([
-                    'myRole' => 'スタッフ'
-                ], 200, [], JSON_UNESCAPED_UNICODE)->header('Content-Type', 'application/json; charset=UTF-8');
-            } else {
-                return response()->json([
-                    'message' => '権限がありません。'
-                ], 403, [], JSON_UNESCAPED_UNICODE)->header('Content-Type', 'application/json; charset=UTF-8');
-            }
-        } catch (\Exception $e) {
-            Log::error($e->getMessage());
-            return response()->json(
-                [
-                    'message' => 'エラーが発生しました。もう一度やり直してください！',
-                ],
-                500,
-                [],
-                JSON_UNESCAPED_UNICODE
-            )->header('Content-Type', 'application/json; charset=UTF-8');
-        }
-    });
-
-
-    Route::get('/check-session', function () {
-        try {
-            $user = User::find(Auth::id());
-            if ($user && $user->hasRole(Roles::$OWNER) || $user->hasRole(Roles::$MANAGER) || $user->hasRole(Roles::$STAFF)) {
-
-                return response()->json(['status' => 'authenticated'], 200, [], JSON_UNESCAPED_UNICODE)->header('Content-Type', 'application/json; charset=UTF-8');
-            } else {
-                return response()->json([
-                    'status' => 'unauthenticated',
-                ], 403, [], JSON_UNESCAPED_UNICODE)->header('Content-Type', 'application/json; charset=UTF-8');
-            }
-        } catch (\Exception $e) {
-            // Log::error($e->getMessage());
-            return response()->json([
-                'status' => 'unauthenticated',
-            ], 500, [], JSON_UNESCAPED_UNICODE)->header('Content-Type', 'application/json; charset=UTF-8');
-        }
-    });
+    Route::get('/check-session', [CheckSessionController::class, 'checkSession']);
 
 
     //userの勤怠時間のコントローラー

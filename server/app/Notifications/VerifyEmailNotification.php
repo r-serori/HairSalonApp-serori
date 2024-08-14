@@ -58,7 +58,10 @@ class VerifyEmailNotification extends Notification
             ->line('この度は、HairSalonApp にご登録いただき、誠にありがとうございます！')
             ->line('以下のボタンをクリックしてメールアドレスを承認してください。')
             ->action('メールアドレスを承認する', $this->verificationUrl($notifiable))
-            ->line('もし心当たりがない場合は、このメールを無視してください。');
+            ->line('もし心当たりがない場合は、このメールを無視してください。')
+            ->line('もしボタンがうまく動作しない場合は、以下のリンクをコピーしてブラウザに貼り付けてください。')
+            ->line($this->verificationUrl($notifiable))
+            ->salutation('Serori.R運営チームより');
     }
 
 
@@ -79,7 +82,7 @@ class VerifyEmailNotification extends Notification
                 'hash' => sha1($notifiable->getEmailForVerification()),
             ] // パラメータ
         );
-        Log::info('signedUrl: ' . $signedUrl);
+        // Log::info('signedUrl: ' . $signedUrl);
 
         // 署名付きURLをそのまま返す
         return  $signedUrl;

@@ -60,7 +60,10 @@ class UpdateProfileNotification extends Notification
       ->line('いつもご利用いただき、誠にありがとうございます！')
       ->line('以下のボタンをクリックしてメールアドレスを承認してください。')
       ->action('メールアドレスを承認する', $this->verificationUrl($notifiable))
-      ->line('もし心当たりがない場合は、このメールを無視してください。');
+      ->line('もし心当たりがない場合は、このメールを無視してください。')
+      ->line('もしボタンがうまく動作しない場合は、以下のリンクをコピーしてブラウザに貼り付けてください。')
+      ->line($this->verificationUrl($notifiable))
+      ->salutation('Serori.R運営チームより');
   }
 
 
@@ -81,7 +84,7 @@ class UpdateProfileNotification extends Notification
         'hash' => sha1($notifiable->getEmailForVerification()),
       ] // パラメータ
     );
-    Log::info('signedUrl: ' . $signedUrl);
+    // Log::info('signedUrl: ' . $signedUrl);
 
     // 署名付きURLをそのまま返す
     return  $signedUrl;
