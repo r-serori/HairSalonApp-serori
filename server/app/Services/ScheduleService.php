@@ -16,9 +16,7 @@ class ScheduleService
 {
 
 
-  public function __construct()
-  {
-  }
+  public function __construct() {}
 
   private function createCacheKey(int $ownerId): string
   {

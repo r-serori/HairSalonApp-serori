@@ -26,8 +26,10 @@ import { renderError } from "../../api_backend/errorHandler";
 import { AppDispatch } from "../../redux/store";
 import { KeyState } from "../../slices/auth/keySlice";
 import LoadingComponent from "@/components/loading/Loading";
+import { set } from "lodash";
 
 const LoginPage: React.FC = () => {
+  const [loading, setLoading] = useState<boolean>(false);
   const dispatch: AppDispatch = useDispatch();
   const router: NextRouter = useRouter();
 
@@ -46,6 +48,7 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = async (formData: { email: string; password: string }) => {
     try {
+      setLoading(true);
       const response: any = await dispatch(login(formData) as any);
       if (response.meta.requestStatus === "fulfilled") {
         console.log("ログイン成功");
@@ -76,14 +79,17 @@ const LoginPage: React.FC = () => {
 
         if (role === "オーナー" && pushUser && ownerRender) {
           router.push("/auth/owner");
+          setLoading(false);
         } else {
           router.push("/dashboard");
+          setLoading(false);
         }
       } else {
         const re = renderError(uErrorStatus, router, dispatch);
         if (re === null) throw new Error("ログイン処理に失敗しました");
       }
     } catch (error) {
+      setLoading(false);
       console.error("ログイン処理に失敗しました", error);
       localStorage.removeItem("registerNow");
       allLogout(dispatch);
@@ -107,7 +113,7 @@ const LoginPage: React.FC = () => {
         />
       )}
 
-      {uStatus === "loading" ? (
+      {uStatus === "loading" || loading ? (
         <LoadingComponent />
       ) : (
         <div>
