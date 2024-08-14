@@ -40,7 +40,6 @@ const RegisterPage: React.FC = () => {
   const handleRegister = async (formData: {
     name: string;
     email: string;
-    phone_number: string;
     role: string;
     password: string;
     isAttendance: boolean;

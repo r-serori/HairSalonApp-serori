@@ -62,7 +62,6 @@ const UpdateUserInformationPage: React.FC = () => {
   const handleUpdateUserInformation = async (formData: {
     name: string;
     email: string;
-    phone_number: string;
   }) => {
     try {
       const response = await dispatch(updateUser(formData) as any);

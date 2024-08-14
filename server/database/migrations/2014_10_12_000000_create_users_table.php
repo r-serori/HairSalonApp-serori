@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50)->nullable(false);
             $table->string('email', 200)->unique()->index()->nullable(false);
-            $table->string('phone_number', 20)->unique()->nullable(false);
             $table->string('password', 100)->nullable(false);
             $table->string('role', 50)->nullable(false);
             $table->boolean('isAttendance')->default(0)->nullable(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
+            $table->string('google_id')->nullable();
             // $table->foreignId('current_team_id')->nullable();
             // $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();

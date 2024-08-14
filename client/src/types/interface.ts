@@ -59,7 +59,6 @@ export interface AttendanceTimeShotsNodes {
 export interface AttendancesNodes {
   id: number;
   name: string;
-  staff_phone_number: string;
   role: PermissionsState;
   isAttendance: boolean;
 }

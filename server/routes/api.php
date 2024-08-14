@@ -33,6 +33,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Enums\Roles;
 use App\Http\Controllers\Auth\CheckSessionController;
 use App\Http\Controllers\Auth\VioRoleController;
+use App\Http\Controllers\Auth\GoogleAuthController;
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -71,6 +73,9 @@ Route::post('/resetPassword', [ResetUserPassword::class, 'resetPassword'])->name
 
 Route::get('/updateInfo/{id}/{hash}', [UpdateUserInfoController::class, 'updateInfoVerifyEmail'])
     ->middleware('signed')->name('verification.updateInfo');
+
+Route::get('google/login', [GoogleAuthController::class, 'redirectToGoogle']);
+Route::get('google/callback', [GoogleAuthController::class, 'handleGoogleCallback']);
 
 
 Route::middleware('auth:sanctum')->group(function () {

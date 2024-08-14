@@ -332,7 +332,6 @@ const ComponentTable: React.FC<ComponentTableProps> = ({
                       propProp === "shotUserName" ||
                       propProp === "attendanceNow" ||
                       propProp === "name" ||
-                      propProp === "staff_phone_number" ||
                       propProp === "role"
                     ) {
                       return (

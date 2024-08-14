@@ -73,7 +73,6 @@ const Attendances = () => {
 
   const searchItems: SearchItems = [
     { key: "name", value: "名前" },
-    { key: "staff_phone_number", value: "スタッフ電話番号" },
     { key: "role", value: "役職" },
   ];
 
@@ -85,11 +84,7 @@ const Attendances = () => {
     "勤怠時間管理",
   ];
 
-  const nodesProps: NodesProps[] = [
-    { text: "name" },
-    { number: "staff_phone_number" },
-    { text: "role" },
-  ];
+  const nodesProps: NodesProps[] = [{ text: "name" }, { text: "role" }];
 
   // nodesにusersをマップして処理
   const nodes: AttendancesNodes[] =
@@ -98,7 +93,6 @@ const Attendances = () => {
           return {
             id: user.id,
             name: user.name || "",
-            staff_phone_number: user?.phone_number || "",
             role: user?.role || "スタッフ",
             isAttendance: user.isAttendance,
           };

@@ -12,9 +12,7 @@ interface UserUpdateFormProps {
 
 const UserUpdateForm: React.FC<UserUpdateFormProps> = ({ onSubmit, node }) => {
   const [name, setName] = useState<string>(node?.name || "");
-  const [phone_number, setPhoneNumber] = useState<string>(
-    node?.phone_number || ""
-  );
+
   const [role, setRole] = useState<string>(node?.role || "スタッフ");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -45,16 +43,6 @@ const UserUpdateForm: React.FC<UserUpdateFormProps> = ({ onSubmit, node }) => {
             onChange={(e) => setName(e.target.value)}
             disabled={true}
             decideLength={50}
-          />
-
-          <BasicNumberField
-            id={node.id}
-            placeholder="電話番号"
-            value={phone_number}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            disabled={true}
-            maxNumber={999999999999999}
-            format={false}
           />
 
           <SingleCheckBox

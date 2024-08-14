@@ -8,13 +8,8 @@ interface UpdateInformationFormProps {
   node: {
     name: string;
     email: string;
-    phone_number: string;
   };
-  onSubmitUserInformation: (formData: {
-    name: string;
-    email: string;
-    phone_number: string;
-  }) => void;
+  onSubmitUserInformation: (formData: { name: string; email: string }) => void;
 }
 
 const UpdateInformationForm: React.FC<UpdateInformationFormProps> = ({
@@ -23,9 +18,7 @@ const UpdateInformationForm: React.FC<UpdateInformationFormProps> = ({
 }) => {
   const [name, setName] = useState<string>(node.name || "");
   const [email, setEmail] = useState<string>(node.email || "");
-  const [phone_number, setPhoneNumber] = useState<string>(
-    node.phone_number || ""
-  );
+
   const [edit, setEdit] = useState(false);
 
   const [nameValidate, setNameValidate] = useState<boolean>(
@@ -34,20 +27,16 @@ const UpdateInformationForm: React.FC<UpdateInformationFormProps> = ({
   const [emailValidate, setEmailValidate] = useState<boolean>(
     node && node.email ? true : false
   );
-  const [phone_numberValidate, setPhoneNumberValidate] = useState<boolean>(
-    node && node.phone_number ? true : false
-  );
 
   const handleSubmitStaff = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!nameValidate || !emailValidate || !phone_numberValidate) {
+    if (!nameValidate || !emailValidate) {
       return;
     }
     onSubmitUserInformation({
       name: name,
       email: email,
-      phone_number: phone_number,
     });
   };
 
@@ -86,17 +75,6 @@ const UpdateInformationForm: React.FC<UpdateInformationFormProps> = ({
             onChange={(e) => setEmail(e.target.value)}
             disabled={edit ? false : true}
             onValidationChange={(isValid) => setEmailValidate(isValid)}
-          />
-
-          <BasicNumberField
-            id={0}
-            placeholder="電話番号"
-            value={phone_number}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            disabled={edit ? false : true}
-            onValidationChange={(isValid) => setPhoneNumberValidate(isValid)}
-            format={false}
-            maxNumber={999999999999999}
           />
 
           <PrimaryButton value="プロフィール更新" />

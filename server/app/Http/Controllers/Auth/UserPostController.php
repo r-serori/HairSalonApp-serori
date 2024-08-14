@@ -67,7 +67,6 @@ class UserPostController extends BaseController
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:50',
                 'email' => ' required|string|email|max:200|unique:users',
-                'phone_number' => 'required|string|max:20|unique:users',
                 'password' => 'required|string|max:100',
                 'role' => 'required|string|max:30',
                 'isAttendance' => 'required|boolean',
@@ -84,7 +83,6 @@ class UserPostController extends BaseController
             $user = User::create([
                 'name' => $validateData->name,
                 'email' => $validateData->email,
-                'phone_number' => $validateData->phone_number,
                 'password' => Hash::make($validateData->password),
                 'role' => $validateData->role === 'マネージャー' ? Roles::$MANAGER : Roles::$STAFF,
                 'isAttendance' => $validateData->isAttendance,
@@ -100,7 +98,6 @@ class UserPostController extends BaseController
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
-                'phone_number' => $user->phone_number,
                 'role' => $user->role === Roles::$MANAGER ? 'マネージャー' : 'スタッフ',
                 'isAttendance' => $user->isAttendance,
             ];

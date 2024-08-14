@@ -40,7 +40,6 @@ export const register = createAsyncThunk<
   {
     name: string;
     email: string;
-    phone_number: string;
     role: string;
     password: string;
     isAttendance: boolean;
@@ -64,7 +63,6 @@ export const staffRegister = createAsyncThunk<
   {
     name: string;
     email: string;
-    phone_number: string;
     password: string;
     role: string;
     isAttendance: boolean;
@@ -170,7 +168,6 @@ export const updateUser = createAsyncThunk<
   {
     name: string;
     email: string;
-    phone_number: string;
   },
   {
     rejectValue: ErrorType;
@@ -247,7 +244,6 @@ export interface UserState {
   id: number;
   name: string;
   email?: string;
-  phone_number?: string;
   password?: string;
   role?: RoleState;
   isAttendance: boolean;

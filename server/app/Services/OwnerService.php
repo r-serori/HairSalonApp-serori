@@ -10,9 +10,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 class OwnerService
 {
 
-  public function __construct()
-  {
-  }
+  public function __construct() {}
 
   private function ownerPost(array $data, Owner $owner, int $user_id): Owner //オーナーデータの新規作成、更新
   {

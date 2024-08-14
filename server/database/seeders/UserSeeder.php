@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
     DB::table('users')->insert([
       'name' => 'owner123',
       'email' => 'owner@hairmail.com',
-      'phone_number' => '09012345678',
       'password' => Hash::make('Password_123'),
       'role' => Roles::$OWNER,
       'isAttendance' => 0,
@@ -30,7 +29,6 @@ class UserSeeder extends Seeder
     DB::table('users')->insert([
       'name' => 'manager123',
       'email' => 'manager@hairmail.com',
-      'phone_number' => '08012345678',
       'password' => Hash::make('Password_123'),
       'role' => Roles::$MANAGER,
       'isAttendance' => 0,
@@ -41,7 +39,6 @@ class UserSeeder extends Seeder
     DB::table('users')->insert([
       'name' => 'staff123',
       'email' => 'staff@hairmail.com',
-      'phone_number' => '07012345678',
       'password' => Hash::make('Password_123'),
       'role' => Roles::$STAFF,
       'isAttendance' => 0,

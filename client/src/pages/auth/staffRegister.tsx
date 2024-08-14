@@ -34,7 +34,6 @@ const StaffRegisterPage: React.FC = () => {
   const handleStaffRegister = async (formData: {
     name: string;
     email: string;
-    phone_number: string;
     password: string;
     role: string;
     isAttendance: boolean;

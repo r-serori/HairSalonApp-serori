@@ -19,7 +19,6 @@ export const userApi = {
   register: async (formData: {
     name: string;
     email: string;
-    phone_number: string;
     password: string;
     role: string;
     isAttendance: boolean;
@@ -37,7 +36,6 @@ export const userApi = {
   staffRegister: async (formData: {
     name: string;
     email: string;
-    phone_number: string;
     password: string;
     role: string;
     isAttendance: boolean;
@@ -97,11 +95,7 @@ export const userApi = {
   },
 
   //ユーザーが自分の個人情報を変更 Gate,ALL
-  updateUser: async (formData: {
-    name: string;
-    email: string;
-    phone_number: string;
-  }) => {
+  updateUser: async (formData: { name: string; email: string }) => {
     try {
       const response = (await sendRequest(
         "POST",

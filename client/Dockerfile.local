@@ -1,9 +1,10 @@
+# local
 # フロントエンド用のステージ
 FROM node:20.16.0-alpine AS frontend
 
 # 環境変数の設定
-ENV NEXT_PUBLIC_BACKEND_URL=https://hairsalon-api.seroriman.com
-ENV NEXT_PUBLIC_BACKEND_IMG_URL=https://hairsalon-api.seroriman.com/storage
+ENV NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
+ENV NEXT_PUBLIC_BACKEND_IMG_URL=http://localhost:8000/storage
 
 WORKDIR /app
 
@@ -13,9 +14,8 @@ RUN npm install
 
 # client ディレクトリ内の残りのファイルをコピー
 COPY . ./
-RUN npm run build
+
+# 開発用コマンドで起動
+CMD ["npm", "run", "dev"]
 
 EXPOSE 3000
-
-# Next.js アプリケーションを起動
-CMD ["npm", "start"]

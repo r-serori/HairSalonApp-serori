@@ -9,7 +9,6 @@ interface AuthRegisterFormProps {
   onSubmitOwner: (formData: {
     name: string;
     email: string;
-    phone_number: string;
     password: string;
     role: string;
     isAttendance: boolean;
@@ -22,13 +21,10 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({
 }) => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [phone_number, setPhoneNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [nameValidate, setNameValidate] = useState<boolean>(false);
   const [emailValidate, setEmailValidate] = useState<boolean>(false);
-  const [phone_numberValidate, setPhoneNumberValidate] =
-    useState<boolean>(false);
   const [passwordValidate, setPasswordValidate] = useState<boolean>(false);
   const [confirmPasswordValidate, setConfirmPasswordValidate] =
     useState<boolean>(false);
@@ -43,7 +39,6 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({
     if (
       !nameValidate ||
       !emailValidate ||
-      !phone_numberValidate ||
       !passwordValidate ||
       !confirmPasswordValidate
     ) {
@@ -53,7 +48,6 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({
     onSubmitOwner({
       name: name,
       email: email,
-      phone_number: phone_number,
       password: password,
       role: "オーナー",
       isAttendance: false,
@@ -85,16 +79,6 @@ const AuthRegisterForm: React.FC<AuthRegisterFormProps> = ({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             onValidationChange={(isValid) => setEmailValidate(isValid)}
-          />
-
-          <BasicNumberField
-            id={2}
-            placeholder="電話番号"
-            value={phone_number}
-            maxNumber={999999999999999}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            onValidationChange={(isValid) => setPhoneNumberValidate(isValid)}
-            format={false}
           />
 
           <PasswordField

@@ -31,9 +31,7 @@ class AuthenticatedSessionController extends BaseController
 {
 
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Show the login view.
@@ -59,7 +57,7 @@ class AuthenticatedSessionController extends BaseController
         try {
             return $this->loginPipeline($request)->then(function ($request) {
                 try {
-                    Log::info('loginstore!!!!!!!!!!!');
+                    // Log::info('loginstore!!!!!!!!!!!');
                     $existOwner = Owner::where('user_id', $request->user()->id)->first();
 
                     $user = User::find(Auth::id());
@@ -77,7 +75,6 @@ class AuthenticatedSessionController extends BaseController
                         'id' => $request->user()->id,
                         'name' => $request->user()->name,
                         'email' => $request->user()->email,
-                        'phone_number' => $request->user()->phone_number,
                         'role' => $request->user()->role === Roles::$OWNER ? 'オーナー' : ($request->user()->role === Roles::$MANAGER ? 'マネージャー' : 'スタッフ'),
                         'isAttendance' => $request->user()->isAttendance,
                     ];

@@ -10,7 +10,6 @@ interface AuthStaffRegisterFormProps {
   onSubmitStaff: (formData: {
     name: string;
     email: string;
-    phone_number: string;
     password: string;
     role: string;
     isAttendance: boolean;
@@ -22,15 +21,13 @@ const AuthStaffRegisterForm: React.FC<AuthStaffRegisterFormProps> = ({
 }) => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [phone_number, setPhoneNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [role, setRole] = useState<string>("スタッフ");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
 
   const [nameValidate, setNameValidate] = useState<boolean>(false);
   const [emailValidate, setEmailValidate] = useState<boolean>(false);
-  const [phone_numberValidate, setPhoneNumberValidate] =
-    useState<boolean>(false);
+
   const [passwordValidate, setPasswordValidate] = useState<boolean>(false);
   const [confirmPasswordValidate, setConfirmPasswordValidate] =
     useState<boolean>(false);
@@ -46,7 +43,6 @@ const AuthStaffRegisterForm: React.FC<AuthStaffRegisterFormProps> = ({
     if (
       !nameValidate ||
       !emailValidate ||
-      !phone_numberValidate ||
       !passwordValidate ||
       !confirmPasswordValidate ||
       !roleValidate
@@ -57,7 +53,6 @@ const AuthStaffRegisterForm: React.FC<AuthStaffRegisterFormProps> = ({
     onSubmitStaff({
       name: name,
       email: email,
-      phone_number: phone_number,
       password: password,
       role: role,
       isAttendance: false,
@@ -87,16 +82,6 @@ const AuthStaffRegisterForm: React.FC<AuthStaffRegisterFormProps> = ({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             onValidationChange={(isValid) => setEmailValidate(isValid)}
-          />
-
-          <BasicNumberField
-            id={0}
-            placeholder="電話番号"
-            value={phone_number}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            onValidationChange={(isValid) => setPhoneNumberValidate(isValid)}
-            format={false}
-            maxNumber={99999999999999}
           />
 
           <PasswordField
