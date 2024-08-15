@@ -89,7 +89,7 @@ class AuthenticatedSessionController extends BaseController
                         ]);
                     } else {
                         if ($request->user()->role === Roles::$OWNER) {
-                            DB::rollBack();
+                             DB::commit();
                             return $this->responseMan([
                                 'message' => 'オーナー用ユーザーとしてログインしました!ただし、店舗登録が完了していません。店舗登録を行ってください。',
                                 'responseUser' => $responseUser,
