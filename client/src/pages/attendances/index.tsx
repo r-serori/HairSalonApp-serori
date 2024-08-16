@@ -73,13 +73,13 @@ const Attendances = () => {
 
   const searchItems: SearchItems = [
     { key: "name", value: "名前" },
-    { key: "staff_phone_number", value: "スタッフ電話番号" },
+ 
     { key: "role", value: "役職" },
   ];
 
   const tHeaderItems: THeaderItems = [
     "名前",
-    "スタッフ電話番号",
+
     "役職",
     "編集",
     "勤怠時間管理",
