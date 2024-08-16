@@ -78,7 +78,7 @@ const Attendances = () => {
 
   const tHeaderItems: THeaderItems = [
     "名前",
-    "スタッフ電話番号",
+
     "役職",
     "編集",
     "勤怠時間管理",
